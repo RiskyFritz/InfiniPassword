@@ -4,6 +4,7 @@ body {
 	--primary-accent: #eff1f5;
 	--secondary-accent: #ffffff;
 	--tertiary-accent: #aaaaaa;
+	--tertiary-color: black;
 	background-color: var(--primary-accent);
 	color: black;
 }
@@ -11,6 +12,7 @@ body.dark {
 	--primary-accent: #101319;
 	--secondary-accent: #1d232f;
 	--tertiary-accent: #bbbbbb;
+	--tertiary-color: #eee;
 	color: #eee;
 }
 
@@ -31,7 +33,11 @@ input {
 	flex-grow: 2;
 	/* And hide the input's outline, so the form looks like the outline */
 	border: none;
+	color: var(--tertiary-color);
 	background: var(--secondary-accent);
+}
+input.dark {
+	color: white;
 }
 
 input:focus {
@@ -45,9 +51,6 @@ input:focus {
 	padding: 0.5rem;
 	display: flex;
 	background: var(--secondary-accent);
-}
-.dark .passwordInput {
-	color: white;
 }
 
 .sliderContainer {
