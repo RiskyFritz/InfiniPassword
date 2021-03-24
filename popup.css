@@ -1,5 +1,19 @@
 /*popup.css1*/
 
+body {
+	--primary-accent: #eff1f5;
+	--secondary-accent: #ffffff;
+	--tertiary-accent: #aaaaaa;
+	background-color: var(--primary-accent);
+	color: black;
+}
+body.dark {
+	--primary-accent: #101319;
+	--secondary-accent: #1d232f;
+	--tertiary-accent: #bbbbbb;
+	color: #eee;
+}
+
 button {
 	background-color: Transparent;
 	background-repeat: no-repeat;
@@ -8,24 +22,32 @@ button {
 	outline: none;
 }
 
+i {
+	color: var(--tertiary-accent);
+}
+
 input {
 	/* Tell the input to use all the available space */
 	flex-grow: 2;
 	/* And hide the input's outline, so the form looks like the outline */
 	border: none;
-	background: #e3e5e7;
+	background: var(--secondary-accent);
 }
 
 input:focus {
 	/* removing the input focus blue box. Put this on the form if you like. */
 	outline: none;
+	transform: scale(1.05);
 }
 
 .passwordInput {
 	outline: none;
 	padding: 0.5rem;
 	display: flex;
-	background: #e3e5e7;
+	background: var(--secondary-accent);
+}
+.dark .passwordInput {
+	color: white;
 }
 
 .sliderContainer {
@@ -34,12 +56,24 @@ input:focus {
 	grid-template-columns: 2rem 1fr;
 }
 
+.optionTitle {
+	margin: 0;
+}
+
 #password {
 	flex: 1;
 }
 
 #copyPassword {
 	position: relative;
+}
+
+#darkModeToggle {
+	background-color: none;
+	border: none;
+	outline: none;
+	font-size: 0.75rem;
+	color: var(--tertiary-accent);
 }
 
 @keyframes scale {

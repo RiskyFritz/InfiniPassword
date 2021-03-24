@@ -1,5 +1,3 @@
-//popup.html
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,7 +19,7 @@
 					<input
 						autocomplete="off"
 						role="textfield"
-						class="radius-tl-sm radius-bl-sm password"
+						class="password"
 						id="password"
 						spellcheck="false"
 						type="text"
@@ -35,12 +33,13 @@
 			</span>
 			<div id="passwordOptions">
 				<h3>Options</h3>
-				<h4>Password Length</h4>
+				<h4 class="optionTitle">Password Length</h4>
 				<div class="sliderContainer">
 					<h3 id="lengthValue"></h3>
 					<input id="length" type="range" value="12" min="1" max="100" />
 				</div>
 			</div>
+			<button id="darkModeToggle">Toggle dark mode</button>
 		</div>
 	</body>
 </html>

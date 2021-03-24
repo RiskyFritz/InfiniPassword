@@ -83,13 +83,14 @@ document.addEventListener(
 		const newPassword = document.getElementById('password');
 		const copyPassword = document.getElementById('copyPassword');
 		const faCopy = document.querySelector('.fa.fa-clone');
+		const darkModeToggle = document.getElementById('darkModeToggle');
 
 		sliderValue.innerHTML = slider.value;
 
 		slider.oninput = function () {
 			sliderValue.innerHTML = this.value;
 		};
-
+		// --- add password to user's clipboard ---
 		function updateClipboard(clipboardText) {
 			navigator.clipboard.writeText(clipboardText).then(
 				function () {
@@ -99,17 +100,17 @@ document.addEventListener(
 						faCopy.style.animation = '';
 					}, 500);
 					console.log(breakString(password));
-					// all messed up with that rando color shit nawimean
-					// document.getElementById('test').innerHTML = breakString(password);
 				},
 				function () {
 					/* clipboard write failed */
 				}
 			);
 		}
+		// --- listen for copy to clipboard ---
 		copyPassword.addEventListener('click', function () {
 			updateClipboard(password);
 		});
+		// --- listen for generate password click ---
 		generatePasswordButton.addEventListener(
 			'click',
 			function () {
@@ -125,6 +126,10 @@ document.addEventListener(
 			},
 			false
 		);
+		// --- listen for dark mode toggle ---
+		darkModeToggle.addEventListener('click', () => {
+			document.body.classList.toggle('dark');
+		});
 	},
 	false
 );
