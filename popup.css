@@ -28,6 +28,12 @@ input:focus {
 	background: #e3e5e7;
 }
 
+.sliderContainer {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 2rem 1fr;
+}
+
 #password {
 	flex: 1;
 }
@@ -38,24 +44,24 @@ input:focus {
 
 @keyframes scale {
 	0% {
-		transform: scale(1) rotate(0deg);
+		transform: translateZ(0) scale(1) rotate(0deg);
 	}
 	50% {
-		transform: scale(1.1) rotate(10deg);
+		transform: translateZ(0) scale(1.1) rotate(10deg);
 	}
 	100% {
-		transform: scale(1) rotate(0deg);
+		transform: translateZ(0) scale(1) rotate(0deg);
 	}
 }
 
 @keyframes rotate360 {
 	0% {
-		transform: scale(1) rotate(0deg);
+		transform: translateZ(0) scale(1) rotate(0deg);
 	}
 	50% {
-		transform: scale(1.25) rotate(180deg);
+		transform: translateZ(0) scale(1.25) rotate(180deg);
 	}
 	100% {
-		transform: scale(1) rotate(360deg);
+		transform: translateZ(0) scale(1) rotate(360deg);
 	}
 }

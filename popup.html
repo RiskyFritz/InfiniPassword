@@ -4,6 +4,7 @@
 <html>
 	<head>
 		<title>InfiniPassword</title>
+		<script src="breakString.js"></script>
 		<script src="popup.js"></script>
 		<link rel="stylesheet" href="popup.css" />
 		<link
@@ -16,6 +17,7 @@
 		<div>
 			<span class="pa">
 				<div class="passwordInput">
+					<div id="test"></div>
 					<input
 						autocomplete="off"
 						role="textfield"
@@ -34,8 +36,10 @@
 			<div id="passwordOptions">
 				<h3>Options</h3>
 				<h4>Password Length</h4>
-				<input id="length" type="range" value="12" min="1" max="100" />
-				<h3 id="lengthValue"></h3>
+				<div class="sliderContainer">
+					<h3 id="lengthValue"></h3>
+					<input id="length" type="range" value="12" min="1" max="100" />
+				</div>
 			</div>
 		</div>
 	</body>

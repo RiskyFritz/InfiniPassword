@@ -98,6 +98,9 @@ document.addEventListener(
 					setTimeout(() => {
 						faCopy.style.animation = '';
 					}, 500);
+					console.log(breakString(password));
+					// all messed up with that rando color shit nawimean
+					// document.getElementById('test').innerHTML = breakString(password);
 				},
 				function () {
 					/* clipboard write failed */
@@ -113,9 +116,11 @@ document.addEventListener(
 				createCharSet();
 				generatePassword(slider.value, charSet);
 				newPassword.value = password;
+				newPassword.style.animation = 'fade-color 500ms ease';
 				generatePasswordButton.style.animation = 'rotate360 500ms linear';
 				setTimeout(() => {
 					generatePasswordButton.style.animation = '';
+					newPassword.style.animation = '';
 				}, 500);
 			},
 			false
