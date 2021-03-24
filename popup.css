@@ -41,9 +41,21 @@ input:focus {
 		transform: scale(1) rotate(0deg);
 	}
 	50% {
-		transform: scale(1.25) rotate(10deg);
+		transform: scale(1.1) rotate(10deg);
 	}
 	100% {
 		transform: scale(1) rotate(0deg);
+	}
+}
+
+@keyframes rotate360 {
+	0% {
+		transform: scale(1) rotate(0deg);
+	}
+	50% {
+		transform: scale(1.25) rotate(180deg);
+	}
+	100% {
+		transform: scale(1) rotate(360deg);
 	}
 }

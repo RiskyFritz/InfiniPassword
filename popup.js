@@ -104,7 +104,6 @@ document.addEventListener(
 				}
 			);
 		}
-
 		copyPassword.addEventListener('click', function () {
 			updateClipboard(password);
 		});
@@ -114,6 +113,10 @@ document.addEventListener(
 				createCharSet();
 				generatePassword(slider.value, charSet);
 				newPassword.value = password;
+				generatePasswordButton.style.animation = 'rotate360 500ms linear';
+				setTimeout(() => {
+					generatePasswordButton.style.animation = '';
+				}, 500);
 			},
 			false
 		);
