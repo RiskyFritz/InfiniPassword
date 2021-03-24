@@ -4,7 +4,7 @@ body {
 	--primary-accent: #eff1f5;
 	--secondary-accent: #ffffff;
 	--tertiary-accent: #aaaaaa;
-	--tertiary-color: black;
+	--primary-text: black;
 	background-color: var(--primary-accent);
 	color: black;
 }
@@ -12,7 +12,7 @@ body.dark {
 	--primary-accent: #101319;
 	--secondary-accent: #1d232f;
 	--tertiary-accent: #bbbbbb;
-	--tertiary-color: #eee;
+	--primary-text: #ffffff;
 	color: #eee;
 }
 
@@ -24,6 +24,10 @@ button {
 	outline: none;
 }
 
+button:focus {
+	transform: scale(1.05);
+}
+
 i {
 	color: var(--tertiary-accent);
 }
@@ -33,11 +37,8 @@ input {
 	flex-grow: 2;
 	/* And hide the input's outline, so the form looks like the outline */
 	border: none;
-	color: var(--tertiary-color);
+	color: var(--primary-text);
 	background: var(--secondary-accent);
-}
-input.dark {
-	color: white;
 }
 
 input:focus {
