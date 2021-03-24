@@ -2,31 +2,41 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>InfiniPassword</title>
-        <script src="popup.js"></script>
-        <link rel="stylesheet" href="popup.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-        <body>
-            <h1>InfiniPassword</h1>
-                <div>
-                    <span class="pa">
-                <div class="passwordInput">
-                    <input autocomplete="off" role="textfield" class="radius-tl-sm radius-bl-sm password " id="password" spellcheck="false" type="text" placeholder="Please enter a password...">
-                    <button id="copyPassword">
-                        <span class="copyPop">Copied</span>
-                        <i class="fa fa-clone"></i>
-                    </button>
-                    <button id="generatePassword"><i class="fa fa-refresh"></i></button>
-                </div>
-            </span>
-                <div id="passwordOptions">
-                    <h3>Options</h3>
-                    <h4>Password Length</h4>
-                    <input id="length" type="range" value="12" min="1" max="100"/>
-                    <h3 id="lengthValue"></h3>
-                </div>
-            </div>
-        </body>
+	<head>
+		<title>InfiniPassword</title>
+		<script src="popup.js"></script>
+		<link rel="stylesheet" href="popup.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+	</head>
+	<body>
+		<h1>InfiniPassword</h1>
+		<div>
+			<span class="pa">
+				<div class="passwordInput">
+					<input
+						autocomplete="off"
+						role="textfield"
+						class="radius-tl-sm radius-bl-sm password"
+						id="password"
+						spellcheck="false"
+						type="text"
+						placeholder="Please enter a password..."
+					/>
+					<button id="copyPassword">
+						<i class="fa fa-clone"></i>
+					</button>
+					<button id="generatePassword"><i class="fa fa-refresh"></i></button>
+				</div>
+			</span>
+			<div id="passwordOptions">
+				<h3>Options</h3>
+				<h4>Password Length</h4>
+				<input id="length" type="range" value="12" min="1" max="100" />
+				<h3 id="lengthValue"></h3>
+			</div>
+		</div>
+	</body>
 </html>

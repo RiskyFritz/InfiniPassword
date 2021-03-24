@@ -1,61 +1,49 @@
 /*popup.css*/
 
 button {
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	outline: none;
 }
 
-  
-  input {
-    /* Tell the input to use all the available space */
-    flex-grow:2;
-    /* And hide the input's outline, so the form looks like the outline */
-    border:none;
-    background: #e3e5e7;
-  }
-  
-  input:focus {
-    /* removing the input focus blue box. Put this on the form if you like. */
-    outline: none;
-  }
+input {
+	/* Tell the input to use all the available space */
+	flex-grow: 2;
+	/* And hide the input's outline, so the form looks like the outline */
+	border: none;
+	background: #e3e5e7;
+}
 
+input:focus {
+	/* removing the input focus blue box. Put this on the form if you like. */
+	outline: none;
+}
 
 .passwordInput {
-    outline: none;
-    padding: 0.5rem;
-    display: flex;
-    background: #e3e5e7;
+	outline: none;
+	padding: 0.5rem;
+	display: flex;
+	background: #e3e5e7;
 }
 
 #password {
-    flex: 1;
+	flex: 1;
 }
 
 #copyPassword {
-    position: relative;
+	position: relative;
 }
 
-#copyPassword .copyPop {
-    visibility: hidden;
-    position: absolute;
-    color: rgb(122, 41, 41);
-    width: 120px;
-}
-
-#copyPassword.active .copyPop{
-    visibility: visible;
-}
-
-
-@keyframes animation {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+@keyframes scale {
+	0% {
+		transform: scale(1) rotate(0deg);
+	}
+	50% {
+		transform: scale(1.25) rotate(10deg);
+	}
+	100% {
+		transform: scale(1) rotate(0deg);
+	}
 }
