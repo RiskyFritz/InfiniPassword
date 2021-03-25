@@ -10,6 +10,7 @@ body {
 	margin-top: 0;
     margin-bottom: 0;
 }
+
 body.dark {
 	--primary-accent: #101319;
 	--secondary-accent: #1d232f;
