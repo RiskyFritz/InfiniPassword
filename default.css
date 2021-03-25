@@ -1,0 +1,78 @@
+body {
+	--primary-accent: #eff1f5;
+	--secondary-accent: #ffffff;
+	--tertiary-accent: #aaaaaa;
+	--primary-text: black;
+	background-color: var(--primary-accent);
+	color: black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+body.dark {
+	--primary-accent: #101319;
+	--secondary-accent: #1d232f;
+	--tertiary-accent: #bbbbbb;
+	--primary-text: #ffffff;
+	color: #eee;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-text);
+    outline: none;
+}
+
+button {
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+    padding: 0.5rem;
+}
+
+button:focus {
+	transform: scale(1.05);
+}
+
+i {
+	color: var(--tertiary-accent);
+    position: relative;
+    margin-right: 0.25rem;
+}
+
+input {
+	/* Tell the input to use all the available space */
+	flex-grow: 2;
+	/* And hide the input's outline, so the form looks like the outline */
+	border: none;
+	color: var(--primary-text);
+}
+
+input:focus {
+	/* removing the input focus blue box. Put this on the form if you like. */
+	outline: none;
+	transform: scale(1.05);
+}
+
+.searchInput {
+	outline: none;
+	padding: 0.5rem;
+	display: flex;
+}
+
+.searchContainer {
+    outline: none;
+    padding: 0.5rem;
+    display: flex;
+    background: var(--secondary-accent);
+    align-items: center;
+    font-size: 16px;
+}
+
+#searchInput {
+	flex: 1;
+}
