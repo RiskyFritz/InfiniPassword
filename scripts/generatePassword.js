@@ -6,6 +6,8 @@ const letNum = [...new Set([...letters, ...numbers])];
 const letSym = [...new Set([...letters, ...symbols])];
 const numSym = [...new Set([...numbers, ...symbols])];
 const numSymLet = [...new Set([...letters, ...numbers, ...symbols])];
+let darkModeChild;
+let darkModeLS;
 
 
 function generatePassword(length, characterSet) {
@@ -100,6 +102,11 @@ document.addEventListener(
 			false
 		);
 		// --- listen for dark mode toggle ---
+		darkModeLS = localStorage.getItem('darkModeStorage');
+		console.log(darkModeLS);
+		if (darkModeLS === 'dark') {
+			document.body.classList.toggle('dark');
+		}
 		darkModeToggle.addEventListener('click', () => {
 			document.body.classList.toggle('dark');
 		});
