@@ -55,7 +55,6 @@ input {
 input:focus {
 	/* removing the input focus blue box. Put this on the form if you like. */
 	outline: none;
-	transform: scale(1.05);
 }
 
 .searchInput {
@@ -72,6 +71,7 @@ input:focus {
     align-items: center;
     font-size: 16px;
 }
+
 
 #searchInput {
 	flex: 1;
