@@ -38,6 +38,7 @@ button {
 	cursor: pointer;
 	padding: 0.5rem;
 	outline: none;
+	color: var(--primary-text);
 }
 
 button:focus {
@@ -88,14 +89,16 @@ input:focus {
 	display: flex;
 	flex-direction: column;
     color: var(--primary-text);
+	font-size: 14px;
 }
 
 .navContainer > {
 	width: 100%;
 }
 
-.navContainer button {
+.navContainer a {
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
     background: var(--secondary-accent);
     padding: 1rem;
@@ -103,7 +106,7 @@ input:focus {
     color: var(--primary-text);
 }
 
-.navContainer button:hover {
+.navContainer a:hover {
     background: var(--primary-accent);
 }
 
