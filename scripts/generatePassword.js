@@ -38,6 +38,10 @@ document.addEventListener(
 			sliderValue.innerHTML = this.value;
 		};
 
+		// --- listen for change to password input for scoring ---
+		newPassword.addEventListener("keydown", function () {
+			strengthScore(newPassword.value);
+		})
 		// --- add password to user's clipboard ---
 		function updateClipboard(clipboardText) {
 			navigator.clipboard.writeText(clipboardText).then(
@@ -92,6 +96,7 @@ document.addEventListener(
 				createCharSet();
 				generatePassword(slider.value, charSet);
 				newPassword.value = password;
+				strengthScore(newPassword.value);
 				newPassword.style.animation = 'fade-color 500ms ease';
 				generatePasswordButton.style.animation = 'rotate360 500ms linear';
 				setTimeout(() => {
