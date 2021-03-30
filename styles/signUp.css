@@ -2,7 +2,7 @@ body {
     margin-left: auto;
 	margin-right: auto;
 	margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     width: 20rem;
 }
 
@@ -51,11 +51,11 @@ h4 {
     color: black;
 }
 
-#login {
+#signUp {
     font-weight: bold;
 }
 
-.optionContainer #signUp:hover {
+.optionContainer #login:hover {
     background: #aaaaaa;
     cursor: pointer;
 }
@@ -73,6 +73,7 @@ input:focus {
 	/* removing the input focus blue box. Put this on the form if you like. */
 	outline: none;
 }
+
 
 .email {
 	outline: none;
@@ -124,11 +125,4 @@ button {
 
 button:hover {
     background-color: #814bec
-}
-
-.forgotPassword {
-    display: flex;
-    padding: 0.25rem;
-    margin: 1rem;
-    justify-content: center;
 }
