@@ -1,0 +1,105 @@
+body {
+    margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+    margin-bottom: 0;
+    width: 20rem;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+img {
+    width: 8rem;
+}
+
+a {
+    font-size: 1rem;
+}
+
+text {
+    display: flex;
+    justify-content: center;
+}
+
+h4 {
+    margin-left: 0.5rem;
+    margin-bottom: 0;
+}
+
+.optionContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 2rem 2fr;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0.25rem;
+}
+
+.optionContainer a {
+	width: 100%;
+    padding: 0.5rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.optionContainer #signUp:hover {
+    background: #aaaaaa;
+    cursor: pointer;
+}
+
+input {
+	/* Tell the input to use all the available space */
+	flex-grow: 2;
+	/* And hide the input's outline, so the form looks like the outline */
+    border: none;
+	border-bottom: solid 1px #aaaaaa;
+	color: var(--primary-text);
+}
+
+input:focus {
+	/* removing the input focus blue box. Put this on the form if you like. */
+	outline: none;
+}
+
+.email {
+	outline: none;
+    flex: 1;
+	padding: 0.5rem;
+	display: flex;
+    background: var(--primary-accent);
+    margin-right: 1rem;
+}
+
+.inputContainer {
+    padding-top: 0;
+    margin-top: 0;
+    width: 100%;
+	outline: none;
+	padding: 0.5rem;
+	display: flex;
+	background: var(--primary-accent);
+	align-items: center;
+	font-size: 16px;
+}
+
+.password {
+    width: 100%;
+	outline: none;
+    flex: 1;
+	padding: 0.5rem;
+	display: flex;
+    background: var(--primary-accent);
+    margin-right: 1rem;
+}
+
+.forgotPassword {
+    display: flex;
+    padding: 0.25rem;
+    margin: 1rem;
+    justify-content: center;
+}
