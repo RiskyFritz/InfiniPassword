@@ -21,7 +21,7 @@ function strengthScore(string) {
     if (uniquePassword.length < 6) {
         lengthScore = 0;
     } else {
-        lengthScore = (length / 20);
+        lengthScore = (length / 25);
     }
 
     for (var i = 0; i < symbols.length; i++) {
@@ -32,6 +32,14 @@ function strengthScore(string) {
             numberScore += .10;
         }
     } 
+
+    if (symbolScore > .30) {
+        symbolScore = .30;
+    }
+
+    if (numberScore > .20) {
+        numberScore = .20;
+    }
     
     passwordScore = lengthScore + symbolScore + numberScore;
     
