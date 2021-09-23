@@ -7,17 +7,23 @@
     "content_scripts": [
         {
             "matches": ["http://*/*", "https://*/*"],
-            "js": ["contentScript.js"]
+            "js": ["contentScript.js"],
+            "css": ["contentScript.css"],
+            "html": ["contentScript.html"]
         }
     ],
 
     "browser_action": {
-        "default_icon": "icon.png",
-        "default_popup": "pages/index.html"
+        "default_icon": "images/icon.png",
+        "default_popup": "pages/signup.html"
     },
     
     "permissions": [
         "activeTab",
         "clipboard-write"
+    ],
+
+    "web_accessible_resources": [
+        "images/*"
     ]
 }
