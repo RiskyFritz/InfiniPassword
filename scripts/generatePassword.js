@@ -9,6 +9,21 @@ const numSymLet = [...new Set([...letters, ...numbers, ...symbols])];
 let darkModeChild;
 let darkModeLS;
 
+// > copy password to clipboard
+// ref
+const copyBtn = document.querySelector('#copyPassword');
+// function
+function copyPassword() {
+	const copyText = document.getElementById('password');
+	copyText.select();
+	// this is deprecated, but it works
+	document.execCommand('copy');
+}
+// add event listener
+copyBtn.addEventListener('click', copyPassword);
+
+
+
 
 function generatePassword(length, characterSet) {
 	password = '';
@@ -76,7 +91,7 @@ document.addEventListener(
 			let numbersCheck = document.getElementById('checkNumbers').checked;
 			let symbolsCheck = document.getElementById('checkSymbols').checked;
 			charSet = [];
-			
+
 			if (lettersCheck === true && numbersCheck === true && symbolsCheck === true) {
 				charSet = numSymLet;
 			} else if (lettersCheck === true && numbersCheck === true && symbolsCheck === false) {
@@ -91,11 +106,11 @@ document.addEventListener(
 				charSet = numbers;
 			} else if (lettersCheck === false && numbersCheck === false && symbolsCheck === true) {
 				charSet = symbols;
-			} 
-			
+			}
+
 			return charSet;
 		}
-		
+
 		// --- listen for generate password click ---
 		generatePasswordButton.addEventListener(
 			'click',

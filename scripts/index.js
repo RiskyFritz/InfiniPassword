@@ -1,18 +1,18 @@
 let darkModeGlobal;
 
 document.addEventListener(
-	'DOMContentLoaded',
+	"DOMContentLoaded",
 	function () {
-		const darkModeToggle = document.getElementById('darkModeToggle');
-        const darkModeIcon = document.getElementById('darkModeIcon');
+		const darkModeToggle = document.getElementById("darkModeToggle");
+		const darkModeIcon = document.getElementById("darkModeIcon");
 
-		darkModeGlobal = localStorage.getItem('darkModeStorage');
+		darkModeGlobal = localStorage.getItem("darkModeStorage");
 		document.body.classList.value = darkModeGlobal;
 
 		// --- listen for dark mode toggle ---
-		darkModeToggle.addEventListener('click', () => {
-			document.body.classList.toggle('dark');
-			
+		darkModeToggle.addEventListener("click", () => {
+			document.body.classList.toggle("dark");
+
 			if (document.body.classList.value === "dark") {
 				darkModeGlobal = "dark";
 				localStorage.setItem("darkModeStorage", darkModeGlobal);
@@ -21,11 +21,11 @@ document.addEventListener(
 				localStorage.setItem("darkModeStorage", darkModeGlobal);
 			}
 
-            darkModeIcon.style.animation = 'rotate360 500ms linear';
-				setTimeout(() => {
-					darkModeIcon.style.animation = '';
-				}, 500);
+			darkModeIcon.style.animation = "rotate360 500ms linear";
+			setTimeout(() => {
+				darkModeIcon.style.animation = "";
+			}, 500);
 		});
 	},
-	false
+	false,
 );
