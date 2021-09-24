@@ -23,8 +23,6 @@ function copyPassword() {
 copyBtn.addEventListener('click', copyPassword);
 
 
-
-
 function generatePassword(length, characterSet) {
 	password = '';
 

@@ -1,29 +1,25 @@
-{   "manifest_version": 2,
+{
+	"manifest_version": 3,
 
-    "name": "InfiniPassword",
-    "description": "This extension is a free password manager.",
-    "version": "1.0",
+	"name": "InfiniPassword",
+	"description": "This extension is a free password manager.",
+	"version": "1.0",
 
-    "content_scripts": [
-        {
-            "matches": ["http://*/*", "https://*/*"],
-            "js": ["contentScript.js"],
-            "css": ["contentScript.css"],
-            "html": ["contentScript.html"]
-        }
-    ],
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],
+			"js": ["contentScript.js"],
+			"css": ["contentScript.css"],
+			"html": ["contentScript.html"]
+		}
+	],
 
-    "browser_action": {
-        "default_icon": "images/icon.png",
-        "default_popup": "pages/signup.html"
-    },
-    
-    "permissions": [
-        "activeTab",
-        "clipboard-write"
-    ],
+	"browser_action": {
+		"default_icon": "images/icon.png",
+		"default_popup": "pages/signup.html"
+	},
 
-    "web_accessible_resources": [
-        "images/*"
-    ]
+	"permissions": ["activeTab", "clipboard-write"],
+
+	"web_accessible_resources": ["images/*", "images/icon.png"]
 }
