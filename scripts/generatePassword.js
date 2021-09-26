@@ -9,20 +9,6 @@ const numSymLet = [...new Set([...letters, ...numbers, ...symbols])];
 let darkModeChild;
 let darkModeLS;
 
-// > copy password to clipboard
-// ref
-const copyBtn = document.querySelector('#copyPassword');
-// function
-function copyPassword() {
-	const copyText = document.getElementById('password');
-	copyText.select();
-	// this is deprecated, but it works
-	document.execCommand('copy');
-}
-// add event listener
-copyBtn.addEventListener('click', copyPassword);
-
-
 function generatePassword(length, characterSet) {
 	password = '';
 
@@ -80,7 +66,7 @@ document.addEventListener(
 		}
 		// --- listen for copy to clipboard ---
 		copyPassword.addEventListener('click', function () {
-			updateClipboard(password);
+			updateClipboard(newPassword.value);
 		});
 
 		// --- function to check password options and create character Set ---
@@ -130,11 +116,13 @@ document.addEventListener(
 		darkModeLS = localStorage.getItem('darkModeStorage');
 		console.log(darkModeLS);
 		if (darkModeLS === 'dark') {
-			document.body.classList.toggle('dark');
+			document.body.classList = 'dark';
+		} else {
+			document.body.classList = "";
 		}
-		darkModeToggle.addEventListener('click', () => {
+		/*darkModeToggle.addEventListener('click', () => {
 			document.body.classList.toggle('dark');
-		});
+		});*/
 	},
 	false
 );
