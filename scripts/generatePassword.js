@@ -38,7 +38,7 @@ document.addEventListener(
 		};
 
 		// --- listen for change to password input for scoring ---
-		newPassword.addEventListener("keydown", function () {
+		newPassword.addEventListener("input", function () {
 			strengthScore(newPassword.value);
 			if (length(newPassword) = 0) {
 				meter1.style.background = "#dddfe2";
@@ -48,6 +48,7 @@ document.addEventListener(
         		meter5.style.background = "#dddfe2";
 			}
 		})
+
 		// --- add password to user's clipboard ---
 		function updateClipboard(clipboardText) {
 			navigator.clipboard.writeText(clipboardText).then(
