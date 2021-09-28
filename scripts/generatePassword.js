@@ -40,7 +40,7 @@ document.addEventListener(
 		// --- listen for change to password input for scoring ---
 		newPassword.addEventListener("input", function () {
 			strengthScore(newPassword.value);
-			if (length(newPassword) = 0) {
+			if (newPassword.value.length === 0) {
 				meter1.style.background = "#dddfe2";
         		meter2.style.background = "#dddfe2";
         		meter3.style.background = "#dddfe2";
