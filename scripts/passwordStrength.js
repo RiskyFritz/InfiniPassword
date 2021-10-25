@@ -74,7 +74,7 @@ function strengthScore(string) {
 		meter3.style.background = "#dddfe2";
 		meter4.style.background = "#dddfe2";
 		meter5.style.background = "#dddfe2";
-	} else if (passwordScore >= 0.0 && passwordScore < 0.2) {
+	} else if (passwordScore > 0.0 && passwordScore < 0.2) {
 		meter1.style.background = "red";
 		meter2.style.background = "#dddfe2";
 		meter3.style.background = "#dddfe2";
@@ -82,6 +82,6 @@ function strengthScore(string) {
 		meter5.style.background = "#dddfe2";
 	}
 
-	console.log(passwordScore);
-	console.log(lengthScore, symbolScore, numberScore);
+	return passwordScore;
+
 }
