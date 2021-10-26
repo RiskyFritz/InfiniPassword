@@ -28,25 +28,27 @@ document.addEventListener(
             let html = '';
             credentials.forEach(credential => {
                 let htmlSegment = 
-                `<div class="password">
-                    <div class="metaData">
-                        <div class="site">
-                            <span>${credential.name}</span>
-                            <span>${credential.url}</span>
+                `<a id="anchor" href="viewPassword.html">
+                    <div class="password">
+                        <div class="metaData">
+                            <div class="site">
+                                <span>${credential.name}</span>
+                                <span>${credential.url}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span>${credential.username}</span>
+                            </div>
                         </div>
-                        <div class="userInfo">
-                            <span>${credential.username}</span>
+                        <div class="options">
+                            <button id="copyPassword">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </button>
+                            <button id="copyPassword">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="options">
-                        <button id="copyPassword">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </button>
-                        <button id="copyPassword">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>`;
+                </a>`;
         
                 html += htmlSegment;
             });
