@@ -1,3 +1,4 @@
+//I want strength meter blank after submit
 function clearStrength() {
         meter1.style.background = "#dddfe2";
         meter2.style.background = "#dddfe2";
@@ -25,30 +26,32 @@ document.addEventListener(
         let month = date.getMonth()+1;
         let year = date.getFullYear();
 
+        //Get date in format I want
         let fullDate = `${month}/${day}/${year}`;
-        console.log(fullDate);
 
+        //Clear the form of all fields
         function clearForm() {
-            url.value = "";
-            name.value = "";
-            folder.value = "";
-            username.value = "";
-            passwordInput.value = "";
-            notes.value = "";
+            setTimeout(function() {
+                url.value = "";
+                name.value = "";
+                folder.value = "";
+                username.value = "";
+                passwordInput.value = "";
+                notes.value = "";
+            }, 2000);
         }
 
-        function myFunction() {
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
-          }
-
+        //Success popup  
         function showSuccess() {
             successPopup.classList.toggle("show");
             setTimeout(function() {
                 successPopup.classList.toggle("show");
-            }, 1000);
+            }, 2000);
+            console.log('hi')
+            alert('form submitted')
         }
         
+        //Error popup that says something is wrong with request
         function showError() {
             errorPopup.classList.toggle("show");
             setTimeout(function() {
@@ -56,6 +59,7 @@ document.addEventListener(
             }, 2000);
         }
         
+        //When inputting password we want strength meter to be responsive
         passwordInput.addEventListener("input", function () {
 			strengthScore(passwordInput.value);
 			if (passwordInput.value.length === 0) {
@@ -67,7 +71,8 @@ document.addEventListener(
 			}
 		})
 
-        addPasswordButton.addEventListener('click', function() {
+        //On Submit Create Post Request and Check for password strength
+        addPasswordButton.addEventListener('submit', function() {
             if (strengthScore(passwordInput.value) > 0) {
                 fetch(endpoint, {
                 method: 'post',
@@ -75,7 +80,9 @@ document.addEventListener(
                     'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({url: url.value, name: name.value, folder: folder.value, username: username.value, password: password.value, notes: notes.value, strength: strengthScore(passwordInput.value), date: fullDate })
+                body: JSON.stringify({url: url.value, name: name.value, 
+                    folder: folder.value, username: username.value, password: password.value, 
+                    notes: notes.value, strength: strengthScore(passwordInput.value), date: fullDate })
                 }).then(res => {
                     res.json()
                     showSuccess();
@@ -85,6 +92,10 @@ document.addEventListener(
                 })
                 .then(res => {
                     console.log(res);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                    showError();
                 });
             } else {
                 showError();
