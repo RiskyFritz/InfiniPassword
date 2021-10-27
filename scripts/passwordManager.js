@@ -40,27 +40,23 @@ async function renderPasswords() {
             element.className = 'password';
             element2.className = 'metaData';
             element3.className = 'site';
-            element4.textContent = `${credential.name}`;
-            element5.textContent = `${credential.url}`;
+            element4.textContent = `${credential.name}   `;
+            element5.textContent = `  ${credential.url}`;
             element6.className = 'userInfo';
             element7.textContent = `${credential.username}`;
             element8.className = 'options';
             element9.id = 'updateButton';
             element10.className = 'fa fa-pencil-square-o';
-            element10.ariaHidden = 'true';
             element11.id = 'deletePassword';
             element11.className = `${credential.id}`;
             element12.className = 'fa fa-trash-o';
-            element12.ariaHidden = 'true';
             element13.id = 'anchor';
             element13.className = `${credential.id}`;
 
             element11.appendChild(element12);
-            element13.appendChild(element11);
             element9.appendChild(element10);
-            element14.appendChild(element9);
-            element8.appendChild(element14);
-            element8.appendChild(element13);
+            element8.appendChild(element9);
+            element8.appendChild(element11);
             element6.appendChild(element7);
             element3.appendChild(element4);
             element3.appendChild(element5);
@@ -68,15 +64,15 @@ async function renderPasswords() {
             element2.appendChild(element6);
             element.appendChild(element2);  
             element.appendChild(element8);
-            element15.appendChild(element);
-            container.appendChild(element15);
+            element13.appendChild(element);
+            container.appendChild(element13);
         }
     });
 }
 
 //make dynamically created deletePassword element async function that deletes password from database
 document.addEventListener('click', async function(e) {
-    if (e.target && e.target.id === 'anchor') {
+    if (e.target && (e.target.id === 'deletePassword')) {
         let id = e.target.className;
         console.log(id);
         let endpoint = `http://localhost:3000/password/${id}`;
