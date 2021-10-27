@@ -1,130 +1,120 @@
+const downloadButton = document.getElementById("downloadButton");
+const uploadButton = document.getElementById("uploadButton");
+const addButton = document.getElementById("addButton");
+const insightButton = document.getElementById("insightsButton");
+const deletePassword = document.getElementById("deletePassword");
+
+async function getPasswords() {
+    let endpoint = "http://localhost:3000/password";
+    try {
+        let res = await fetch(endpoint);
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function renderPasswords() {
+    let credentials = {};
+    credentials = await getPasswords();
+    credentials.forEach(credential => {
+        if (document.getElementById(credential.id) === null) {
+            console.log(credential.id);
+            let element = document.createElement('div');
+            let element2 = document.createElement('div');
+            let element3 = document.createElement('div');
+            let element4 = document.createElement('span');
+            let element5 = document.createElement('span');
+            let element6 = document.createElement('div');
+            let element7 = document.createElement('span');
+            let element8 = document.createElement('div');
+            let element9 = document.createElement('button');
+            let element10 = document.createElement('i');
+            let element11 = document.createElement('button');
+            let element12 = document.createElement('i');
+            let element13 = document.createElement('a');
+            let element14 = document.createElement('a');
+            let element15 = document.createElement('a');
+            let container = document.querySelector('.container');
+            
+            element.className = 'password';
+            element2.className = 'metaData';
+            element3.className = 'site';
+            element4.textContent = `${credential.name}`;
+            element5.textContent = `${credential.url}`;
+            element6.className = 'userInfo';
+            element7.textContent = `${credential.username}`;
+            element8.className = 'options';
+            element9.id = 'updateButton';
+            element10.className = 'fa fa-pencil-square-o';
+            element10.ariaHidden = 'true';
+            element11.id = 'deletePassword';
+            element11.className = `${credential.id}`;
+            element12.className = 'fa fa-trash-o';
+            element12.ariaHidden = 'true';
+            element13.id = 'anchor';
+            element13.className = `${credential.id}`;
+
+            element11.appendChild(element12);
+            element13.appendChild(element11);
+            element9.appendChild(element10);
+            element14.appendChild(element9);
+            element8.appendChild(element14);
+            element8.appendChild(element13);
+            element6.appendChild(element7);
+            element3.appendChild(element4);
+            element3.appendChild(element5);
+            element2.appendChild(element3);
+            element2.appendChild(element6);
+            element.appendChild(element2);  
+            element.appendChild(element8);
+            element15.appendChild(element);
+            container.appendChild(element15);
+        }
+    });
+}
+
+//make dynamically created deletePassword element async function that deletes password from database
+document.addEventListener('click', async function(e) {
+    if (e.target && e.target.id === 'anchor') {
+        let id = e.target.className;
+        console.log(id);
+        let endpoint = `http://localhost:3000/password/${id}`;
+        try {
+            let res = await fetch(endpoint, {
+                method: 'DELETE'
+            });
+            if (res.ok) {
+                console.log('deleted');
+                window.location.reload();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+});
+
+renderPasswords();
+
 document.addEventListener(
 	'DOMContentLoaded',
 	function () {
-        const downloadButton = document.getElementById("downloadButton");
-        const uploadButton = document.getElementById("uploadButton");
-        const addButton = document.getElementById("addButton");
-        const insightButton = document.getElementById("insightsButton");
-        const deletePassword = document.getElementById("deletePassword");
-
-        async function getPasswords() {
-            let endpoint = "http://localhost:3000/password";
-            try {
-                let res = await fetch(endpoint);
-                return await res.json();
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
-        async function renderPasswords() {
-            let credentials = await getPasswords();
-            let html = '';
-            credentials.forEach(credential => {
-                let htmlSegment = 
-                `<a id="anchor" href="viewPassword.html">
-                    <div class="password">
-                        <div class="metaData">
-                            <div class="site">
-                                <span>${credential.name}</span>
-                                <span>${credential.url}</span>
-                            </div>
-                            <div class="userInfo">
-                                <span>${credential.username}</span>
-                            </div>
-                        </div>
-                        <div class="options">
-                            <button id="copyPassword">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </button>
-                            <button id="deletePassword">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                </a>`;
         
-                html += htmlSegment;
-            });
-        
-            let container = document.querySelector('.container');
-            container.innerHTML = html;
-        }
-        
-        renderPasswords();
-
         //make download button async function that downloads csv file -- download button is not working
-        downloadButton.addEventListener('click', async function() {
-            let credentials = await getPasswords();
-            let csvContent = "data:text/csv;charset=utf-8,";
-            credentials.forEach(credential => {
-                csvContent += `${credential.name},${credential.url},${credential.username},${credential.password}\n`;
-            });
-            let encodedUri = encodeURI(csvContent);
-            let link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
-
-        //open window to filesystem and allow user to choose a file  
-        uploadButton.addEventListener('click', function() {
-            let fileInput = document.getElementById("fileInput");
-            fileInput.click();
-        });
-        
-        //make upload button async function that lets user upload csv file from their computer and adds it to the database
-        uploadButton.addEventListener('click', async function() {
-            let file = document.getElementById("file").files[0];
-            let reader = new FileReader();
-            reader.readAsText(file);
-            reader.onload = async function(event) {
-                let csv = event.target.result;
-                let credentials = await getPasswords();
-                let lines = csv.split("\n");
-                lines.forEach(line => {
-                    let credential = line.split(",");
-                    let newCredential = {
-                        name: credential[0],
-                        url: credential[1],
-                        username: credential[2],
-
-                        password: credential[3]
-                    };
-                    credentials.push(newCredential);
-                });
-                let endpoint = "http://localhost:3000/password";
-                try {
-                    let res = await fetch(endpoint, {
-                        method: "POST",
-                        body: JSON.stringify(credentials),
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    });
-                    renderPasswords();
-                } catch (error) {
-
-                }
-            }
-        });
-
-        //make deletepassword button delete password from database using id from credential
-        // deletePassword.addEventListener('click', async function() {
+        // downloadButton.addEventListener('click', async function() {
         //     let credentials = await getPasswords();
-        //     let id = credentials[0].id;
-        //     let endpoint = `http://localhost:3000/password/${id}`;
-        //     try {
-        //         let res = await fetch(endpoint, {
-        //             method: 'DELETE'
-        //         });
-        //         console.log(res);
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
+        //     let csvContent = "data:text/csv;charset=utf-8,";
+        //     credentials.forEach(credential => {
+        //         csvContent += `${credential.name},${credential.url},${credential.username},${credential.password}\n`;
+        //     });
+        //     let encodedUri = encodeURI(csvContent);
+        //     let link = document.createElement("a");
+        //     link.setAttribute("href", encodedUri);
+        //     link.setAttribute("download", "passwords.csv");
+        //     document.body.appendChild(link);
+        //     link.click();
+        //     document.body.removeChild(link);
         // });
-  
 		// --- listen for dark mode toggle ---
 		darkModeLS = localStorage.getItem('darkModeStorage');
 		console.log(darkModeLS);

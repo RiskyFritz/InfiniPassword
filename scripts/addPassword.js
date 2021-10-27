@@ -47,8 +47,6 @@ document.addEventListener(
             setTimeout(function() {
                 successPopup.classList.toggle("show");
             }, 2000);
-            console.log('hi')
-            alert('form submitted')
         }
         
         //Error popup that says something is wrong with request
@@ -72,7 +70,7 @@ document.addEventListener(
 		})
 
         //On Submit Create Post Request and Check for password strength
-        addPasswordButton.addEventListener('submit', function() {
+        addPasswordButton.addEventListener('click', function() {
             if (strengthScore(passwordInput.value) > 0) {
                 fetch(endpoint, {
                 method: 'post',
@@ -80,23 +78,20 @@ document.addEventListener(
                     'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({url: url.value, name: name.value, 
-                    folder: folder.value, username: username.value, password: password.value, 
-                    notes: notes.value, strength: strengthScore(passwordInput.value), date: fullDate })
+                body: JSON.stringify({url: url.value, name: name.value, folder: folder.value, username: username.value, password: passwordInput.value, notes: notes.value, strength: strengthScore(passwordInput.value), date: fullDate })
                 }).then(res => {
                     res.json()
                     showSuccess();
                     clearForm();
                     clearStrength();
-                    myFunction();
                 })
                 .then(res => {
                     console.log(res);
                 })
-                .catch(function(error) {
-                    console.log(error);
+                .catch(err => {
+                    console.log(err);
                     showError();
-                });
+                })
             } else {
                 showError();
             }

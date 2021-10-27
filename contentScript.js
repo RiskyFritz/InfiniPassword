@@ -23,3 +23,5 @@ password.style.backgroundAttachment = "scroll";
 password.style.backgroundSize = "16px 18px";
 password.style.backgroundPosition = "98% 50%";
 password.style.cursor = "pointer";
+
+//create script that will populate the email and password fields from the server
