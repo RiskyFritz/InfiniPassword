@@ -1,7 +1,3 @@
-const downloadButton = document.getElementById("downloadButton");
-const uploadButton = document.getElementById("uploadButton");
-const addButton = document.getElementById("addButton");
-const insightButton = document.getElementById("insightsButton");
 const deletePassword = document.getElementById("deletePassword");
 
 async function getPasswords() {
@@ -95,30 +91,37 @@ renderPasswords();
 document.addEventListener(
 	'DOMContentLoaded',
 	function () {
-        
-        //make download button async function that downloads csv file -- download button is not working
-        // downloadButton.addEventListener('click', async function() {
-        //     let credentials = await getPasswords();
-        //     let csvContent = "data:text/csv;charset=utf-8,";
-        //     credentials.forEach(credential => {
-        //         csvContent += `${credential.name},${credential.url},${credential.username},${credential.password}\n`;
-        //     });
-        //     let encodedUri = encodeURI(csvContent);
-        //     let link = document.createElement("a");
-        //     link.setAttribute("href", encodedUri);
-        //     link.setAttribute("download", "passwords.csv");
-        //     document.body.appendChild(link);
-        //     link.click();
-        //     document.body.removeChild(link);
-        // });
-		// --- listen for dark mode toggle ---
-		darkModeLS = localStorage.getItem('darkModeStorage');
-		console.log(darkModeLS);
-		if (darkModeLS === 'dark') {
-			document.body.classList = 'dark';
-		} else {
-			document.body.classList = "";
-		}
+
+        const downloadButton = document.getElementById("downloadButton");
+        const uploadButton = document.getElementById("uploadButton");
+        const addButton = document.getElementById("addButton");
+        const insightButton = document.getElementById("insightsButton");
+
+        //add event listener to download button and download the password as a csv file to the user's computer
+        downloadButton.addEventListener('click', async function() {
+            console.log('download button clicked');
+            let credentials = await getPasswords();
+            let csvContent = "data:text/csv;charset=utf-8,";
+            credentials.forEach(credential => {
+                csvContent += `${credential.name},${credential.url},${credential.username},${credential.password}\n`;
+            });
+            let encodedUri = encodeURI(csvContent);
+            let link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "passwords.csv");
+            document.body.appendChild(link); // Required for FF
+            link.click();
+        });
+
+        // --- listen for dark mode toggle ---
+        darkModeLS = localStorage.getItem('darkModeStorage');
+        console.log(darkModeLS);
+        if (darkModeLS === 'dark') {
+            document.body.classList = 'dark';
+        } else {
+            document.body.classList = "";
+        }
+
 	},
 	false
 );  
