@@ -88,6 +88,62 @@ document.addEventListener('click', async function(e) {
 
 renderPasswords();
 
+//function that takes newCredential object and sends it to database
+async function addCredential(newCredential) {
+    let endpoint = "http://localhost:3000/password";
+    try {
+        let res = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newCredential)
+        });
+        if (res.ok) {
+            console.log('added');
+            window.location.reload();
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//when popup button is clicked, upload the file and delete the popup element
+document.addEventListener('click', async function(e) {
+    if (e.target && (e.target.id === 'uploadFileButton')) {
+        let file = document.getElementById('fileInput').files[0];
+        let reader = new FileReader();
+        let credentials = await getPasswords();
+
+        reader.readAsText(file);
+         reader.onload = async function(e) {
+             let csv = e.target.result;
+             let lines = csv.split('\n');
+             lines.forEach(line => {
+                 let credential = line.split(',');
+                  let name = credential[0];
+                  let url = credential[1];
+                  let folder = credential[2];
+                  let username = credential[3];
+                  let password = credential[4];
+                  let notes = credential[5];
+                  let newCredential = {
+                     name: name,
+                     url: url,
+                     folder: folder,
+                     username: username,
+                     password: password,
+                     notes: notes
+                 };
+                addCredential(newCredential);
+             });
+        };
+        reader.onerror = function() {
+            console.log('error reading file');
+        };
+    }
+});
+
 document.addEventListener(
 	'DOMContentLoaded',
 	function () {
@@ -111,6 +167,33 @@ document.addEventListener(
             link.setAttribute("download", "passwords.csv");
             document.body.appendChild(link); // Required for FF
             link.click();
+        });
+
+        //add event listener to upload button, which opens popup window to upload csv file
+        uploadButton.addEventListener('click', function() {
+            console.log('upload button clicked');
+            let container = document.querySelector('.fileSelect');
+            //create popup element with input and button to choose file and append to body
+            if (document.querySelector('.popup') === null) {
+                let popup = document.createElement('div');
+                popup.className = 'popup';
+                let popupInput = document.createElement('input');
+                popupInput.type = 'file';
+                popupInput.id = 'fileInput';
+                let popupButton = document.createElement('button');
+                popupButton.id = 'uploadFileButton';
+                popupButton.className = 'uploadFileButton';
+                popupButton.textContent = 'Upload';
+                let popUpDiv = document.createElement('div');
+                popUpDiv.className = 'popUpDiv';
+                popup.appendChild(popupInput);
+                popup.appendChild(popupButton);
+                popUpDiv.appendChild(popup);
+                container.appendChild(popUpDiv);
+            } else {
+                //remove popup element if it already exists
+                container.removeChild(document.querySelector('.popUpDiv'));
+            }
         });
 
         // --- listen for dark mode toggle ---
