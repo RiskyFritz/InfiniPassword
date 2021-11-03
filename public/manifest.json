@@ -1,0 +1,14 @@
+{
+	"manifest_version": 2,
+
+	"name": "InfiniPassword",
+	"description": "This extension is a free password manager.",
+	"version": "1.0",
+
+	"browser_action": {
+		"default_icon": "images/icon.png",
+		"default_popup": "index.html"
+	},
+
+	"permissions": ["activeTab", "clipboard-write"]
+}
