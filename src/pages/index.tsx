@@ -1,14 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const index = () => (
 	<div>
-		<h1>Hello World</h1>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel maxime
-			dolore corrupti alias consequuntur recusandae tempore, asperiores
-			placeat impedit! Qui, delectus harum non repellat laborum beatae.
-			Pariatur molestias eos sit.
-		</p>
+		<Link to="/generate">Generate Password</Link>
 	</div>
 );
 export default index;
