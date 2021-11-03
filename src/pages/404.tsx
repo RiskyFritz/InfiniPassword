@@ -1,5 +1,5 @@
 import React from 'react';
 
-const fourOhFour = () => <div>404</div>;
+const fourOhFour = () => <div>{window.location.href}</div>;
 
 export default fourOhFour;

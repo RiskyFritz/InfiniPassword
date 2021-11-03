@@ -22,18 +22,10 @@ const __layout: React.FC = ({ children }) => {
 		<div>
 			<nav>
 				<Link to="/">Home</Link>
-				<Link to="/blog">Blog</Link>
-				<Link to="/posts">Posts</Link>
 			</nav>
 			{children}
 			<footer style={{ display: 'flex' }}>
-				<button type="button" onClick={() => setCount(count - 1)}>
-					-
-				</button>
-				<p>{count}</p>
-				<button type="button" onClick={() => setCount(count + 1)}>
-					+
-				</button>
+				copyright © {new Date().getFullYear()}
 			</footer>
 		</div>
 	);
