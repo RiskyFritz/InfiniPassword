@@ -1,12 +1,9 @@
-import React from "react";
-import { useParams } from "react-router";
+import React from 'react';
+import { useParams } from 'react-router';
 
-interface Props {}
-
-const id = (props: Props) => {
+const Id: React.FC = () => {
 	const params = useParams<{ id: string }>();
-	console.log({ params });
 	return <div>{params.id}</div>;
 };
 
-export default id;
+export default Id;

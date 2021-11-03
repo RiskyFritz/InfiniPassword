@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-interface Props {}
-
-const __layout: React.FC<Props> = ({ children }) => {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const __layout: React.FC = ({ children }) => {
 	// ---- hooks ----
 	// > state
 	const [count, setCount] = useState(0);
@@ -16,10 +15,14 @@ const __layout: React.FC<Props> = ({ children }) => {
 				<Link to="/posts">Posts</Link>
 			</nav>
 			{children}
-			<footer style={{ display: "flex" }}>
-				<button onClick={() => setCount(count - 1)}>-</button>
+			<footer style={{ display: 'flex' }}>
+				<button type="button" onClick={() => setCount(count - 1)}>
+					-
+				</button>
 				<p>{count}</p>
-				<button onClick={() => setCount(count + 1)}>+</button>
+				<button type="button" onClick={() => setCount(count + 1)}>
+					+
+				</button>
 			</footer>
 		</div>
 	);

@@ -1,13 +1,9 @@
-import React from "react";
+import React from 'react';
 
-interface Props {}
-
-const index = (props: Props) => {
-	return (
-		<div>
-			<h1>My private blog</h1>
-		</div>
-	);
-};
+const index = () => (
+	<div>
+		<h1>My private blog</h1>
+	</div>
+);
 
 export default index;

@@ -1,0 +1,15 @@
+{
+	"recommendations": [
+		"esbenp.prettier-vscode",
+		"dsznajder.es7-react-js-snippets",
+		"wayou.vscode-todo-highlight",
+		"dbaeumer.vscode-eslint",
+		"wix.vscode-import-cost",
+		"streetsidesoftware.code-spell-checker",
+		"msjsdiag.debugger-for-chrome",
+		"eamodio.gitlens",
+		"orta.vscode-jest",
+		"rvest.vs-code-prettier-eslint",
+		"stylelint.vscode-stylelint"
+	]
+}

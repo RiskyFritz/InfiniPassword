@@ -1,8 +1,4 @@
-import React from "react";
+import React from 'react';
 
-interface Props {}
-
-const blog2 = (props: Props) => {
-	return <div>blog/blog2</div>;
-};
-export default blog2;
+const Blog2 = () => <div>blog/blog2</div>;
+export default Blog2;

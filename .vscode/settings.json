@@ -1,0 +1,29 @@
+{
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true,
+		"source.fixAll.eslint": true,
+		"editor.formatOnSave": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[javascript, javascriptreact, typescript, typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"jest.jestCommandLine": "yarn test",
+	"cSpell.words": [
+		"browserslist",
+		"cacheable",
+		"haptics",
+		"ionicons",
+		"precaching",
+		"stylelint",
+		"wesbos"
+	],
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	}
+}
