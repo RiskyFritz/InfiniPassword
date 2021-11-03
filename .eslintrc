@@ -1,0 +1,25 @@
+{
+	"extends": ["wesbos/typescript"],
+	"rules": {
+		"no-console": "warn",
+		"prettier/prettier": [
+			"error",
+			{
+				"trailingComma": "all",
+				"singleQuote": true,
+				"printWidth": 80,
+				"tabWidth": 4
+			}
+		],
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": ["error"],
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{
+				"argsIgnorePattern": "^_"
+			}
+		],
+		"react/prop-types": "off"
+	},
+	"ignorePatterns": ["commitlint.config.js"]
+}
