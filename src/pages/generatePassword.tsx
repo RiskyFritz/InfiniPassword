@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import RotateButton from '../components/RotateButton/RotateButton';
 import { generatePassword } from '../utils/generatePassword';
 import ScaleButton from '../components/ScaleButton/ScaleButton';
+import { strengthScore } from '../utils/passwordStrength';
 
 const Generate = () => {
 	// ---- hooks ----
@@ -19,6 +20,10 @@ const Generate = () => {
 	if (length === '') {
 		setLength('12');
 	}
+
+	// ---- set strength meter ----
+	const [strength, setStrength] = useState(0);
+	const [strengthColor, setStrengthColor] = useState('#fff');
 
 	// ---- functions ----
 	// const generatePassword = () => {
@@ -115,6 +120,36 @@ const Generate = () => {
 						);
 						// set the password
 						setGeneratedPassword(newGeneratedPassword);
+						setStrength(strengthScore(newGeneratedPassword));
+
+						const passwordStrength =
+							strengthScore(newGeneratedPassword);
+						// set the color of the strength meter
+						if (passwordStrength === 0) {
+							setStrengthColor('#aaa');
+						} else if (
+							passwordStrength > 1 &&
+							passwordStrength <= 20
+						) {
+							setStrengthColor('#f00');
+						} else if (
+							passwordStrength > 20 &&
+							passwordStrength <= 40
+						) {
+							setStrengthColor('#f90');
+						} else if (
+							passwordStrength > 40 &&
+							passwordStrength <= 60
+						) {
+							setStrengthColor('#fbff00');
+						} else if (
+							passwordStrength > 60 &&
+							passwordStrength <= 80
+						) {
+							setStrengthColor('#9dff00');
+						} else if (passwordStrength > 80) {
+							setStrengthColor('#0f0');
+						}
 					}}
 				>
 					<svg
@@ -144,7 +179,13 @@ const Generate = () => {
 				</RotateButton>
 			</div>
 			<div className="meter-container">
-				<div className="meter" />
+				<div
+					className="meter"
+					style={{
+						width: `${strength}%`,
+						backgroundColor: `${strengthColor}`,
+					}}
+				/>
 			</div>
 			<div className="options-container">
 				<h3 className="section-title">Options</h3>

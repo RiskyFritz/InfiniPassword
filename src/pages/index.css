@@ -32,8 +32,12 @@ a {
 }
 
 .meter {
-	background-color: red;
-	width: 25%;
+	--perfect-color: #0f0;
+	--great-color: #9dff00;
+	--good-color: #fbff00;
+	--okay-color: #f90;
+	--bad-color: #f00;
+
 	height: 100%;
 }
 
@@ -87,7 +91,7 @@ input {
 .back-container {
 	display: flex;
 	flex-direction: column;
-    color: var(--primary-text);
+	color: var(--primary-text);
 	font-size: 1.5rem;
 }
 
@@ -97,13 +101,13 @@ input {
 
 .back-container a {
 	display: flex;
-    background: var(--secondary-accent);
-    border-bottom: var(--primary-accent) 1px solid;
-    color: var(--primary-text);
-    text-decoration: none;
+	background: var(--secondary-accent);
+	border-bottom: var(--primary-accent) 1px solid;
+	color: var(--primary-text);
+	text-decoration: none;
 	outline: none;
-    align-items: center;
-    padding: 0.5rem;
+	align-items: center;
+	padding: 0.5rem;
 }
 
 .nav-container a {
