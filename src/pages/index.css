@@ -1,8 +1,40 @@
+body {
+	--primary-accent: #eff1f5;
+	--secondary-accent: #fff;
+	--tertiary-accent: #aaa;
+	--primary-text: black;
+
+	background-color: var(--primary-accent);
+	color: black;
+}
+
+body.dark {
+	--primary-accent: #101319;
+	--secondary-accent: #1d232f;
+	--tertiary-accent: #bbb;
+	--primary-text: #fff;
+
+	color: #eee;
+}
+
 a {
 	text-decoration: none;
 	color: var(--primary-text);
 	outline: none;
 	cursor: pointer;
+}
+
+.meter-container {
+	background-color: var(--tertiary-accent);
+	height: 0.25rem;
+	margin: 0;
+	padding: 0;
+}
+
+.meter {
+	background-color: red;
+	width: 25%;
+	height: 100%;
 }
 
 button {
@@ -19,24 +51,10 @@ button:focus {
 	transform: scale(1.05);
 }
 
-i {
-	color: var(--tertiary-accent);
-	position: relative;
-	margin-right: 0.25rem;
-}
-
 input {
-	/* Tell the input to use all the available space */
-	flex-grow: 2;
-
 	/* And hide the input's outline, so the form looks like the outline */
 	border: none;
 	color: var(--primary-text);
-}
-
-input:focus {
-	/* removing the input focus blue box. Put this on the form if you like. */
-	outline: none;
 }
 
 .search-input {
@@ -52,7 +70,7 @@ input:focus {
 	display: flex;
 	background: var(--primary-accent);
 	align-items: center;
-	font-size: 16px;
+	font-size: 1rem;
 }
 
 #search-input {
@@ -63,11 +81,29 @@ input:focus {
 	display: flex;
 	flex-direction: column;
 	color: var(--primary-text);
-	font-size: 14px;
+	font-size: 1rem;
 }
 
-.nav-container > {
+.back-container {
+	display: flex;
+	flex-direction: column;
+    color: var(--primary-text);
+	font-size: 1.5rem;
+}
+
+.back-container > {
 	width: 100%;
+}
+
+.back-container a {
+	display: flex;
+    background: var(--secondary-accent);
+    border-bottom: var(--primary-accent) 1px solid;
+    color: var(--primary-text);
+    text-decoration: none;
+	outline: none;
+    align-items: center;
+    padding: 0.5rem;
 }
 
 .nav-container a {
@@ -80,26 +116,19 @@ input:focus {
 	color: var(--primary-text);
 }
 
+.back-container a:hover {
+	background: var(--primary-accent);
+}
+
 .nav-container a:hover {
 	background: var(--primary-accent);
 }
 
-svg {
-	color: var(--tertiary-accent);
-	position: relative;
-	margin-right: 0.25rem;
+.options-container {
+	display: flex;
+	align-content: flex-start;
 }
 
-@keyframes rotate360 {
-	0% {
-		transform: translateZ(0) scale(1) rotate(0deg);
-	}
-
-	50% {
-		transform: translateZ(0) scale(1.15) rotate(180deg);
-	}
-
-	100% {
-		transform: translateZ(0) scale(1) rotate(360deg);
-	}
+svg {
+	color: var(--tertiary-accent);
 }
