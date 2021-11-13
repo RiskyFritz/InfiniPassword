@@ -4,8 +4,15 @@ body {
 	--tertiary-accent: #aaa;
 	--primary-text: black;
 
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+		Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	background-color: var(--primary-accent);
 	color: black;
+	margin: 0 auto;
+	width: 20rem;
 }
 
 body.dark {
@@ -15,6 +22,19 @@ body.dark {
 	--primary-text: #fff;
 
 	color: #eee;
+	margin: 0 auto;
+	width: 20rem;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 a {
@@ -38,6 +58,8 @@ a {
 	--okay-color: #f90;
 	--bad-color: #f00;
 
+	background-color: red;
+	width: 35%;
 	height: 100%;
 }
 
@@ -58,7 +80,22 @@ button:focus {
 input {
 	/* And hide the input's outline, so the form looks like the outline */
 	border: none;
+	flex-grow: 2;
 	color: var(--primary-text);
+	background: var(--secondary-accent);
+}
+
+input:focus {
+	/* removing the input focus blue box. Put this on the form if you like. */
+	outline: none;
+	transform: scale(1.05);
+}
+
+.password-container {
+	outline: none;
+	padding: 1rem;
+	display: flex;
+	background: var(--secondary-accent);
 }
 
 .search-input {
@@ -66,6 +103,7 @@ input {
 	padding: 0.5rem;
 	display: flex;
 	background: var(--primary-accent);
+	flex: 1;
 }
 
 .search-container {
@@ -75,10 +113,6 @@ input {
 	background: var(--primary-accent);
 	align-items: center;
 	font-size: 1rem;
-}
-
-#search-input {
-	flex: 1;
 }
 
 .nav-container {
@@ -107,8 +141,12 @@ input {
 	flex-direction: column;
 	align-content: flex-start;
 	width: 100%;
-	padding: 0;
 	padding-bottom: 1rem;
+	color: var(--primary-text);
+	font-size: 14px;
+	background: var(--secondary-accent);
+	justify-content: center;
+	align-items: center;
 }
 
 .options-length-sub {
@@ -150,7 +188,119 @@ input {
 	align-items: center;
 }
 
-
 svg {
 	color: var(--tertiary-accent);
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	align-content: center;
+	margin: 0.5rem;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.short-input {
+	padding: 0.45rem;
+	width: 9.25rem;
+	color: var(--primary-text);
+	outline: none;
+	border: 1px solid var(--tertiary-accent);
+	border-radius: 2px;
+	background-color: var(--primary-accent);
+	font-size: 0.8rem;
+}
+
+.long-input {
+	padding: 0.45rem;
+	color: var(--primary-text);
+	outline: none;
+	border: 1px solid var(--tertiary-accent);
+	border-radius: 2px;
+	background-color: var(--primary-accent);
+	font-size: 0.8rem;
+}
+
+textarea {
+	background-color: var(--primary-accent);
+	color: var(--primary-text);
+	outline: none;
+	border: 1px solid var(--tertiary-accent);
+}
+
+.settings-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.credentials-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.action-container {
+	display: flex;
+	justify-content: right;
+	margin: 0.25rem;
+}
+
+.action-button {
+	padding: 0.5rem;
+	margin: 0.25rem;
+}
+
+.action-button:focus {
+	outline: none;
+}
+
+.cancel-button {
+	background-color: var(--secondary-accent);
+	color: var(--primary-text);
+}
+
+.submit-button {
+	background-color: blueviolet;
+	color: var(--secondary-text);
+}
+
+.submit-button:hover {
+	background-color: purple;
+}
+
+.cancel-button:hover {
+	background-color: var(--tertiary-accent);
+}
+
+.slider-container {
+	margin-left: 1rem;
+	width: 90%;
+	display: grid;
+	grid-template-columns: 2rem 2fr;
+}
+
+.section-title {
+	margin: 0;
+	margin-top: 1rem;
+	margin-left: 0.5rem;
+	margin-bottom: 1rem;
+	padding: 0;
+}
+
+.length-title {
+	margin: 0;
+	margin-top: 0.5rem;
+	margin-left: 0.5rem;
+}
+
+.char-title {
+	margin-top: 0.5rem;
+	margin-left: 0.5rem;
+	padding: 0;
 }

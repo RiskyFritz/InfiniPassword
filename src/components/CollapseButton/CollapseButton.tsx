@@ -29,7 +29,6 @@ const CollapseButton: React.FC<CollapseButtonProps> = ({
 			style={{
 				transform: isCollapsed ? 'rotate(180deg)' : 'rotate(0deg)',
 				transition: isCollapsed ? 'transform 0ms linear' : '',
-				transformOrigin: 'center',
 			}}
 			onClick={handleClick}
 			// eslint-disable-next-line react/button-has-type
