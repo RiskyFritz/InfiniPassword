@@ -128,7 +128,7 @@ const Generate = () => {
 						if (passwordStrength === 0) {
 							setStrengthColor('#aaa');
 						} else if (
-							passwordStrength > 1 &&
+							passwordStrength >= 1 &&
 							passwordStrength <= 20
 						) {
 							setStrengthColor('#f00');
@@ -207,52 +207,60 @@ const Generate = () => {
 					</div>
 				</div>
 				<div className="options-char-sub">
-					<h4 className="char-title">Include Characters</h4>
-					<label htmlFor="check-letters">Letters</label>
-					<input
-						type="checkbox"
-						id="check-letters"
-						name="check-letters"
-						value="letters"
-						checked={options.letters}
-						onClick={() => {
-							const newOptions = {
-								...options,
-								letters: !options.letters,
-							};
-							setOptions(newOptions);
-						}}
-					/>
-					<label htmlFor="check-numbers">Numbers</label>
-					<input
-						type="checkbox"
-						id="check-numbers"
-						name="checkNumbers"
-						value="Numbers"
-						checked={options.numbers}
-						onClick={() => {
-							const newOptions = {
-								...options,
-								numbers: !options.numbers,
-							};
-							setOptions(newOptions);
-						}}
-					/>
-					<label htmlFor="check-symbols">Symbols</label>
-					<input
-						type="checkbox"
-						id="check-symbols"
-						name="checkSymbols"
-						value="Symbols"
-						checked={options.symbols}
-						onClick={() => {
-							const newOptions = {
-								...options,
-								symbols: !options.symbols,
-							};
-							setOptions(newOptions);
-						}}
-					/>
+					<h4 className="char-title">Include</h4>
+					<div className="char-container">
+						<div className="char-sub">
+							<label htmlFor="check-letters">Letters</label>
+							<input
+								type="checkbox"
+								id="check-letters"
+								name="check-letters"
+								value="letters"
+								checked={options.letters}
+								onClick={() => {
+									const newOptions = {
+										...options,
+										letters: !options.letters,
+									};
+									setOptions(newOptions);
+								}}
+							/>
+						</div>
+						<div className="char-sub">
+							<label htmlFor="check-numbers">Numbers</label>
+							<input
+								type="checkbox"
+								id="check-numbers"
+								name="checkNumbers"
+								value="Numbers"
+								checked={options.numbers}
+								onClick={() => {
+									const newOptions = {
+										...options,
+										numbers: !options.numbers,
+									};
+									setOptions(newOptions);
+								}}
+							/>
+						</div>
+						<div className="char-sub">
+							<label htmlFor="check-symbols">Symbols</label>
+							<input
+								type="checkbox"
+								id="check-symbols"
+								name="checkSymbols"
+								value="Symbols"
+								checked={options.symbols}
+								onClick={() => {
+									const newOptions = {
+										...options,
+										symbols: !options.symbols,
+									};
+									setOptions(newOptions);
+								}}
+							/>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

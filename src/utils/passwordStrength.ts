@@ -6,7 +6,7 @@ export const strengthScore = (password: string): number => {
 		return String.prototype.concat(...new Set(str));
 	}
 
-	const uniquePassword = makeUnique(password);
+	const uniquePassword: string = makeUnique(password);
 
 	// for each number in uniquePassword, add 4 to passwordScore for each symbol add 8 to passwordScore for each letter add 1 to passwordScore
 	passwordScore += uniquePassword.match(/[0-9]/g)
