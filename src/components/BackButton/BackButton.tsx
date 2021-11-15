@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
 import './BackButton.css';
 
 const BackButton = () => (
+	// let history = useHistory();
 	<div className="back-container">
 		<Link className="back-button" to="/">
 			<svg
