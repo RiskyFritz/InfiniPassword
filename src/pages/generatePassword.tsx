@@ -27,7 +27,7 @@ const Generate = () => {
 	const [strengthColor, setStrengthColor] = useState('#fff');
 
 	// ---- set collapsed options ----
-	const [collapsed, setCollapsed] = useState(false);
+	const [isCollapsed, setIsCollapsed] = useState(false);
 
 	// ---- functions ----
 	// const generatePassword = () => {
@@ -47,7 +47,25 @@ const Generate = () => {
 					type="text"
 					value={generatedPassword}
 					placeholder="Please enter a password..."
-					onChange={(e) => setGeneratedPassword(e.target.value)}
+					// onChange set generated password, strength, and color
+					onChange={(e) => {
+						setGeneratedPassword(e.target.value);
+						setStrength(strengthScore(e.target.value));
+
+						if (strength === 0) {
+							setStrengthColor('#aaa');
+						} else if (strength >= 1 && strength <= 20) {
+							setStrengthColor('#f00');
+						} else if (strength > 20 && strength <= 40) {
+							setStrengthColor('#f90');
+						} else if (strength > 40 && strength <= 60) {
+							setStrengthColor('#fbff00');
+						} else if (strength > 60 && strength <= 80) {
+							setStrengthColor('#9dff00');
+						} else if (strength > 80) {
+							setStrengthColor('#0f0');
+						}
+					}}
 				/>
 				<ScaleButton
 					className="copy-password"
@@ -117,10 +135,10 @@ const Generate = () => {
 						type="button"
 						className="collapse-button"
 						onClick={() => {
-							if (collapsed) {
-								setCollapsed(false);
+							if (isCollapsed) {
+								setIsCollapsed(false);
 							} else {
-								setCollapsed(true);
+								setIsCollapsed(true);
 							}
 						}}
 					>
@@ -150,85 +168,89 @@ const Generate = () => {
 						</svg>
 					</CollapseButton>
 				</button>
-				<div className="options-length-sub">
-					<h4 className="length-title">Password Length</h4>
-					<div className="slider-container">
-						<h3 className="slider-title">{length}</h3>
-						<input
-							type="range"
-							min="1"
-							defaultValue="12"
-							max="99"
-							width="100%"
-							value={length}
-							onChange={(e) => {
-								setLength(e.target.value);
-							}}
-						/>
-					</div>
-				</div>
-				<div className="options-char-sub">
-					<h4 className="char-title">Include</h4>
-					<div className="char-container">
-						<div className="char-sub">
-							<label htmlFor="check-letters">
+				{!isCollapsed && (
+					<>
+						<div className="options-length-sub">
+							<h4 className="length-title">Password Length</h4>
+							<div className="slider-container">
+								<h3 className="slider-title">{length}</h3>
 								<input
-									type="checkbox"
-									id="check-letters"
-									name="check-letters"
-									value="letters"
-									checked={options.letters}
-									onClick={() => {
-										const newOptions = {
-											...options,
-											letters: !options.letters,
-										};
-										setOptions(newOptions);
+									type="range"
+									min="1"
+									defaultValue="12"
+									max="99"
+									width="100%"
+									value={length}
+									onChange={(e) => {
+										setLength(e.target.value);
 									}}
 								/>
-								{'		'}Letters
-							</label>
+							</div>
 						</div>
-						<div className="char-sub">
-							<label htmlFor="check-numbers">
-								<input
-									type="checkbox"
-									id="check-numbers"
-									name="checkNumbers"
-									value="Numbers"
-									checked={options.numbers}
-									onClick={() => {
-										const newOptions = {
-											...options,
-											numbers: !options.numbers,
-										};
-										setOptions(newOptions);
-									}}
-								/>
-								{'		'}Numbers
-							</label>
+						<div className="options-char-sub">
+							<h4 className="char-title">Include</h4>
+							<div className="char-container">
+								<div className="char-sub">
+									<label htmlFor="check-letters">
+										<input
+											type="checkbox"
+											id="check-letters"
+											name="check-letters"
+											value="letters"
+											checked={options.letters}
+											onClick={() => {
+												const newOptions = {
+													...options,
+													letters: !options.letters,
+												};
+												setOptions(newOptions);
+											}}
+										/>
+										{'		'}Letters
+									</label>
+								</div>
+								<div className="char-sub">
+									<label htmlFor="check-numbers">
+										<input
+											type="checkbox"
+											id="check-numbers"
+											name="checkNumbers"
+											value="Numbers"
+											checked={options.numbers}
+											onClick={() => {
+												const newOptions = {
+													...options,
+													numbers: !options.numbers,
+												};
+												setOptions(newOptions);
+											}}
+										/>
+										{'		'}Numbers
+									</label>
+								</div>
+								<div className="char-sub">
+									<label htmlFor="check-symbols">
+										<input
+											type="checkbox"
+											id="check-symbols"
+											name="checkSymbols"
+											value="Symbols"
+											checked={options.symbols}
+											onClick={() => {
+												const newOptions = {
+													...options,
+													symbols: !options.symbols,
+												};
+												setOptions(newOptions);
+											}}
+										/>
+										{'		'}Symbols
+									</label>
+								</div>
+							</div>
 						</div>
-						<div className="char-sub">
-							<label htmlFor="check-symbols">
-								<input
-									type="checkbox"
-									id="check-symbols"
-									name="checkSymbols"
-									value="Symbols"
-									checked={options.symbols}
-									onClick={() => {
-										const newOptions = {
-											...options,
-											symbols: !options.symbols,
-										};
-										setOptions(newOptions);
-									}}
-								/>
-								{'		'}Symbols
-							</label>
-						</div>
-					</div>
-				</div>
+					</>
+				)}
 			</div>
 		</div>
 	);

@@ -22,8 +22,14 @@ export const strengthScore = (password: string): number => {
 		? 9 * uniquePassword.match(/[A-Z]/g).length
 		: 0;
 
-	if (uniquePassword.length < 6) {
+	if (uniquePassword.length === 0) {
+		passwordScore = 0;
+	} else if (uniquePassword.length < 3) {
 		passwordScore = 2;
+	}
+
+	if (passwordScore > 100) {
+		passwordScore = 100;
 	}
 
 	return passwordScore;

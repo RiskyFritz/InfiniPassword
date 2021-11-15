@@ -10,7 +10,7 @@ const Index = () => {
 
 	return (
 		<div>
-			<div className="searchContainer">
+			<div className="search-container">
 				<input
 					id="search-input"
 					className="search-input"
@@ -44,7 +44,7 @@ const Index = () => {
 				</svg>
 			</div>
 			<div className="nav-container">
-				<Link id="generate-password" to="/generatePassword">
+				<Link to="/generatePassword">
 					<button type="button">Generate Password</button>
 					<svg
 						aria-hidden="true"
@@ -71,8 +71,8 @@ const Index = () => {
 						</g>
 					</svg>
 				</Link>
-				<Link id="add-password" to="/addPassword">
-					<button type="button">Add Password</button>
+				<Link id="add-item" to="/addItem">
+					<button type="button">Add Item</button>
 					<svg
 						aria-hidden="true"
 						focusable="false"
@@ -98,8 +98,8 @@ const Index = () => {
 						</g>
 					</svg>
 				</Link>
-				<Link id="view-all" to="/managePasswords">
-					<button type="button">Open Password Manager</button>
+				<Link id="view-all" to="/manageAll">
+					<button type="button">Open Item Manager</button>
 					<svg
 						aria-hidden="true"
 						focusable="false"
@@ -119,21 +119,23 @@ const Index = () => {
 					</svg>
 				</Link>
 				<button
+					className="dark-mode-button"
 					type="button"
-					id="dark-mode-link"
 					onClick={toggleDarkMode}
 				>
-					<span id="dark-mode-text">Dark Mode</span>
-					<svg
-						id="dark-mode-icon"
-						xmlns="http://www.w3.org/2000/svg"
-						fill="currentColor"
-						stroke="currentColor"
-						style={{ width: '1rem' }}
-						viewBox="0 0 24 24"
-					>
-						<path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm2 0c0-5.514 4.486-10 10-10v20c-5.514 0-10-4.486-10-10z" />
-					</svg>
+					<div className="dark-mode-container">
+						<span id="dark-mode-text">Dark Mode</span>
+						<svg
+							id="dark-mode-icon"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="currentColor"
+							stroke="currentColor"
+							style={{ width: '1rem' }}
+							viewBox="0 0 24 24"
+						>
+							<path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm2 0c0-5.514 4.486-10 10-10v20c-5.514 0-10-4.486-10-10z" />
+						</svg>
+					</div>
 				</button>
 			</div>
 		</div>

@@ -97,16 +97,16 @@ const AddPassword = () => {
 									}
 								}}
 							/>
-						</div>
-						<div className="meter-container">
-							<div
-								className="meter"
-								style={{
-									width: `${strength}%`,
-									backgroundColor: `${strengthColor}`,
-									visibility: 'visible',
-								}}
-							/>
+							<div className="meter-container">
+								<div
+									className="meter"
+									style={{
+										width: `${strength}%`,
+										backgroundColor: `${strengthColor}`,
+										visibility: 'visible',
+									}}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -118,14 +118,13 @@ const AddPassword = () => {
 						spellCheck="true"
 					/>
 				</div>
-				<div className="options-container" />
 				<div className="action-container">
-					<Link id="cancelAnchor" to="/">
-						<button id="cancelButton" type="button">
+					<Link className="cancel-anchor" to="/">
+						<button className="cancel-button" type="button">
 							Cancel
 						</button>
 					</Link>
-					<button id="submitButton" type="button">
+					<button className="submit-button" type="submit">
 						Submit
 					</button>
 				</div>

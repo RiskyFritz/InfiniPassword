@@ -19,7 +19,7 @@ const CollapseButton: React.FC<CollapseButtonProps> = ({
 	// handle when user clicks on button
 	const handleClick = () => {
 		// set spinning animation to true
-		setIsCollapsed(true);
+		setIsCollapsed(!isCollapsed);
 		// trigger developers custom click handler
 		onClick();
 	};
@@ -27,8 +27,8 @@ const CollapseButton: React.FC<CollapseButtonProps> = ({
 	return (
 		<button
 			style={{
-				transform: isCollapsed ? 'rotate(180deg)' : 'rotate(0deg)',
-				transition: isCollapsed ? 'transform 0ms linear' : '',
+				transform: isCollapsed ? 'rotate(-180deg)' : 'rotate(0deg)',
+				transition: 'transform 300ms ease-in-out',
 			}}
 			onClick={handleClick}
 			// eslint-disable-next-line react/button-has-type
