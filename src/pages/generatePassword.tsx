@@ -125,6 +125,7 @@ const Generate = () => {
 					style={{
 						width: `${strength}%`,
 						backgroundColor: `${strengthColor}`,
+						transition: 'width 0.5s ease-in-out',
 					}}
 				/>
 			</div>

@@ -9,17 +9,17 @@ export const strengthScore = (password: string): number => {
 	const uniquePassword: string = makeUnique(password);
 
 	// for each number in uniquePassword, add 4 to passwordScore for each symbol add 8 to passwordScore for each letter add 1 to passwordScore
-	passwordScore += uniquePassword.match(/[0-9]/g)
-		? 9 * uniquePassword.match(/[0-9]/g).length
+	passwordScore += password.match(/[0-9]/g)
+		? 9 * password.match(/[0-9]/g).length
 		: 0;
-	passwordScore += uniquePassword.match(/[!@#$%^&*()]/g)
-		? 10 * uniquePassword.match(/[!@#$%^&*()]/g).length
+	passwordScore += password.match(/[!@#$%^&*()]/g)
+		? 9 * password.match(/[!@#$%^&*()]/g).length
 		: 0;
-	passwordScore += uniquePassword.match(/[a-z]/g)
-		? 7 * uniquePassword.match(/[a-z]/g).length
+	passwordScore += password.match(/[a-z]/g)
+		? 7 * password.match(/[a-z]/g).length
 		: 0;
 	passwordScore += uniquePassword.match(/[A-Z]/g)
-		? 9 * uniquePassword.match(/[A-Z]/g).length
+		? 9 * password.match(/[A-Z]/g).length
 		: 0;
 
 	if (uniquePassword.length === 0) {

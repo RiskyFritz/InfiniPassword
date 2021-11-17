@@ -294,7 +294,7 @@ textarea:focus {
 
 .submit-button {
 	background-color: blueviolet;
-	color: white;
+	color: #fefefee0;
 	padding-right: 0.75rem;
 	padding-left: 0.75rem;
 	border-radius: 0.75rem;

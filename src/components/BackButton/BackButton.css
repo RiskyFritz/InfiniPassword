@@ -5,11 +5,11 @@
 	font-size: 1.5rem;
 }
 
-.back-container > {
+.back-container > button {
 	width: 100%;
 }
 
-.back-container a {
+.back-container button {
 	display: flex;
 	background: var(--secondary-accent);
 	border-bottom: var(--primary-accent) 1px solid;
@@ -17,9 +17,13 @@
 	text-decoration: none;
 	outline: none;
 	align-items: center;
-	padding: 0.5rem;
+	padding: 1rem;
 }
 
-.back-container a:hover {
+.back-container button:hover {
 	background: var(--primary-accent);
+}
+
+.back-button-svg {
+	margin-right: 0.5rem;
 }
