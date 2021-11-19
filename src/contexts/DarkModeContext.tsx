@@ -16,19 +16,20 @@ const DarkModeContextProvider: React.FC = ({ children }) => {
 	// --- hooks ---
 	// > state
 	const [isDarkMode, setIsDarkMode] = useState(false);
+	let isDarkModeLocal = localStorage.getItem('isDarkMode');
 
 	// --- lifecycle ---
 	// > dark mode side effect
 	useEffect(() => {
 		// check if dark mode is active
-		if (isDarkMode) {
+		if (isDarkModeLocal === 'true' || isDarkMode) {
 			// set dark mode
 			document.body.classList.add('dark');
-			// chrome.storage.sync.set({ isDarkMode: true });
+			localStorage.setItem('isDarkMode', 'true');
 		} else {
 			// remove dark mode
 			document.body.classList.remove('dark');
-			// chrome.storage.sync.set({ isDarkMode: false });
+			localStorage.setItem('isDarkMode', 'false');
 		}
 	}, [isDarkMode]);
 
@@ -37,6 +38,8 @@ const DarkModeContextProvider: React.FC = ({ children }) => {
 	const toggleDarkMode = () => {
 		// toggle dark mode
 		setIsDarkMode(!isDarkMode);
+		isDarkModeLocal = localStorage.getItem('isDarkMode');
+        console.log('Toggled dark mode')
 	};
 
 	// > dark mode context values
