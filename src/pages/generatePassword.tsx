@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './index.css';
 import BackButton from '../components/BackButton/BackButton';
 import RotateButton from '../components/RotateButton/RotateButton';
@@ -6,6 +6,7 @@ import { generatePassword } from '../utils/generatePassword';
 import ScaleButton from '../components/ScaleButton/ScaleButton';
 import { strengthScore } from '../utils/passwordStrength';
 import CollapseButton from '../components/CollapseButton/CollapseButton';
+import HistoryContext from '../contexts/PasswordHistoryContext';
 
 const Generate = () => {
 	// ---- hooks ----
@@ -28,6 +29,8 @@ const Generate = () => {
 
 	// ---- set collapsed options ----
 	const [isCollapsed, setIsCollapsed] = useState(false);
+
+	const history = useContext(HistoryContext);
 
 	// ---- functions ----
 	// const generatePassword = () => {
@@ -116,6 +119,10 @@ const Generate = () => {
 						} else if (passwordStrength > 80) {
 							setStrengthColor('#0f0');
 						}
+
+						// add password to history context
+						history.addPassword(newGeneratedPassword);
+					
 					}}
 				/>
 			</div>

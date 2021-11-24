@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 const ShowHistoryContainer = () => {
-	const [isHistory, setIsHistory] = useState();
+	const [isHistory, setIsHistory] = useState(false);
+
 	return (
 		<div>
 			<div className="show-history-container">
