@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+/* eslint-disable array-callback-return */
+import React, { useState } from 'react';
 import './index.css';
 import BackButton from '../components/BackButton/BackButton';
 import RotateButton from '../components/RotateButton/RotateButton';
@@ -6,7 +7,6 @@ import { generatePassword } from '../utils/generatePassword';
 import ScaleButton from '../components/ScaleButton/ScaleButton';
 import { strengthScore } from '../utils/passwordStrength';
 import CollapseButton from '../components/CollapseButton/CollapseButton';
-import HistoryContext from '../contexts/PasswordHistoryContext';
 
 const Generate = () => {
 	// ---- hooks ----
@@ -29,8 +29,22 @@ const Generate = () => {
 
 	// ---- set collapsed options ----
 	const [isCollapsed, setIsCollapsed] = useState(false);
+	const [showHistory, setShowHistory] = useState(false);
+	const [historyArray, setHistoryArray] = useState([
+		{
+			password: '',
+			date: new Date(),
+		},
+	]);
 
-	const history = useContext(HistoryContext);
+	// remove blank passwords from history, and keep only last 5 passwords
+	const filteredHistoryArray = historyArray.filter(
+		(password) => password.password !== '',
+	);
+	const historyLength = filteredHistoryArray.length;
+	if (historyLength > 5) {
+		filteredHistoryArray.splice(0, historyLength - 5);
+	}
 
 	// ---- functions ----
 	// const generatePassword = () => {
@@ -90,6 +104,14 @@ const Generate = () => {
 						// set the password
 						setGeneratedPassword(newGeneratedPassword);
 						setStrength(strengthScore(newGeneratedPassword));
+						// sethistoryarray to add new password
+						setHistoryArray([
+							...historyArray,
+							{
+								password: newGeneratedPassword,
+								date: new Date(),
+							},
+						]);
 
 						const passwordStrength =
 							strengthScore(newGeneratedPassword);
@@ -119,10 +141,6 @@ const Generate = () => {
 						} else if (passwordStrength > 80) {
 							setStrengthColor('#0f0');
 						}
-
-						// add password to history context
-						history.addPassword(newGeneratedPassword);
-					
 					}}
 				/>
 			</div>
@@ -136,6 +154,61 @@ const Generate = () => {
 					}}
 				/>
 			</div>
+			<div className="history-button-container">
+				{showHistory && (
+					<>
+						<button
+							className="close-history-button"
+							type="button"
+							onClick={() => setShowHistory(false)}
+						>
+							Close History
+						</button>
+					</>
+				)}
+				<button
+					className="history-button"
+					type="button"
+					onClick={() => {
+						setShowHistory(!showHistory);
+					}}
+				>
+					History
+				</button>
+			</div>
+			{showHistory && (
+				<>
+					<div className="history-container">
+						{filteredHistoryArray.map((password, index) => {
+							// do not return blank passwords
+							// if more than 10 passwords, remove the oldest one
+							// if any passwords are blank, remove them
+							if (filteredHistoryArray.length >= 1) {
+								return (
+									<div className="history-item" key={index}>
+										<div className="history-item-password">
+											{String(password.password)}
+										</div>
+										<div className="history-item-date">
+											{password.date.toLocaleString()}
+										</div>
+										<ScaleButton
+											className="copy-password"
+											type="button"
+											onClick={() =>
+												// copy password to clipboard
+												navigator.clipboard.writeText(
+													password.password,
+												)
+											}
+										/>
+									</div>
+								);
+							}
+						})}
+					</div>
+				</>
+			)}
 			<div className="options-container">
 				<button type="button" className="options-button">
 					<h3 className="section-title">Options</h3>

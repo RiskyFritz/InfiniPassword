@@ -3,11 +3,22 @@ import { Link } from 'react-router-dom';
 import './index.css';
 import BackButton from '../components/BackButton/BackButton';
 import { strengthScore } from '../utils/passwordStrength';
+import { postCredentials } from '../utils/postPassword';
 
 const AddPassword = () => {
 	// ---- set strength meter ----
 	const [strengthColor, setStrengthColor] = useState('#fff');
 	const [strength, setStrength] = useState(0);
+	const [data, setData] = useState({
+		url: '',
+		name: '',
+		folder: '',
+		username: '',
+		password: '',
+		notes: '',
+		// strength: 0,
+		// date: new Date(),
+	});
 
 	return (
 		<div>
@@ -21,6 +32,9 @@ const AddPassword = () => {
 						type="text"
 						spellCheck="false"
 						autoComplete="url"
+						onChange={(e) =>
+							setData({ ...data, url: e.target.value })
+						}
 					/>
 				</div>
 				<div className="settings-container">
@@ -32,6 +46,9 @@ const AddPassword = () => {
 							type="text"
 							spellCheck="false"
 							autoComplete="nickname"
+							onChange={(e) =>
+								setData({ ...data, name: e.target.value })
+							}
 						/>
 					</div>
 					<div className="form-group">
@@ -41,6 +58,9 @@ const AddPassword = () => {
 							id="folderInput"
 							type="text"
 							spellCheck="false"
+							onChange={(e) =>
+								setData({ ...data, folder: e.target.value })
+							}
 						/>
 					</div>
 				</div>
@@ -53,6 +73,9 @@ const AddPassword = () => {
 							type="text"
 							spellCheck="false"
 							autoComplete="username"
+							onChange={(e) =>
+								setData({ ...data, username: e.target.value })
+							}
 						/>
 					</div>
 					<div className="password-container-2">
@@ -65,6 +88,10 @@ const AddPassword = () => {
 								spellCheck="false"
 								onChange={(e) => {
 									setStrength(strengthScore(e.target.value));
+									setData({
+										...data,
+										password: e.target.value,
+									});
 
 									const passwordStrength = strength;
 									console.log(strength);
@@ -116,6 +143,9 @@ const AddPassword = () => {
 						className="long-input"
 						id="notesInput"
 						spellCheck="true"
+						onChange={(e) =>
+							setData({ ...data, notes: e.target.value })
+						}
 					/>
 				</div>
 				<div className="action-container">
@@ -124,7 +154,14 @@ const AddPassword = () => {
 							Cancel
 						</button>
 					</Link>
-					<button className="submit-button" type="submit">
+					<button
+						className="submit-button"
+						type="submit"
+						onClick={() => {
+							console.log(data);
+							postCredentials(data);
+						}}
+					>
 						Submit
 					</button>
 				</div>

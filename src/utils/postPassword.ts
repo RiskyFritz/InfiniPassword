@@ -1,14 +1,15 @@
-export const postCredentials = (
-	url: string,
-	name: string,
-	folder: string,
-	username: string,
-	password: string,
-	notes: string,
-	strength: number,
-	date: Date,
-) => {
+export const postCredentials = (data: {
+	url: string;
+	name: string;
+	folder: string;
+	username: string;
+	password: string;
+	notes: string;
+	// strength: number;
+	// date: Date;
+}) => {
 	const endpoint = 'http://localhost:3000/password';
+	console.log(data);
 
 	fetch(endpoint, {
 		method: 'post',
@@ -17,14 +18,14 @@ export const postCredentials = (
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-			url,
-			name,
-			folder,
-			username,
-			password,
-			notes,
-			strength,
-			date,
+			url: data.url,
+			name: data.name,
+			folder: data.folder,
+			username: data.username,
+			password: data.password,
+			notes: data.notes,
+			// strength: data.strength,
+			// date: data.date,
 		}),
 	})
 		.then((res) => {

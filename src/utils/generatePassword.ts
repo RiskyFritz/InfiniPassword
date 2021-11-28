@@ -9,7 +9,7 @@ export const generatePassword = (
 	// generate a password of length characters
 	const optionsValues: Record<keyof typeof options, string> = {
 		letters: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-		symbols: '!@#$%^&*()_+{}[]|:<>?,./',
+		symbols: '!@#$%^&+',
 		numbers: '0123456789',
 	};
 

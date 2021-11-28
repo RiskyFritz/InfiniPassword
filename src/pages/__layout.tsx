@@ -24,7 +24,7 @@ const __layout: React.FC = ({ children }) => {
 				<Link to="/">Home</Link>
 			</nav>
 			{children}
-			<footer style={{ display: 'flex' }}>
+			<footer style={{ display: 'flex',  }}>
 				copyright © {new Date().getFullYear()}
 			</footer>
 		</div>
