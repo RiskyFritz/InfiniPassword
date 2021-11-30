@@ -1,9 +1,9 @@
-const getItems = (endpoint: string) =>
-	fetch(endpoint).then((response) => response.json());
+import axios from 'axios';
+import { CredentialsItem } from './getItems';
 
-export const downloadFile = (endpoint: string) => {
-	let items = {};
-	items = getItems(endpoint);
+export const downloadFile = async (endpoint: string) => {
+	const { data } = await axios.get<CredentialsItem[]>(endpoint);
+	const items = data;
 	let csvContent = 'data:text/csv;charset=utf-8,';
 	items.forEach((item) => {
 		csvContent += `${item.name},${item.url},${item.username},${item.password}\n`;
@@ -15,3 +15,5 @@ export const downloadFile = (endpoint: string) => {
 	document.body.appendChild(link); // Required for FF
 	link.click();
 };
+
+export {};

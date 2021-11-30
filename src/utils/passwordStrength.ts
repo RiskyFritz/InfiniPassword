@@ -7,20 +7,13 @@ export const strengthScore = (password: string): number => {
 	}
 
 	const uniquePassword: string = makeUnique(password);
+	const numberScore = (password.match(/[0-9]/g) || []).length * 9;
+	const symbolScore = (password.match(/[!@#$%^&*()]/g) || []).length * 9;
+	const upperCaseScore = (password.match(/[A-Z]/g) || []).length * 9;
+	const lowerCaseScore = (password.match(/[a-z]/g) || []).length * 9;
 
-	// for each number in uniquePassword, add 4 to passwordScore for each symbol add 8 to passwordScore for each letter add 1 to passwordScore
-	passwordScore += password.match(/[0-9]/g)
-		? 9 * password.match(/[0-9]/g).length
-		: 0;
-	passwordScore += password.match(/[!@#$%^&*()]/g)
-		? 9 * password.match(/[!@#$%^&*()]/g).length
-		: 0;
-	passwordScore += password.match(/[a-z]/g)
-		? 7 * password.match(/[a-z]/g).length
-		: 0;
-	passwordScore += uniquePassword.match(/[A-Z]/g)
-		? 9 * password.match(/[A-Z]/g).length
-		: 0;
+	passwordScore +=
+		numberScore + symbolScore + upperCaseScore + lowerCaseScore;
 
 	if (uniquePassword.length === 0) {
 		passwordScore = 0;

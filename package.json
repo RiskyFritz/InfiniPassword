@@ -8,6 +8,7 @@
 	},
 	"dependencies": {
 		"@types/chrome": "^0.0.164",
+		"axios": "^0.24.0",
 		"path": "^0.12.7",
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0",

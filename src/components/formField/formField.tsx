@@ -1,11 +1,12 @@
-import React from 'react';
-import { useState } from 'react-router-dom';
+import React, { useState } from 'react';
 
-import './FormField.css';
+import './formField.css';
 
 const FormField = (title: string, typeIn: string) => {
 	// useState returns type
 	const [value, setValue] = useState('');
+	const type = typeIn;
+
 	return (
 		<div>
 			<label>{title}</label>
@@ -14,6 +15,7 @@ const FormField = (title: string, typeIn: string) => {
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 			/>
+			{type}
 		</div>
 	);
 };

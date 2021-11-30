@@ -1,5 +1,8 @@
+import { CredentialsItem } from './getItems';
+
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 const addCredential = (
-	credential: Credential,
+	credential: CredentialsItem,
 	method: string,
 	endpoint: string,
 ) => {
@@ -25,8 +28,8 @@ export const uploadFile = (file: Blob, endpoint: string, method: string) => {
 		const lines = csv.split('\n');
 		lines.forEach((line) => {
 			const credential = line.split(',');
-			const { name, url, folder, username, password, notes } = credential;
-			const newCredential = {
+			const [name, url, folder, username, password, notes] = credential;
+			const newCredential: CredentialsItem = {
 				name,
 				url,
 				folder,
@@ -42,3 +45,5 @@ export const uploadFile = (file: Blob, endpoint: string, method: string) => {
 		};
 	};
 };
+
+export {};
