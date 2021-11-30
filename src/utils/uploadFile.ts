@@ -45,5 +45,3 @@ export const uploadFile = (file: Blob, endpoint: string, method: string) => {
 		};
 	};
 };
-
-export {};

@@ -2,6 +2,13 @@
 import { getItems } from './getItems';
 
 export const renderItems = async (endpoint: string) => {
-	const data = await getItems(endpoint);
-	return data;
+	try {
+		const data = await getItems(endpoint);
+		console.log('something went right');
+		return data;
+	} catch (error) {
+		console.log('something went wrong');
+		console.error(error);
+		return [];
+	}
 };

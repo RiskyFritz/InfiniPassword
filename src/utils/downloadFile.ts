@@ -15,5 +15,3 @@ export const downloadFile = async (endpoint: string) => {
 	document.body.appendChild(link); // Required for FF
 	link.click();
 };
-
-export {};

@@ -5,9 +5,8 @@ import ActionContainer from '../components/ActionContainer/ActionContainer';
 import { renderItems } from '../utils/renderItems';
 import { CredentialsItem } from '../utils/getItems';
 
-const ManagePasswords = async () => {
-	// const [items, setItems] = useState(new Promise(resolve => resolve(getItems())));
-	// setItems(getItems('http://localhost:3000/password'));
+const ManagePasswords = () => {
+
 	// ---- hooks ----
 	// > state
 
@@ -16,9 +15,13 @@ const ManagePasswords = async () => {
 	// > lifecycle
 	useEffect(() => {
 	const fetchItems = async () => {
-		const newItems = await renderItems('http://localhost:3000/password');
+        try {
+            const newItems = await renderItems('http://localhost:3000/password');
 		console.log(newItems);
         setItems(items);
+        } catch (error) {
+            console.log(error);
+        }
 	}
 	fetchItems();
 	}, [])
