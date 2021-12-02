@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import BackButton from '../components/BackButton/BackButton';
 import './index.css';

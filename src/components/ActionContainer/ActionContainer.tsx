@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { downloadFile } from '../../utils/downloadFile';
 
 const ActionContainer = () => {
 	const [isFileUpload, setIsFileUpload] = useState(false);
@@ -8,7 +9,13 @@ const ActionContainer = () => {
 			<div className="action-filter-container">
 				<div className="actions-container">
 					<a>
-						<button type="button" className="download-button">
+						<button
+							type="button"
+							className="download-button"
+							onClick={() =>
+								downloadFile('http://localhost:3000/password')
+							}
+						>
 							<svg
 								aria-hidden="true"
 								focusable="false"

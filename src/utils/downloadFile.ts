@@ -6,7 +6,7 @@ export const downloadFile = async (endpoint: string) => {
 	const items = data;
 	let csvContent = 'data:text/csv;charset=utf-8,';
 	items.forEach((item) => {
-		csvContent += `${item.name},${item.url},${item.username},${item.password}\n`;
+		csvContent += `${item.name},${item.folder},${item.url},${item.username},${item.password},${item.notes}\n`;
 	});
 	const encodedUri = encodeURI(csvContent);
 	const link = document.createElement('a');

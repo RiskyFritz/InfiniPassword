@@ -1,12 +1,19 @@
-import React from 'react';
 import './ItemCard.css';
+import ScaleButton from '../ScaleButton/ScaleButton';
 
-const ItemCard = (
-	name: string,
-	folder: string,
-	username: string,
-	password: string,
-) => (
+interface ItemCardProps {
+	name: string;
+	folder: string;
+	username: string;
+	password: string;
+}
+
+const ItemCard: React.FC<ItemCardProps> = ({
+	name,
+	folder,
+	username,
+	password,
+}) => (
 	<div className="item-container">
 		<div className="value-container">
 			<div className="name-value">{name}</div>
@@ -15,32 +22,14 @@ const ItemCard = (
 			<div className="username-value">{password}</div>
 		</div>
 		<div className="action-container">
-			<button className="copy-button" type="button">
-				<svg
-					aria-hidden="true"
-					focusable="false"
-					data-prefix="fad"
-					data-icon="clone"
-					role="img"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 512 512"
-					style={{ width: '1rem' }}
-					className="svg-inline--fa fa-clone fa-w-16 fa-5x"
-				>
-					<g className="fa-group">
-						<path
-							fill="currentColor"
-							d="M48 512a48 48 0 0 1-48-48V176a48 48 0 0 1 48-48h48v208a80.09 80.09 0 0 0 80 80h208v48a48 48 0 0 1-48 48H48z"
-							className="fa-secondary"
-						/>
-						<path
-							fill="currentColor"
-							d="M512 48v288a48 48 0 0 1-48 48H176a48 48 0 0 1-48-48V48a48 48 0 0 1 48-48h288a48 48 0 0 1 48 48z"
-							className="fa-primary"
-						/>
-					</g>
-				</svg>
-			</button>
+			<ScaleButton
+				className="copy-password"
+				type="button"
+				onClick={() =>
+					// copy password to clipboard
+					navigator.clipboard.writeText(password)
+				}
+			/>
 			<button className="show-password" type="button">
 				<svg
 					aria-hidden="true"

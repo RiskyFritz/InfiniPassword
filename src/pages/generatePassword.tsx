@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './index.css';
 import BackButton from '../components/BackButton/BackButton';
 import RotateButton from '../components/RotateButton/RotateButton';
