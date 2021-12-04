@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { downloadFile } from '../../utils/downloadFile';
+import { uploadFile } from '../../utils/uploadFile';
 
 const ActionContainer = () => {
 	const [isFileUpload, setIsFileUpload] = useState(false);
+	// const [filename, setFilename] = useState('');
+	const [fileBlob, setFileBlob] = useState([] as string[]);
+	const file = new Blob(fileBlob);
 	return (
 		<div>
 			<div className="action-filter-container">
@@ -130,7 +135,14 @@ const ActionContainer = () => {
 				<>
 					<div className="file-upload-container">
 						<div className="file-input-sub">
-							<input className="file-input" type="file" />
+							<input
+								className="file-input"
+								type="file"
+								onChange={(e) => {
+									// setFilename(String(e.target.value) || '');
+									setFileBlob([e.target.files[0]] || []);
+								}}
+							/>
 						</div>
 						<div className="file-action-sub">
 							<button
@@ -140,7 +152,18 @@ const ActionContainer = () => {
 							>
 								Cancel
 							</button>
-							<button className="submit-button" type="submit">
+							<button
+								className="submit-button"
+								type="submit"
+								// onclick run upload file with the file selected
+								onClick={() => {
+									uploadFile(file);
+									// set time out to set isFileUpload to false
+									setTimeout(() => {
+										setIsFileUpload(false);
+									}, 1000);
+								}}
+							>
 								Upload
 							</button>
 						</div>

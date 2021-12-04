@@ -1,25 +1,6 @@
-import { CredentialsItem } from './getItems';
+import { postCredentials } from './postPassword';
 
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-const addCredential = (
-	credential: CredentialsItem,
-	method: string,
-	endpoint: string,
-) => {
-	try {
-		fetch(endpoint, {
-			method,
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(credential),
-		});
-	} catch (error) {
-		console.log(error);
-	}
-};
-
-export const uploadFile = (file: Blob, endpoint: string, method: string) => {
+export const uploadFile = (file: Blob) => {
 	// parse input file into JSON
 	const reader = new FileReader();
 	reader.readAsText(file);
@@ -29,7 +10,7 @@ export const uploadFile = (file: Blob, endpoint: string, method: string) => {
 		lines.forEach((line) => {
 			const credential = line.split(',');
 			const [name, url, folder, username, password, notes] = credential;
-			const newCredential: CredentialsItem = {
+			const newCredential = {
 				name,
 				url,
 				folder,
@@ -38,7 +19,7 @@ export const uploadFile = (file: Blob, endpoint: string, method: string) => {
 				notes,
 			};
 			// add credential to database
-			addCredential(newCredential, endpoint, method);
+			postCredentials(newCredential);
 		});
 		reader.onerror = function () {
 			console.log(reader.error);

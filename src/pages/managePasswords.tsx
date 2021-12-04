@@ -27,6 +27,7 @@ const ManagePasswords = () => {
 		};
 		fetchItems();
 	}, []);
+
 	return (
 		<div>
 			<BackButton />
@@ -36,10 +37,18 @@ const ManagePasswords = () => {
 				items.map((item, index) => (
 					<div key={index}>
 						<ItemCard
+							id={item.id}
+							url={item.url}
 							name={item.name}
-							folder={item.folder}
 							username={item.username}
 							password={item.password}
+							onClick={() => {
+								// remove item from items array and set state
+								const newItems = items.filter(
+									(card) => card.id !== item.id,
+								);
+								setItems(newItems);
+							}}
 						/>
 					</div>
 				))
@@ -47,4 +56,5 @@ const ManagePasswords = () => {
 		</div>
 	);
 };
+
 export default ManagePasswords;

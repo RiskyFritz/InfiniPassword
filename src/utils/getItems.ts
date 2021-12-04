@@ -1,6 +1,6 @@
 // create async function that returns an array of items
 export interface CredentialsItem {
-	id?: string;
+	id: string;
 	name: string;
 	folder: string;
 	url: string;
