@@ -1,14 +1,14 @@
 import './ItemCard.css';
 import { useState } from 'react';
 import ScaleButton from '../ScaleButton/ScaleButton';
-import { deleteCredentials } from '../../utils/deletePassword';
 
 interface ItemCardProps {
+	id: string;
+	url?: string;
 	name: string;
 	username?: string;
 	password: string;
-	url?: string;
-	id: string;
+	imageurl?: string;
 	onClick: () => void;
 }
 
@@ -18,18 +18,25 @@ const ItemCard: React.FC<ItemCardProps> = ({
 	password,
 	url,
 	id,
+	imageurl,
 	onClick,
+	children,
 }) => {
 	const [isDeletingPassword, setIsDeletingPassword] = useState(false);
+	const [isDeleteAnimation, setIsDeleteAnimation] = useState(false);
+	// if imageurl is undefined, use default image
+	const image = imageurl || 'https://i.imgur.com/XyQXZQl.png';
 
 	const handleClick = () => {
 		setIsDeletingPassword(true);
-		deleteCredentials(id);
+		setIsDeleteAnimation(true);
+		console.log(isDeletingPassword);
 		// trigger developers custom click handler
-		onClick();
 		setTimeout(() => {
 			setIsDeletingPassword(false);
-		}, 1500);
+			setIsDeleteAnimation(false);
+			onClick();
+		}, 250);
 	};
 
 	return (
@@ -37,14 +44,20 @@ const ItemCard: React.FC<ItemCardProps> = ({
 			className="item-container"
 			// if isDeletingPassword, slowly fade out itemCard
 			style={{
-				transform: isDeletingPassword ? 'opacity(0.5)' : 'opacity(1)',
-				transition: 'transform 1500ms ease-in-out',
+				transform: isDeleteAnimation ? 'opacity(0)' : 'opacity(100)',
+				transition: 'transform 250ms ease-in-out',
 			}}
 		>
+			<div className="image-container">
+				<img
+					src={image}
+					alt=""
+					style={{ width: '1rem', height: '1rem' }}
+				/>
+			</div>
 			<div className="value-container">
-				<div className="name-value">{name}</div>
-				<div className="url-value">{url}</div>
-				<div className="username-value">{username}</div>
+				<div className="primary-value">{url}</div>
+				<div className="secondary-value">{username}</div>
 			</div>
 			<div className="action-container">
 				<ScaleButton
@@ -55,25 +68,6 @@ const ItemCard: React.FC<ItemCardProps> = ({
 						navigator.clipboard.writeText(password)
 					}
 				/>
-				<button className="show-password" type="button">
-					<svg
-						aria-hidden="true"
-						focusable="false"
-						data-prefix="far"
-						data-icon="eye"
-						role="img"
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 576 512"
-						className="svg-inline--fa fa-eye fa-w-18 fa-5x"
-						style={{ width: '1rem' }}
-					>
-						<path
-							fill="currentColor"
-							d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"
-							className=""
-						/>
-					</svg>
-				</button>
 				<button className="edit-button" type="button">
 					<svg
 						aria-hidden="true"
@@ -83,7 +77,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
 						role="img"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 512 512"
-						className="svg-inline--fa fa-pencil fa-w-16 fa-5x"
+						className="svg-button"
 						style={{ width: '1rem' }}
 					>
 						<path
@@ -102,7 +96,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
 						role="img"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 448 512"
-						className="svg-inline--fa fa-trash-alt fa-w-14 fa-5x"
+						className="svg-button"
 						style={{ width: '1rem' }}
 						onClick={handleClick}
 					>
@@ -113,6 +107,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
 						/>
 					</svg>
 				</button>
+				{children}
 			</div>
 		</div>
 	);

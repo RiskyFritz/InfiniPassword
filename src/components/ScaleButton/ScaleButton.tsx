@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 interface ScaleButtonProps {
 	className?: string;
@@ -48,7 +48,7 @@ const ScaleButton: React.FC<ScaleButtonProps> = ({
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 512 512"
 				style={{ width: '1rem' }}
-				className="svg-inline--fa fa-clone fa-w-16 fa-5x"
+				className="svg-button"
 			>
 				<g className="fa-group">
 					<path

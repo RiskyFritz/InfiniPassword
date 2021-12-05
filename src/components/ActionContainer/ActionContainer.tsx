@@ -30,7 +30,7 @@ const ActionContainer = () => {
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 512 512"
 								style={{ width: '1rem' }}
-								className="svg-inline--fa fa-download fa-w-16 fa-5x"
+								className="svg-button"
 							>
 								<g className="fa-group">
 									<path
@@ -63,7 +63,7 @@ const ActionContainer = () => {
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 512 512"
 								style={{ width: '1rem' }}
-								className="svg-inline--fa fa-upload fa-w-16 fa-5x"
+								className="svg-button"
 							>
 								<g className="fa-group">
 									<path
@@ -91,7 +91,7 @@ const ActionContainer = () => {
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 448 512"
 								style={{ width: '1rem' }}
-								className="svg-inline--fa fa-plus fa-w-14 fa-5x"
+								className="svg-button"
 							>
 								<g className="fa-group">
 									<path
@@ -119,7 +119,7 @@ const ActionContainer = () => {
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 352 512"
 								style={{ width: '.75rem' }}
-								className="svg-inline--fa fa-lightbulb fa-w-11 fa-5x"
+								className="svg-button"
 							>
 								<path
 									fill="currentColor"

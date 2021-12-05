@@ -2,7 +2,11 @@ body {
 	--primary-accent: #eff1f5;
 	--secondary-accent: #fff;
 	--tertiary-accent: #aaa;
+	--neutral-accent: #000;
 	--primary-text: black;
+	--secondary-text: #aaa;
+	--button-hover: #fff;
+	--button-color: #000;
 
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
 		Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -19,7 +23,11 @@ body.dark {
 	--primary-accent: #101319;
 	--secondary-accent: #1d232f;
 	--tertiary-accent: #bbb;
+	--neutral-accent: #fff;
 	--primary-text: #fff;
+	--secondary-text: #bbb;
+	--button-hover: #101319;
+	--button-color: #101319;
 
 	color: #eee;
 	margin: 0 auto;
@@ -217,6 +225,10 @@ input:focus {
 
 svg {
 	color: var(--tertiary-accent);
+}
+
+.svg-button:hover {
+	color: var(--secondary-accent);
 }
 
 .form-container {

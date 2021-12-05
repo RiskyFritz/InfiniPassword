@@ -5,6 +5,7 @@ import ActionContainer from '../components/ActionContainer/ActionContainer';
 import { renderItems } from '../utils/renderItems';
 import { CredentialsItem } from '../utils/getItems';
 import ItemCard from '../components/itemCard/ItemCard';
+import { deleteCredentials } from '../utils/deletePassword';
 
 const ManagePasswords = () => {
 	// ---- hooks ----
@@ -48,6 +49,7 @@ const ManagePasswords = () => {
 									(card) => card.id !== item.id,
 								);
 								setItems(newItems);
+								deleteCredentials(item.id);
 							}}
 						/>
 					</div>
