@@ -20,6 +20,16 @@ body {
 }
 
 body.dark {
+	--dark-900: #08090c;
+	--dark-800: #101319;
+	--dark-700: #1b212c;
+	--dark-600: #262f40;
+	--brand-secondary-300: #8561c5;
+	--brand-secondary-400: #673ab7;
+	--brand-secondary-500: #482880;
+	--brand-primary-300: #5393ff;
+	--brand-primary-400: #2979ff;
+	--brand-primary-500: #1c54b2;
 	--primary-accent: #101319;
 	--secondary-accent: #1d232f;
 	--tertiary-accent: #bbb;
@@ -104,28 +114,6 @@ input:focus {
 	padding: 1rem;
 	display: flex;
 	background: var(--secondary-accent);
-}
-
-.search-input {
-	outline: none;
-	padding: 0.5rem;
-	display: flex;
-	background: var(--primary-accent);
-	flex: 1;
-}
-
-.search-input:focus {
-	outline: none;
-	transform: scale(1);
-}
-
-.search-container {
-	outline: none;
-	display: flex;
-	flex-direction: row;
-	padding: 1rem;
-	background: var(--primary-accent);
-	font-size: 1rem;
 }
 
 .nav-container {
@@ -398,4 +386,10 @@ textarea:focus {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: inline-block;
+}
+
+.recent-title {
+	font-size: 1rem;
+	border-bottom: 2px solid #1c54b2;
+	margin: 0.5rem 1.5rem 1.5rem;
 }

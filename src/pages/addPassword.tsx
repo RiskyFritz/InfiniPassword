@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
+import { useForm } from 'react-hook-form';
 import BackButton from '../components/BackButton/BackButton';
 import { strengthScore } from '../utils/passwordStrength';
 import { postCredentials } from '../utils/postPassword';
+import FormFooter from '../components/FormFooter/FormFooter';
+import FormCreator, {
+	InputOptions,
+} from '../components/FormCreator/FormCreator';
 
 const AddPassword = () => {
 	// ---- set strength meter ----
@@ -19,11 +24,72 @@ const AddPassword = () => {
 		// strength: 0,
 		// date: new Date(),
 	});
+	const clearForm = () => {
+		setData({
+			url: '',
+			name: '',
+			folder: '',
+			username: '',
+			password: '',
+			notes: '',
+			// strength: 0,
+			// date: new Date(),
+		});
+	};
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+	const onSubmit = (res: any) => console.log(res);
+	console.log(errors);
+
+	const input: InputOptions[] = [
+		{
+			label: 'URL',
+			name: 'url',
+			type: 'text',
+			placeholder: 'https://www.example.com',
+		},
+		{
+			label: 'Name',
+			name: 'name',
+			type: 'text',
+			placeholder: 'My Website',
+		},
+		{
+			label: 'Folder',
+			name: 'folder',
+			type: 'text',
+			placeholder: 'My Website',
+		},
+		{
+			label: 'Username',
+			name: 'username',
+			type: 'text',
+			placeholder: 'Username',
+		},
+		{
+			label: 'Password',
+			name: 'password',
+			type: 'password',
+			placeholder: 'Password',
+		},
+		{
+			label: 'Notes',
+			name: 'notes',
+			type: 'text',
+			placeholder: 'Notes',
+		},
+	];
 
 	return (
 		<div>
 			<BackButton />
-			<div className="form-container">
+			<FormCreator inputs={input} onSubmit={onSubmit} />
+
+			{/* <div className="form-container">
 				<div className="form-group">
 					<label htmlFor="urlInput">URL</label>
 					<input
@@ -159,13 +225,14 @@ const AddPassword = () => {
 						type="submit"
 						onClick={() => {
 							console.log(data);
+							// try posting to the database
 							postCredentials(data);
 						}}
 					>
 						Submit
 					</button>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };

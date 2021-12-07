@@ -9,6 +9,7 @@ const ActionContainer = () => {
 	// const [filename, setFilename] = useState('');
 	const [fileBlob, setFileBlob] = useState([] as string[]);
 	const file = new Blob(fileBlob);
+	const uploadFileBlob = [] as string[];
 	return (
 		<div>
 			<div className="action-filter-container">
@@ -140,7 +141,8 @@ const ActionContainer = () => {
 								type="file"
 								onChange={(e) => {
 									// setFilename(String(e.target.value) || '');
-									setFileBlob([e.target.files[0]] || []);
+									// uploadFileBlob = e.target.files[0] || [''];
+									// setFileBlob(file);
 								}}
 							/>
 						</div>

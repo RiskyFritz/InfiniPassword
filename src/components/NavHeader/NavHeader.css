@@ -1,0 +1,17 @@
+.nav-header-container {
+	display: flex;
+	flex-direction: row;
+	margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.brand-name {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-left: 0.5rem;
+}
+
+.dark-mode-nav-container {
+    margin-left: 7.5rem;
+}
