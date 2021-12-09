@@ -2,9 +2,10 @@ import './NavHeader.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDarkMode } from '../../contexts/DarkModeContext';
+import { DarkModeButton } from '../DarkModeButton/DarkMode';
 
 const NavHeader = () => {
-	const { toggleDarkMode } = useDarkMode();
+	const { toggleDarkMode, isDarkMode } = useDarkMode();
 	const [isNavListOpen, setIsNavListOpen] = useState(false);
 
 	return (
@@ -39,31 +40,11 @@ const NavHeader = () => {
 				<h4>PassKey</h4>
 			</div>
 			<div className="dark-mode-nav-container">
-				<button
-					className="nav-header-dark-mode-button"
-					type="button"
-					onClick={toggleDarkMode}
-				>
-					<div className="nav-header-dark-mode">
-						<svg
-							aria-hidden="true"
-							focusable="false"
-							data-prefix="fas"
-							data-icon="moon"
-							role="img"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 512 512"
-							className="svg-inline--fa fa-moon fa-w-16 fa-7x"
-							style={{ width: '1.25rem' }}
-						>
-							<path
-								fill="currentColor"
-								d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
-								className=""
-							/>
-						</svg>
-					</div>
-				</button>
+				<DarkModeButton
+					isDarkMode={isDarkMode}
+					toggleDarkMode={toggleDarkMode}
+					maskKey="dark-mode-nav-mask"
+				/>
 			</div>
 		</div>
 	);

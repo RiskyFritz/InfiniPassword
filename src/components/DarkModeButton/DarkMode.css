@@ -1,0 +1,11 @@
+.dark-mode-button {
+	user-select: none;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	transition: transform 250ms ease;
+}
+
+.dark-mode-button:focus {
+    outline: none;
+}

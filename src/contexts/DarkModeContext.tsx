@@ -3,6 +3,7 @@ import { createContext, useEffect, useState, useContext } from 'react';
 
 interface DarkModeContextValues {
 	toggleDarkMode: () => void;
+	isDarkMode: boolean;
 }
 
 // > create context
@@ -56,6 +57,7 @@ const DarkModeContextProvider: React.FC = ({ children }) => {
 	// > dark mode context values
 	const value: DarkModeContextValues = {
 		toggleDarkMode,
+		isDarkMode,
 	};
 
 	return (

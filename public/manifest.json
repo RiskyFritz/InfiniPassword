@@ -1,14 +1,23 @@
 {
 	"manifest_version": 2,
 
-	"name": "InfiniPassword",
-	"description": "This extension is a free password manager.",
+	"name": "PassKey",
+	"description": "The best free password manager for Chrome",
 	"version": "1.0",
+
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],
+			"js": ["contentScripts/contentScript.js"]
+		}
+	],
 
 	"browser_action": {
 		"default_icon": "images/comp1.png",
 		"default_popup": "index.html"
 	},
 
-	"permissions": ["activeTab", "storage"]
+	"permissions": ["activeTab", "storage"],
+
+	"web_accessible_resources": ["images/*"]
 }
