@@ -91,10 +91,6 @@ button {
 	color: var(--primary-text);
 }
 
-button:focus {
-	transform: scale(1.05);
-}
-
 input {
 	/* And hide the input's outline, so the form looks like the outline */
 	border: none;

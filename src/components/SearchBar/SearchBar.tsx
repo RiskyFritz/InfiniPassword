@@ -1,16 +1,13 @@
 import './SearchBar.css';
 
 const SearchBar = () => (
-	<div className="flex flex-row items-center p-4 mt-2 mb-2 h-10">
+	<form className="search-bar-container" onSubmit={(e) => e.preventDefault()}>
 		<input
 			type="search"
-			className="outline-none text-base font-normal bg-no-repeat rounded-l-3xl border-solid border-2 box-border h-10 flex pl-5 w-48 border-blue-700 hover:border-blue-500 focus:border-blue-500"
+			className="search-bar-input"
 			placeholder="Search"
 		/>
-		<button
-			type="button"
-			className="rounded-r-3xl flex items-center justify-center pr-4 h-10 bg-blue-700 hover:bg-blue-500 focus:bg-blue-500"
-		>
+		<button type="submit" className="search-bar-button">
 			<svg
 				aria-hidden="true"
 				focusable="false"
@@ -33,6 +30,6 @@ const SearchBar = () => (
 				</g>
 			</svg>
 		</button>
-	</div>
+	</form>
 );
 export default SearchBar;
