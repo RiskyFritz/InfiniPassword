@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import { Routes } from './routes';
 import DarkModeContextProvider from './contexts/DarkModeContext';
+import 'tailwindcss/tailwind.css';
 
 ReactDOM.render(
 	<React.StrictMode>
