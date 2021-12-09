@@ -85,12 +85,6 @@ input {
 	background: var(--secondary-accent);
 }
 
-input:focus {
-	/* removing the input focus blue box. Put this on the form if you like. */
-	outline: none;
-	transform: scale(1.025);
-}
-
 .password-container {
 	outline: none;
 	padding: 1rem;
@@ -236,11 +230,6 @@ textarea {
 	color: var(--primary-text);
 	outline: none;
 	border: 1px solid var(--tertiary-accent);
-}
-
-textarea:focus {
-	outline: none;
-	transform: scale(1.025);
 }
 
 .settings-container {

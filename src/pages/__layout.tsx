@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router'
+import NavHeader from '../components/NavHeader/NavHeader';
+import FooterNav from '../components/Footer/FooterNav';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const __layout: React.FC = ({ children }) => {
@@ -20,13 +22,9 @@ const __layout: React.FC = ({ children }) => {
 
 	return (
 		<div>
-			<nav>
-				<Link to="/">Home</Link>
-			</nav>
+			<NavHeader />
 			{children}
-			<footer style={{ display: 'flex',  }}>
-				copyright © {new Date().getFullYear()}
-			</footer>
+			<FooterNav />
 		</div>
 	);
 };
