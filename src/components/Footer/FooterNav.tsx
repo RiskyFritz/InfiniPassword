@@ -2,7 +2,7 @@ import './FooterNav.css';
 import { Link } from 'react-router-dom';
 
 const FooterNav = () => (
-	<div className="flex flex-row justify-around items-center mt-2 mb-2">
+	<div className="flex flex-row justify-between items-center m-4 bg-blue-400 pl-4 pr-4 pt-2 pb-2 rounded-xl">
 		<Link to="/">
 			<button type="button">
 				<svg
@@ -13,7 +13,7 @@ const FooterNav = () => (
 					role="img"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 512 512"
-					className="w-6"
+					className="text-white dark:text-black w-5"
 				>
 					<path
 						fill="currentColor"
@@ -33,7 +33,7 @@ const FooterNav = () => (
 					role="img"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 576 512"
-					className="w-7"
+					className="text-white dark:text-black w-6"
 				>
 					<path
 						fill="currentColor"
@@ -53,7 +53,7 @@ const FooterNav = () => (
 					role="img"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 448 512"
-					className="w-6"
+					className="text-white dark:text-black w-5"
 				>
 					<path
 						fill="currentColor"

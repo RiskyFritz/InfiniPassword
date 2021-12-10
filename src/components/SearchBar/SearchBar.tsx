@@ -16,9 +16,9 @@ const SearchBar = () => (
 				role="img"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 512 512"
-				className="w-4 ml-2 text-black"
+				className="w-4 ml-4 text-white dark:text-black"
 			>
-				<g className="fa-group">
+				<g>
 					<path
 						fill="currentColor"
 						d="M208 80a128 128 0 1 1-90.51 37.49A127.15 127.15 0 0 1 208 80m0-80C93.12 0 0 93.12 0 208s93.12 208 208 208 208-93.12 208-208S322.88 0 208 0z"

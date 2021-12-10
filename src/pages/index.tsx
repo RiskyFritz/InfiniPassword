@@ -1,13 +1,11 @@
 import './index.css';
+import SelectTwo from '../components/SelectTwo/SelectTwo';
 
 const Index = () => (
 	// --- hooks ----
 	// > dark mode
 
-	<div>
-		<div className="recent-passwords">
-			<h4 className="recent-title">Recent Passwords</h4>
-		</div>
-	</div>
+	<SelectTwo />
 );
+
 export default Index;
