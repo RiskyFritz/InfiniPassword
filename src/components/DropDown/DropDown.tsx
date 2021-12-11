@@ -12,7 +12,7 @@ const DropDown = () => (
 					fillRule="nonzero"
 				/>
 			</svg>
-			<select className="rounded-xl text-gray-600 h-6 w-24 pl-5 pr-10 bg-white focus:outline-none appearance-none">
+			<select className="rounded-xl text-gray-600 h-6 w-24 pl-5 pr-10 shadow bg-white focus:outline-none appearance-none">
 				<option>Sort</option>
 				<option>Red</option>
 				<option>Blue</option>

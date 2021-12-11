@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './BackButton.css';
@@ -21,8 +20,7 @@ const BackButton = () => {
 					role="img"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 448 512"
-					style={{ width: '1rem' }}
-					className="back-button-svg"
+					className="w-4"
 				>
 					<g className="fa-group">
 						<path
@@ -37,7 +35,6 @@ const BackButton = () => {
 						/>
 					</g>
 				</svg>
-				Back
 			</button>
 		</div>
 	);

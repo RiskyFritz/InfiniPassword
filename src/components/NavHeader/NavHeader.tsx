@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useDarkMode } from '../../contexts/DarkModeContext';
+import BackButton from '../BackButton/BackButton';
 import { DarkModeButton } from '../DarkModeButton/DarkMode';
 import DropDown from '../DropDown/DropDown';
 import RotateButton from '../RotateButton/RotateButton';
@@ -14,13 +16,18 @@ const NavHeader = () => {
 					<h4 className="text-blue-500 dark:text-white">Pass</h4>
 					<h4 className="dark:text-blue-500">Key</h4>
 				</div>
-				<div className="flex flex-row ml-36 items-center">
+				<div className="flex flex-row ml-26 items-center">
 					<div>
-						<RotateButton
-							className="generate-password-button"
-							type="button"
-							onClick={() => null}
-						/>
+						<BackButton />
+					</div>
+					<div className="ml-4">
+						<Link to="/generatePassword">
+							<RotateButton
+								className="generate-password-button"
+								type="button"
+								onClick={() => null}
+							/>
+						</Link>
 					</div>
 					<div className="ml-4">
 						<DarkModeButton

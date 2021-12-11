@@ -1,12 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import BackButton from '../components/BackButton/BackButton';
 import './index.css';
 
 const AddItem = () => (
 	// hello
 	<div>
-		<BackButton />
 		<div className="nav-container">
 			<Link to="/addPassword">
 				<button type="button">Password</button>

@@ -3,11 +3,11 @@
 }
 
 .search-bar-input {
-	@apply outline-none text-base bg-no-repeat rounded-l-xl h-10 flex pl-5 w-48  transition-shadow ring-0 focus:ring-2 ring-blue-500 ring-opacity-50;
+	@apply outline-none text-base bg-no-repeat rounded-l-xl h-10 flex pl-5 w-48 shadow  transition-shadow ring-0 focus:ring-2 ring-blue-500 ring-opacity-50;
 }
 
 .search-bar-button {
-	@apply rounded-r-xl flex items-center justify-center pr-5 h-10 bg-blue-400 transition-shadow ring-0 focus:ring-2 ring-blue-500 ring-opacity-50;
+	@apply rounded-r-xl flex items-center justify-center pr-5 h-10 shadow bg-blue-400 transition-shadow ring-0 focus:ring-2 ring-blue-500 ring-opacity-50;
 }
 
 .search-bar-container:focus-within .search-bar-input,

@@ -100,13 +100,6 @@ input {
 }
 
 
-.password-container {
-	outline: none;
-	padding: 1rem;
-	display: flex;
-	background: var(--secondary-accent);
-}
-
 .nav-container {
 	display: flex;
 	flex-direction: column;
@@ -204,10 +197,6 @@ input {
 
 svg {
 	color: var(--tertiary-accent);
-}
-
-.svg-button:hover {
-	color: var(--secondary-accent);
 }
 
 .form-container {

@@ -2,64 +2,111 @@ import './FooterNav.css';
 import { Link } from 'react-router-dom';
 
 const FooterNav = () => (
-	<div className="flex flex-row justify-between items-center m-4 bg-blue-400 pl-4 pr-4 pt-2 pb-2 rounded-xl">
+	<div className="flex flex-row justify-between items-center m-4 bg-blue-400 shadow pl-4 pr-4 pt-2 pb-2 rounded-xl">
 		<Link to="/">
-			<button type="button">
+			<button
+				type="button"
+				className="transition-shadow ring-0 focus:ring-2 ring-blue-500 ring-opacity-50"
+			>
 				<svg
-					aria-hidden="true"
-					focusable="false"
-					data-prefix="fas"
-					data-icon="archive"
-					role="img"
+					width="26"
+					height="26"
+					viewBox="0 0 26 26"
+					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 512 512"
-					className="text-white dark:text-black w-5"
+					className="text-white dark:text-black w-6 "
 				>
-					<path
-						fill="currentColor"
-						d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"
-						className=""
-					/>
+					<g>
+						<path
+							d="M9 25C9.35362 25 9.69276 24.8595 9.94281 24.6095C10.1929 24.3594 10.3333 24.0203 10.3333 23.6667V18.3333C10.3333 17.9797 10.4738 17.6406 10.7239 17.3905C10.9739 17.1405 11.313 17 11.6667 17H14.3333C14.687 17 15.0261 17.1405 15.2761 17.3905C15.5262 17.6406 15.6667 17.9797 15.6667 18.3333V23.6667C15.6667 24.0203 15.8071 24.3594 16.0572 24.6095C16.3072 24.8595 16.6464 25 17 25H9ZM17 25H9H17Z"
+							fill="#FAFAFA"
+						/>
+						<path
+							d="M1 13L3.66667 10.3333M3.66667 10.3333L13 1L22.3333 10.3333M3.66667 10.3333V23.6667C3.66667 24.0203 3.80714 24.3594 4.05719 24.6095C4.30724 24.8595 4.64638 25 5 25H9M22.3333 10.3333L25 13M22.3333 10.3333V23.6667C22.3333 24.0203 22.1929 24.3594 21.9428 24.6095C21.6928 24.8595 21.3536 25 21 25H17M9 25C9.35362 25 9.69276 24.8595 9.94281 24.6095C10.1929 24.3594 10.3333 24.0203 10.3333 23.6667V18.3333C10.3333 17.9797 10.4738 17.6406 10.7239 17.3905C10.9739 17.1405 11.313 17 11.6667 17H14.3333C14.687 17 15.0261 17.1405 15.2761 17.3905C15.5262 17.6406 15.6667 17.9797 15.6667 18.3333V23.6667C15.6667 24.0203 15.8071 24.3594 16.0572 24.6095C16.3072 24.8595 16.6464 25 17 25M9 25H17"
+							stroke="#FAFAFA"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</g>
 				</svg>
 			</button>
 		</Link>
-		<Link to="/">
-			<button type="button">
+		<Link to="/itemManager">
+			<button
+				type="button"
+				className="transition-shadow ring-0 focus:ring-2 ring-blue-500 ring-opacity-50"
+			>
 				<svg
-					aria-hidden="true"
-					focusable="false"
-					data-prefix="fas"
-					data-icon="home"
-					role="img"
+					width="33"
+					height="26"
+					viewBox="0 0 33 26"
+					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 576 512"
 					className="text-white dark:text-black w-6"
 				>
 					<path
-						fill="currentColor"
-						d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
-						className=""
+						d="M1.013 21.5714V4.42857C1.013 3.51926 1.37422 2.64719 2.01721 2.00421C2.66019 1.36122 3.53226 1 4.44157 1H14.7273L18.1559 4.42857H28.4416C29.3509 4.42857 30.223 4.78979 30.8659 5.43278C31.5089 6.07576 31.8701 6.94783 31.8701 7.85714V21.5714C31.8701 22.4807 31.5089 23.3528 30.8659 23.9958C30.223 24.6388 29.3509 25 28.4416 25H4.44157C3.53226 25 2.66019 24.6388 2.01721 23.9958C1.37422 23.3528 1.013 22.4807 1.013 21.5714Z"
+						stroke="#FAFAFA"
+						strokeWidth="2"
+						strokeLinecap="round"
+						strokeLinejoin="round"
 					/>
 				</svg>
 			</button>
 		</Link>
 		<Link to="/account">
-			<button type="button">
+			<button
+				type="button"
+				className="transition-shadow ring-0 focus:ring-2 ring-blue-500 ring-opacity-50"
+			>
 				<svg
-					aria-hidden="true"
-					focusable="false"
-					data-prefix="fal"
-					data-icon="user"
-					role="img"
+					width="28"
+					height="26"
+					viewBox="0 0 28 26"
+					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 448 512"
-					className="text-white dark:text-black w-5"
+					className="text-white dark:text-black w-6"
 				>
 					<path
-						fill="currentColor"
-						d="M313.6 288c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4zM416 464c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16v-41.6C32 365.9 77.9 320 134.4 320c19.6 0 39.1 16 89.6 16 50.4 0 70-16 89.6-16 56.5 0 102.4 45.9 102.4 102.4V464zM224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0-224c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
-						className=""
+						d="M10.0289 13.2946L12.7441 16.0098L18.1746 10.5794M25.8017 5.12716C21.5091 5.35513 17.3013 3.87084 14.1018 1C10.9022 3.87084 6.69445 5.35513 2.40179 5.12716C2.05633 6.46457 1.88206 7.84044 1.88318 9.22174C1.88318 16.8122 7.07472 23.1917 14.1018 25C21.1288 23.1917 26.3203 16.8136 26.3203 9.22174C26.3203 7.8071 26.1398 6.43591 25.8017 5.12716Z"
+						stroke="#FAFAFA"
+						strokeWidth="2"
+						strokeLinecap="round"
+						strokeLinejoin="round"
 					/>
+				</svg>
+			</button>
+		</Link>
+		<Link to="/account">
+			<button
+				type="button"
+				className="transition-shadow ring-0 focus:ring-2 ring-blue-500 ring-opacity-50"
+			>
+				<svg
+					width="21"
+					height="26"
+					viewBox="0 0 21 26"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					className="text-white dark:text-black w-5"
+				>
+					<g>
+						<path
+							d="M14.4379 10.1046C15.4381 9.10438 16 7.74782 16 6.33333C16 4.91885 15.4381 3.56229 14.4379 2.5621C13.4377 1.5619 12.0812 1 10.6667 1C9.25219 1 7.89563 1.5619 6.89544 2.5621C5.89525 3.56229 5.33334 4.91885 5.33334 6.33333C5.33334 7.74782 5.89525 9.10438 6.89544 10.1046C7.89563 11.1048 9.25219 11.6667 10.6667 11.6667C12.0812 11.6667 13.4377 11.1048 14.4379 10.1046Z"
+							stroke="#FAFAFA"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+						<path
+							d="M4.06701 18.4003C5.81735 16.65 8.19132 15.6667 10.6667 15.6667C13.142 15.6667 15.516 16.65 17.2663 18.4003C19.0167 20.1507 20 22.5246 20 25H1.33334C1.33334 22.5246 2.31667 20.1507 4.06701 18.4003Z"
+							stroke="#FAFAFA"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</g>
 				</svg>
 			</button>
 		</Link>

@@ -1,14 +1,12 @@
 /* eslint-disable array-callback-return */
 import { useState } from 'react';
-import './index.css';
-import RotateButton from '../components/RotateButton/RotateButton';
-import { generatePassword } from '../utils/generatePassword';
-import ScaleButton from '../components/ScaleButton/ScaleButton';
-import { strengthScore } from '../utils/passwordStrength';
-import CollapseButton from '../components/CollapseButton/CollapseButton';
+import RotateButton from '../RotateButton/RotateButton';
+import { generatePassword } from '../../utils/generatePassword';
+import ScaleButton from '../ScaleButton/ScaleButton';
+import CollapseButton from '../CollapseButton/CollapseButton';
+import { strengthScore } from '../../utils/passwordStrength';
 
-const Generate = () => {
-	// ---- hooks ----
+const GeneratePasswordSmall = () => {
 	const [generatedPassword, setGeneratedPassword] = useState('');
 	const [options, setOptions] = useState({
 		symbols: true,
@@ -45,104 +43,97 @@ const Generate = () => {
 		filteredHistoryArray.splice(0, historyLength - 5);
 	}
 
-	// ---- functions ----
-	// const generatePassword = () => {
-	// 	setGeneratedPassword(`${generatedPassword}!`);
-	// };
-
 	return (
 		<div>
-			<div className="flex flex-row justify-between h-10 items-center mr-4 w-full bg-white dark:bg-gray-900">
-				<div>
-					<input
-						autoComplete="off"
-						className="text-base outline-none h-10 pl-4 bg-white dark:bg-gray-900"
-						id="password"
-						spellCheck="false"
-						type="text"
-						value={generatedPassword}
-						placeholder="Please enter a password..."
-						// onChange set generated password, strength, and color
-						onChange={(e) => {
-							setGeneratedPassword(e.target.value);
-							setStrength(strengthScore(e.target.value));
+			<div className="password-container">
+				<div id="test" />
+				<input
+					autoComplete="off"
+					className="password"
+					id="password"
+					spellCheck="false"
+					type="text"
+					value={generatedPassword}
+					placeholder="Please enter a password..."
+					// onChange set generated password, strength, and color
+					onChange={(e) => {
+						setGeneratedPassword(e.target.value);
+						setStrength(strengthScore(e.target.value));
 
-							if (strength === 0) {
-								setStrengthColor('#aaa');
-							} else if (strength >= 1 && strength <= 20) {
-								setStrengthColor('#f00');
-							} else if (strength > 20 && strength <= 40) {
-								setStrengthColor('#f90');
-							} else if (strength > 40 && strength <= 60) {
-								setStrengthColor('#fbff00');
-							} else if (strength > 60 && strength <= 80) {
-								setStrengthColor('#9dff00');
-							} else if (strength > 80) {
-								setStrengthColor('#0f0');
-							}
-						}}
-					/>
-				</div>
-				<div className="flex flex-row justify-between mr-4">
-					<ScaleButton
-						type="button"
-						className="mr-2"
-						onClick={() =>
-							// copy password to clipboard
-							navigator.clipboard.writeText(generatedPassword)
+						if (strength === 0) {
+							setStrengthColor('#aaa');
+						} else if (strength >= 1 && strength <= 20) {
+							setStrengthColor('#f00');
+						} else if (strength > 20 && strength <= 40) {
+							setStrengthColor('#f90');
+						} else if (strength > 40 && strength <= 60) {
+							setStrengthColor('#fbff00');
+						} else if (strength > 60 && strength <= 80) {
+							setStrengthColor('#9dff00');
+						} else if (strength > 80) {
+							setStrengthColor('#0f0');
 						}
-					/>
-					<RotateButton
-						type="button"
-						onClick={() => {
-							// get a random password with the length
-							const newGeneratedPassword = generatePassword(
-								Number(length),
-								options,
-							);
-							// set the password
-							setGeneratedPassword(newGeneratedPassword);
-							setStrength(strengthScore(newGeneratedPassword));
-							// sethistoryarray to add new password
-							setHistoryArray([
-								...historyArray,
-								{
-									password: newGeneratedPassword,
-									date: new Date(),
-								},
-							]);
+					}}
+				/>
+				<ScaleButton
+					className="copy-password"
+					type="button"
+					onClick={() =>
+						// copy password to clipboard
+						navigator.clipboard.writeText(generatedPassword)
+					}
+				/>
+				<RotateButton
+					className="generate-password-button"
+					type="button"
+					onClick={() => {
+						// get a random password with the length
+						const newGeneratedPassword = generatePassword(
+							Number(length),
+							options,
+						);
+						// set the password
+						setGeneratedPassword(newGeneratedPassword);
+						setStrength(strengthScore(newGeneratedPassword));
+						// sethistoryarray to add new password
+						setHistoryArray([
+							...historyArray,
+							{
+								password: newGeneratedPassword,
+								date: new Date(),
+							},
+						]);
 
-							const passwordStrength =
-								strengthScore(newGeneratedPassword);
-							// set the color of the strength meter
-							if (passwordStrength === 0) {
-								setStrengthColor('#aaa');
-							} else if (
-								passwordStrength >= 1 &&
-								passwordStrength <= 20
-							) {
-								setStrengthColor('#f00');
-							} else if (
-								passwordStrength > 20 &&
-								passwordStrength <= 40
-							) {
-								setStrengthColor('#f90');
-							} else if (
-								passwordStrength > 40 &&
-								passwordStrength <= 60
-							) {
-								setStrengthColor('#fbff00');
-							} else if (
-								passwordStrength > 60 &&
-								passwordStrength <= 80
-							) {
-								setStrengthColor('#9dff00');
-							} else if (passwordStrength > 80) {
-								setStrengthColor('#0f0');
-							}
-						}}
-					/>
-				</div>
+						const passwordStrength =
+							strengthScore(newGeneratedPassword);
+						// set the color of the strength meter
+						if (passwordStrength === 0) {
+							setStrengthColor('#aaa');
+						} else if (
+							passwordStrength >= 1 &&
+							passwordStrength <= 20
+						) {
+							setStrengthColor('#f00');
+						} else if (
+							passwordStrength > 20 &&
+							passwordStrength <= 40
+						) {
+							setStrengthColor('#f90');
+						} else if (
+							passwordStrength > 40 &&
+							passwordStrength <= 60
+						) {
+							setStrengthColor('#fbff00');
+						} else if (
+							passwordStrength > 60 &&
+							passwordStrength <= 80
+						) {
+							setStrengthColor('#9dff00');
+						} else if (passwordStrength > 80) {
+							setStrengthColor('#0f0');
+						}
+					}}
+				/>
 			</div>
 			<div className="meter-container">
 				<div
@@ -154,11 +145,11 @@ const Generate = () => {
 					}}
 				/>
 			</div>
-			<div className="flex flex-row justify-end mr-4 ml-4 mt-2 mb-2">
+			<div className="history-button-container">
 				{showHistory && (
 					<>
 						<button
-							className="text-base font-semibold text-blue-500 mr-4"
+							className="close-history-button"
 							type="button"
 							onClick={() => setShowHistory(false)}
 						>
@@ -167,7 +158,7 @@ const Generate = () => {
 					</>
 				)}
 				<button
-					className="text-base font-semibold text-blue-500"
+					className="history-button"
 					type="button"
 					onClick={() => {
 						setShowHistory(!showHistory);
@@ -336,4 +327,4 @@ const Generate = () => {
 		</div>
 	);
 };
-export default Generate;
+export default GeneratePasswordSmall;
