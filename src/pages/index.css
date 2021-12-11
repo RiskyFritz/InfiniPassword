@@ -13,7 +13,8 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: var(--primary-accent);
+	@apply bg-gray-100;
+
 	color: black;
 	margin: 0 auto;
 	width: 20rem;
@@ -38,6 +39,7 @@ body.dark {
 	--secondary-text: #bbb;
 	--button-hover: #101319;
 	--button-color: #101319;
+	@apply bg-gray-800;
 
 	color: #eee;
 	margin: 0 auto;
@@ -98,7 +100,6 @@ input {
 	color: var(--primary-text);
 	background: var(--secondary-accent);
 }
-
 
 .nav-container {
 	display: flex;
@@ -244,7 +245,6 @@ textarea {
 	outline: none;
 	border: 1px solid var(--tertiary-accent);
 }
-
 
 .settings-container {
 	display: flex;

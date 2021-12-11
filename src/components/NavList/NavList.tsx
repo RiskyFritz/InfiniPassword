@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import './NavList.css';
 
 const NavList = () => (
-	<div className="flex flex-col">
+	<div className="flex flex-col m-4">
 		<Link
-			className="flex m-2 p-2 text-base border-2 border-blue-400 rounded-xl"
+			className="flex mb-2 p-3 rounded-lg bg-gray-100  shadow-none text-black dark:bg-gray-800 dark:text-white hover:bg-white hover:shadow dark:transition-shadow dark:hover:shadow transition-shadow dark:hover:bg-gray-900"
 			to="/addItem"
 		>
 			<svg
@@ -16,7 +16,7 @@ const NavList = () => (
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 448 512"
 				style={{ width: '1rem' }}
-				className="w-5 mr-8 ml-4"
+				className="w-5 mr-4 ml-2"
 			>
 				<g className="fa-group">
 					<path
@@ -31,10 +31,12 @@ const NavList = () => (
 					/>
 				</g>
 			</svg>
-			<button type="button">Add Item</button>
+			<button type="button" className="text-base">
+				Add Item
+			</button>
 		</Link>
 		<Link
-			className="flex m-2 p-2 text-base border-2 border-blue-400 rounded-xl"
+			className="flex mb-2 p-3 rounded-lg bg-gray-100  shadow-none text-black dark:bg-gray-800 dark:text-white hover:bg-white hover:shadow dark:transition-shadow dark:hover:shadow transition-shadow dark:hover:bg-black"
 			id="view-all"
 			to="/manageAll"
 		>
@@ -46,7 +48,7 @@ const NavList = () => (
 				role="img"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 448 512"
-				className="w-5 mr-8 ml-4"
+				className="w-5 mr-4 ml-2"
 			>
 				<path
 					fill="currentColor"
@@ -54,7 +56,9 @@ const NavList = () => (
 					className=""
 				/>
 			</svg>
-			<button type="button">Open Item Manager</button>
+			<button type="button" className="text-base">
+				Open Item Manager
+			</button>
 		</Link>
 	</div>
 );
