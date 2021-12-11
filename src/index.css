@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
 	--primary-accent: #eff1f5;
 	--secondary-accent: #fff;
@@ -61,16 +65,6 @@ a {
 	background-color: red;
 	width: 35%;
 	height: 100%;
-}
-
-button {
-	background-color: transparent;
-	background-repeat: no-repeat;
-	border: none;
-	cursor: pointer;
-	padding: 0.5rem;
-	outline: none;
-	color: var(--primary-text);
 }
 
 input {

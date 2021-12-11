@@ -1,11 +1,5 @@
 module.exports = {
-	purge: [
-		'./src/**/*.html',
-		'./src/**/*.js',
-		'./src/**/*.jsx',
-		'./src/**/*.ts',
-		'./src/**/*.tsx',
-	],
+	content: ['./src/**/*.{html,js,ts,tsx}'],
 	darkMode: 'class', // or 'media' or 'class'
 	theme: {
 		extend: {},

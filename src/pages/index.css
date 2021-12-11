@@ -83,16 +83,6 @@ a {
 	height: 100%;
 }
 
-button {
-	background-color: transparent;
-	background-repeat: no-repeat;
-	border: none;
-	cursor: pointer;
-	padding: 0.5rem;
-	outline: none;
-	color: var(--primary-text);
-}
-
 input {
 	/* And hide the input's outline, so the form looks like the outline */
 	border: none;
