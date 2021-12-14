@@ -25,6 +25,8 @@ body.dark {
 	--tertiary-accent: #bbb;
 	--primary-text: #fff;
 
+	@apply bg-zinc-800;
+
 	color: #eee;
 	margin: 0 auto;
 	width: 20rem;
@@ -118,58 +120,6 @@ input {
 
 .nav-container a:hover {
 	background: var(--primary-accent);
-}
-
-.options-container {
-	display: flex;
-	flex-direction: column;
-	align-content: flex-start;
-	width: 100%;
-	padding-bottom: 1rem;
-	color: var(--primary-text);
-	font-size: 14px;
-	background: var(--secondary-accent);
-	justify-content: center;
-	align-items: center;
-}
-
-.options-length-sub {
-	display: flex;
-	align-content: flex-start;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-	padding-bottom: 0.5rem;
-}
-
-.options-char-sub {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-	padding-right: 4rem;
-	padding-left: 0.75rem;
-	width: 100%;
-}
-
-.char-container {
-	display: flex;
-	flex-direction: column;
-}
-
-.char-sub {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	width: 100%;
-	justify-content: space-between;
-	white-space: nowrap;
-}
-
-.options-button {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
 }
 
 svg {

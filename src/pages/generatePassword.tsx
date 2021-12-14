@@ -6,6 +6,7 @@ import { generatePassword } from '../utils/generatePassword';
 import ScaleButton from '../components/ScaleButton/ScaleButton';
 import { strengthScore } from '../utils/passwordStrength';
 import CollapseButton from '../components/CollapseButton/CollapseButton';
+import DropdownButton from '../components/CollapseButton copy/DropdownButton';
 
 const Generate = () => {
 	// ---- hooks ----
@@ -52,16 +53,23 @@ const Generate = () => {
 
 	return (
 		<div>
-			<div className="flex flex-row justify-between h-10 items-center mr-4 w-full bg-white dark:bg-gray-900">
-				<div>
+			<div>
+				<div className="text-xl font-bold mx-4 my-2">
+					Generate Password
+				</div>
+				<div className="my-1 mx-4 h-0.5 opacity bg-black dark:bg-white " />
+			</div>
+
+			<div className="flex flex-row justify-between h-8 items-start mx-4 mt-4 mb-1 bg-gray-100 dark:bg-zinc-800">
+				<div className="flex flex-col">
 					<input
 						autoComplete="off"
-						className="text-base outline-none h-10 pl-4 bg-white dark:bg-gray-900"
+						className="rounded-xl shadow text-sm outline-none h-10 pl-4 pr-4 mb-1 bg-white dark:bg-zinc-900"
 						id="password"
 						spellCheck="false"
 						type="text"
 						value={generatedPassword}
-						placeholder="Please enter a password..."
+						placeholder="Generate Password"
 						// onChange set generated password, strength, and color
 						onChange={(e) => {
 							setGeneratedPassword(e.target.value);
@@ -82,99 +90,204 @@ const Generate = () => {
 							}
 						}}
 					/>
+					<div className="h-0.5 bg-gray-200 dark:bg-zinc-600">
+						<div
+							className="meter"
+							style={{
+								width: `${strength}%`,
+								backgroundColor: `${strengthColor}`,
+								transition: 'width 0.5s ease-in-out',
+							}}
+						/>
+					</div>
 				</div>
-				<div className="flex flex-row justify-between mr-4">
-					<ScaleButton
-						type="button"
-						className="mr-2"
-						onClick={() =>
-							// copy password to clipboard
-							navigator.clipboard.writeText(generatedPassword)
-						}
-					/>
-					<RotateButton
-						type="button"
-						onClick={() => {
-							// get a random password with the length
-							const newGeneratedPassword = generatePassword(
-								Number(length),
-								options,
-							);
-							// set the password
-							setGeneratedPassword(newGeneratedPassword);
-							setStrength(strengthScore(newGeneratedPassword));
-							// sethistoryarray to add new password
-							setHistoryArray([
-								...historyArray,
-								{
-									password: newGeneratedPassword,
-									date: new Date(),
-								},
-							]);
+				<div className="flex flex-row justify-around ml-2">
+					<div className="rounded-xl bg-blue-400 mr-2 items-center shadow">
+						<ScaleButton
+							type="button"
+							className="px-3 py-2.5"
+							classNameSvg="w-4 text-white dark:text-black"
+							onClick={() =>
+								// copy password to clipboard
+								navigator.clipboard.writeText(generatedPassword)
+							}
+						/>
+					</div>
+					<div className="rounded-xl bg-blue-400 mr-2 items-center shadow">
+						<RotateButton
+							type="button"
+							className="px-3 py-2.5"
+							classNameSvg="w-4 text-white dark:text-black"
+							onClick={() => {
+								// get a random password with the length
+								const newGeneratedPassword = generatePassword(
+									Number(length),
+									options,
+								);
+								// set the password
+								setGeneratedPassword(newGeneratedPassword);
+								setStrength(
+									strengthScore(newGeneratedPassword),
+								);
+								// sethistoryarray to add new password
+								setHistoryArray([
+									...historyArray,
+									{
+										password: newGeneratedPassword,
+										date: new Date(),
+									},
+								]);
 
-							const passwordStrength =
-								strengthScore(newGeneratedPassword);
-							// set the color of the strength meter
-							if (passwordStrength === 0) {
-								setStrengthColor('#aaa');
-							} else if (
-								passwordStrength >= 1 &&
-								passwordStrength <= 20
-							) {
-								setStrengthColor('#f00');
-							} else if (
-								passwordStrength > 20 &&
-								passwordStrength <= 40
-							) {
-								setStrengthColor('#f90');
-							} else if (
-								passwordStrength > 40 &&
-								passwordStrength <= 60
-							) {
-								setStrengthColor('#fbff00');
-							} else if (
-								passwordStrength > 60 &&
-								passwordStrength <= 80
-							) {
-								setStrengthColor('#9dff00');
-							} else if (passwordStrength > 80) {
-								setStrengthColor('#0f0');
+								const passwordStrength =
+									strengthScore(newGeneratedPassword);
+								// set the color of the strength meter
+								if (passwordStrength === 0) {
+									setStrengthColor('#aaa');
+								} else if (
+									passwordStrength >= 1 &&
+									passwordStrength <= 20
+								) {
+									setStrengthColor('#f00');
+								} else if (
+									passwordStrength > 20 &&
+									passwordStrength <= 40
+								) {
+									setStrengthColor('#f90');
+								} else if (
+									passwordStrength > 40 &&
+									passwordStrength <= 60
+								) {
+									setStrengthColor('#fbff00');
+								} else if (
+									passwordStrength > 60 &&
+									passwordStrength <= 80
+								) {
+									setStrengthColor('#9dff00');
+								} else if (passwordStrength > 80) {
+									setStrengthColor('#0f0');
+								}
+							}}
+						/>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div className="flex flex-col mr-4 ml-4 mt-6 mb-2">
+					<DropdownButton
+						className="text-base font-semibold w-full"
+						classNameSvg="w-3 flex justify-end"
+						name="Options"
+						onClick={() => {
+							if (isCollapsed) {
+								setIsCollapsed(false);
+							} else {
+								setIsCollapsed(true);
 							}
 						}}
 					/>
+					<div className="my-1 h-0.5 opacity bg-black dark:bg-white" />
 				</div>
-			</div>
-			<div className="meter-container">
-				<div
-					className="meter"
-					style={{
-						width: `${strength}%`,
-						backgroundColor: `${strengthColor}`,
-						transition: 'width 0.5s ease-in-out',
-					}}
-				/>
-			</div>
-			<div className="flex flex-row justify-end mr-4 ml-4 mt-2 mb-2">
-				{showHistory && (
+				{!isCollapsed && (
 					<>
-						<button
-							className="text-base font-semibold text-blue-500 mr-4"
-							type="button"
-							onClick={() => setShowHistory(false)}
-						>
-							Close History
-						</button>
+						<div className="flex flex-col">
+							<div className="flex flex-col justify-start">
+								<h4 className="text-sm ml-4">
+									Password Length
+								</h4>
+								<div className="slider-container">
+									<h3 className="text-sm">{length}</h3>
+									<input
+										type="range"
+										min="1"
+										defaultValue="12"
+										max="99"
+										width="100%"
+										value={length}
+										onChange={(e) => {
+											setLength(e.target.value);
+										}}
+									/>
+								</div>
+							</div>
+							<div className="flex flex-col mx-4 text-sm">
+								<div className="char-container">
+									<div className="char-sub">
+										<label htmlFor="check-letters">
+											<input
+												type="checkbox"
+												id="check-letters"
+												name="check-letters"
+												value="letters"
+												checked={options.letters}
+												onClick={() => {
+													const newOptions = {
+														...options,
+														letters:
+															!options.letters,
+													};
+													setOptions(newOptions);
+												}}
+											/>
+											{'		'}Include Letters
+										</label>
+									</div>
+									<div className="char-sub">
+										<label htmlFor="check-numbers">
+											<input
+												type="checkbox"
+												id="check-numbers"
+												name="checkNumbers"
+												value="Numbers"
+												checked={options.numbers}
+												onClick={() => {
+													const newOptions = {
+														...options,
+														numbers:
+															!options.numbers,
+													};
+													setOptions(newOptions);
+												}}
+											/>
+											{'		'}Include Numbers
+										</label>
+									</div>
+									<div className="char-sub">
+										<label htmlFor="check-symbols">
+											<input
+												type="checkbox"
+												id="check-symbols"
+												name="checkSymbols"
+												value="Symbols"
+												checked={options.symbols}
+												onClick={() => {
+													const newOptions = {
+														...options,
+														symbols:
+															!options.symbols,
+													};
+													setOptions(newOptions);
+												}}
+											/>
+											{'		'}Include Symbols
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
 					</>
 				)}
-				<button
-					className="text-base font-semibold text-blue-500"
-					type="button"
+			</div>
+			<div className="flex flex-col mr-4 ml-4 mt-2 mb-2">
+				<DropdownButton
+					className="text-base font-semibold w-full"
+					name="Recently Generated"
+					rotation="180"
+					classNameSvg="w-3 flex justify-end"
 					onClick={() => {
 						setShowHistory(!showHistory);
 					}}
-				>
-					History
-				</button>
+				/>
+				<div className="my-1 h-0.5 opacity bg-black dark:bg-white" />
 			</div>
 			{showHistory && (
 				<>
@@ -194,6 +307,7 @@ const Generate = () => {
 										</div>
 										<ScaleButton
 											className="copy-password"
+											classNameSvg="w-3 text-black dark:text-white"
 											type="button"
 											onClick={() =>
 												// copy password to clipboard
@@ -209,130 +323,6 @@ const Generate = () => {
 					</div>
 				</>
 			)}
-			<div className="options-container">
-				<button type="button" className="options-button">
-					<h3 className="section-title">Options</h3>
-					<CollapseButton
-						type="button"
-						className="collapse-button"
-						onClick={() => {
-							if (isCollapsed) {
-								setIsCollapsed(false);
-							} else {
-								setIsCollapsed(true);
-							}
-						}}
-					>
-						<svg
-							aria-hidden="true"
-							focusable="false"
-							data-prefix="fad"
-							data-icon="caret-down"
-							role="img"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 320 512"
-							style={{ width: '0.75rem' }}
-							className="svg-inline--fa fa-caret-down fa-w-10 fa-5x"
-						>
-							<g className="fa-group">
-								<path
-									fill="currentColor"
-									d="M160 168h128.92c17.85 0 26.8 22.48 14.17 35.63L174.17 337.89c-.26.28-.53.54-.8.8A19.41 19.41 0 0 1 160 344z"
-									className="fa-secondary"
-								/>
-								<path
-									fill="currentColor"
-									d="M160 344a19.41 19.41 0 0 1-13.37-5.29c-.27-.26-.54-.52-.8-.8L16.91 203.63C4.28 190.48 13.23 168 31.08 168H160z"
-									className="fa-primary"
-								/>
-							</g>
-						</svg>
-					</CollapseButton>
-				</button>
-				{!isCollapsed && (
-					<>
-						<div className="options-length-sub">
-							<h4 className="length-title">Password Length</h4>
-							<div className="slider-container">
-								<h3 className="slider-title">{length}</h3>
-								<input
-									type="range"
-									min="1"
-									defaultValue="12"
-									max="99"
-									width="100%"
-									value={length}
-									onChange={(e) => {
-										setLength(e.target.value);
-									}}
-								/>
-							</div>
-						</div>
-						<div className="options-char-sub">
-							<h4 className="char-title">Include</h4>
-							<div className="char-container">
-								<div className="char-sub">
-									<label htmlFor="check-letters">
-										<input
-											type="checkbox"
-											id="check-letters"
-											name="check-letters"
-											value="letters"
-											checked={options.letters}
-											onClick={() => {
-												const newOptions = {
-													...options,
-													letters: !options.letters,
-												};
-												setOptions(newOptions);
-											}}
-										/>
-										{'		'}Letters
-									</label>
-								</div>
-								<div className="char-sub">
-									<label htmlFor="check-numbers">
-										<input
-											type="checkbox"
-											id="check-numbers"
-											name="checkNumbers"
-											value="Numbers"
-											checked={options.numbers}
-											onClick={() => {
-												const newOptions = {
-													...options,
-													numbers: !options.numbers,
-												};
-												setOptions(newOptions);
-											}}
-										/>
-										{'		'}Numbers
-									</label>
-								</div>
-								<div className="char-sub">
-									<label htmlFor="check-symbols">
-										<input
-											type="checkbox"
-											id="check-symbols"
-											name="checkSymbols"
-											value="Symbols"
-											checked={options.symbols}
-											onClick={() => {
-												const newOptions = {
-													...options,
-													symbols: !options.symbols,
-												};
-												setOptions(newOptions);
-											}}
-										/>
-										{'		'}Symbols
-									</label>
-								</div>
-							</div>
-						</div>
-					</>
-				)}
-			</div>
 		</div>
 	);
 };

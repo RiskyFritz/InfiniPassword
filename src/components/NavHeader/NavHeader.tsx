@@ -9,16 +9,18 @@ const NavHeader = () => {
 	const { toggleDarkMode, isDarkMode } = useDarkMode();
 
 	return (
-		<div className="bg-gray-50 dark:bg-gray-900 pb-4 shadow">
+		<div className="bg-gray-50 dark:bg-zinc-900 pb-4 shadow">
 			<div className="flex flex-row pt-4 pl-4 pr-4 justify-between items-center w-full">
-				<div className="flex flex-row text-2xl font-bold">
-					<h4 className="text-blue-500 dark:text-white text-2xl font-bold">
-						Pass
-					</h4>
-					<h4 className="dark:text-blue-500 text-2xl font-bold">
-						Key
-					</h4>
-				</div>
+				<Link to="/">
+					<div className="flex flex-row text-2xl font-bold">
+						<h4 className="text-blue-500 hover:text-black dark:text-white dark:hover:text-blue-500 text-2xl font-bold">
+							Pass
+						</h4>
+						<h4 className="dark:text-blue-500 dark:hover:text-white hover:text-blue-500 text-2xl font-bold">
+							Key
+						</h4>
+					</div>
+				</Link>
 				<div className="flex flex-row ml-26 items-center">
 					<div>
 						<BackButton />
@@ -27,6 +29,7 @@ const NavHeader = () => {
 						<Link to="/generatePassword">
 							<RotateButton
 								className="generate-password-button"
+								classNameSvg="w-4"
 								type="button"
 								onClick={() => null}
 							/>

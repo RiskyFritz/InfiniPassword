@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 interface ScaleButtonProps {
 	className?: string;
+	classNameSvg?: string;
 	type: 'button' | 'submit' | 'reset';
 	onClick: () => void;
 }
@@ -11,6 +12,7 @@ const ScaleButton: React.FC<ScaleButtonProps> = ({
 	type,
 	children,
 	className,
+	classNameSvg,
 }) => {
 	// --- hooks ---
 	const [isScaling, setIsScaling] = useState(false);
@@ -47,8 +49,7 @@ const ScaleButton: React.FC<ScaleButtonProps> = ({
 				role="img"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 512 512"
-				style={{ width: '1rem' }}
-				className="svg-button"
+				className={classNameSvg}
 			>
 				<g className="fa-group">
 					<path

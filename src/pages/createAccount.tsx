@@ -2,8 +2,8 @@ import './index.css';
 import { Link } from 'react-router-dom';
 
 const CreateAccount = () => (
-	<div className="flex flex-col max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
-		<div className="self-center mb-2 text-xl font-light text-gray-800 sm:text-2xl dark:text-white">
+	<div className="flex flex-col max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-zinc-800 sm:px-6 md:px-8 lg:px-10">
+		<div className="self-center mb-2 text-xl font-light text-zinc-800 sm:text-2xl dark:text-white">
 			Create a new account
 		</div>
 		<span className="justify-center text-sm text-center text-gray-500 flex-items-center dark:text-gray-400">

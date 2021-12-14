@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 interface RotateButtonProps {
 	className?: string;
+	classNameSvg?: string;
 	type: 'button' | 'submit' | 'reset';
 	onClick: () => void;
 }
@@ -11,6 +12,7 @@ const RotateButton: React.FC<RotateButtonProps> = ({
 	type,
 	children,
 	className,
+	classNameSvg,
 }) => {
 	// --- hooks ---
 	const [isSpinning, setIsSpinning] = useState(false);
@@ -48,8 +50,7 @@ const RotateButton: React.FC<RotateButtonProps> = ({
 				role="img"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 512 512"
-				style={{ width: '1rem' }}
-				className="svg-inline--fa fa-sync fa-w-16 fa-5x"
+				className={classNameSvg}
 			>
 				<g className="fa-group">
 					<path
