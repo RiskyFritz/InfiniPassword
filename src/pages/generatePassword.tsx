@@ -42,8 +42,8 @@ const Generate = () => {
 		(password) => password.password !== '',
 	);
 	const historyLength = filteredHistoryArray.length;
-	if (historyLength > 5) {
-		filteredHistoryArray.splice(0, historyLength - 5);
+	if (historyLength > 3) {
+		filteredHistoryArray.splice(0, historyLength - 3);
 	}
 
 	// ---- functions ----
@@ -298,8 +298,11 @@ const Generate = () => {
 							// if any passwords are blank, remove them
 							if (filteredHistoryArray.length >= 1) {
 								return (
-									<div className="history-item" key={index}>
-										<div className="history-item-password">
+									<div
+										className="flex flex-row justify-between items-center mx-4 my-1"
+										key={index}
+									>
+										<div className="bg-white shadow dark:bg-zinc-900 p-1 w-28 rounded-md overflow-hidden overflow-ellipsis inline-block">
 											{String(password.password)}
 										</div>
 										<div className="history-item-date">

@@ -278,26 +278,3 @@ textarea {
 	margin: 0.5rem;
 }
 
-.history-button-container {
-	display: flex;
-	flex-direction: row;
-	justify-content: right;
-	padding: 0.5rem;
-}
-
-.history-item {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	margin-right: 1rem;
-	margin-left: 1rem;
-	align-items: center;
-	font-size: 0.75rem;
-}
-
-.history-item-password {
-	width: 7.5rem;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: inline-block;
-}
