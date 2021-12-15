@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import './index.css';
-import BackButton from '../components/BackButton/BackButton';
 import ActionContainer from '../components/ActionContainer/ActionContainer';
 import { renderItems } from '../utils/renderItems';
 import { CredentialsItem } from '../utils/getItems';
@@ -31,7 +30,6 @@ const ManagePasswords = () => {
 
 	return (
 		<div>
-			<BackButton />
 			<ActionContainer />
 			{
 				// loop through items and render them

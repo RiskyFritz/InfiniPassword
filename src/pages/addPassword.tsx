@@ -86,7 +86,6 @@ const AddPassword = () => {
 
 	return (
 		<div>
-			<BackButton />
 			<FormCreator inputs={input} onSubmit={onSubmit} />
 
 			{/* <div className="form-container">

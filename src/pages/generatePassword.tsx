@@ -5,8 +5,9 @@ import RotateButton from '../components/RotateButton/RotateButton';
 import { generatePassword } from '../utils/generatePassword';
 import ScaleButton from '../components/ScaleButton/ScaleButton';
 import { strengthScore } from '../utils/passwordStrength';
-import CollapseButton from '../components/CollapseButton/CollapseButton';
 import DropdownButton from '../components/CollapseButton copy/DropdownButton';
+import PasswordHistoryContainer from '../components/PasswordHistoryContainer/PasswordHistoryContainer';
+import { meterColor } from '../utils/strengthColor';
 
 const Generate = () => {
 	// ---- hooks ----
@@ -37,15 +38,6 @@ const Generate = () => {
 		},
 	]);
 
-	// remove blank passwords from history, and keep only last 5 passwords
-	const filteredHistoryArray = historyArray.filter(
-		(password) => password.password !== '',
-	);
-	const historyLength = filteredHistoryArray.length;
-	if (historyLength > 3) {
-		filteredHistoryArray.splice(0, historyLength - 3);
-	}
-
 	// ---- functions ----
 	// const generatePassword = () => {
 	// 	setGeneratedPassword(`${generatedPassword}!`);
@@ -74,20 +66,7 @@ const Generate = () => {
 						onChange={(e) => {
 							setGeneratedPassword(e.target.value);
 							setStrength(strengthScore(e.target.value));
-
-							if (strength === 0) {
-								setStrengthColor('#aaa');
-							} else if (strength >= 1 && strength <= 20) {
-								setStrengthColor('#f00');
-							} else if (strength > 20 && strength <= 40) {
-								setStrengthColor('#f90');
-							} else if (strength > 40 && strength <= 60) {
-								setStrengthColor('#fbff00');
-							} else if (strength > 60 && strength <= 80) {
-								setStrengthColor('#9dff00');
-							} else if (strength > 80) {
-								setStrengthColor('#0f0');
-							}
+							setStrengthColor(meterColor(strength));
 						}}
 					/>
 					<div className="h-0.5 bg-gray-200 dark:bg-zinc-600">
@@ -141,31 +120,7 @@ const Generate = () => {
 								const passwordStrength =
 									strengthScore(newGeneratedPassword);
 								// set the color of the strength meter
-								if (passwordStrength === 0) {
-									setStrengthColor('#aaa');
-								} else if (
-									passwordStrength >= 1 &&
-									passwordStrength <= 20
-								) {
-									setStrengthColor('#f00');
-								} else if (
-									passwordStrength > 20 &&
-									passwordStrength <= 40
-								) {
-									setStrengthColor('#f90');
-								} else if (
-									passwordStrength > 40 &&
-									passwordStrength <= 60
-								) {
-									setStrengthColor('#fbff00');
-								} else if (
-									passwordStrength > 60 &&
-									passwordStrength <= 80
-								) {
-									setStrengthColor('#9dff00');
-								} else if (passwordStrength > 80) {
-									setStrengthColor('#0f0');
-								}
+								setStrengthColor(meterColor(passwordStrength));
 							}}
 						/>
 					</div>
@@ -291,39 +246,7 @@ const Generate = () => {
 			</div>
 			{showHistory && (
 				<>
-					<div className="history-container">
-						{filteredHistoryArray.map((password, index) => {
-							// do not return blank passwords
-							// if more than 10 passwords, remove the oldest one
-							// if any passwords are blank, remove them
-							if (filteredHistoryArray.length >= 1) {
-								return (
-									<div
-										className="flex flex-row justify-between items-center mx-4 my-1"
-										key={index}
-									>
-										<div className="bg-white shadow dark:bg-zinc-900 p-1 w-28 rounded-md overflow-hidden overflow-ellipsis inline-block">
-											{String(password.password)}
-										</div>
-										<div className="history-item-date">
-											{password.date.toLocaleString()}
-										</div>
-										<ScaleButton
-											className="copy-password"
-											classNameSvg="w-3 text-black dark:text-white"
-											type="button"
-											onClick={() =>
-												// copy password to clipboard
-												navigator.clipboard.writeText(
-													password.password,
-												)
-											}
-										/>
-									</div>
-								);
-							}
-						})}
-					</div>
+					<PasswordHistoryContainer history={historyArray} />
 				</>
 			)}
 		</div>

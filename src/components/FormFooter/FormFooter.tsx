@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './FormFooter.css';
 
 interface FormFooterProps {
 	className?: string;
@@ -29,19 +28,26 @@ const FormFooter: React.FC<FormFooterProps> = ({
 	};
 
 	return (
-		<div className="form-footer">
-			<Link className="cancel-anchor" to="/">
-				<button className="cancel-button" type="button">
-					Cancel
+		<div className="flex flex-row mx-4 mt-2 items-center">
+			<div>
+				<Link
+					className="outline-none px-3 py-2 bg-zinc-700 text-white hover:bg-zinc-900 mr-2 rounded-xl shadow dark:bg-gray-50 dark:hover:bg-gray-200 dark:text-black"
+					to="/"
+				>
+					<button className="font-semibold" type="button">
+						Cancel
+					</button>
+				</Link>
+			</div>
+			<div>
+				<button
+					className="outline-none px-3 py-2 bg-blue-400 hover:bg-blue-500 rounded-xl shadow font-semibold"
+					type="submit"
+					onClick={handleClick}
+				>
+					Submit
 				</button>
-			</Link>
-			<button
-				className="submit-button"
-				type="submit"
-				onClick={handleClick}
-			>
-				Submit
-			</button>
+			</div>
 		</div>
 	);
 };

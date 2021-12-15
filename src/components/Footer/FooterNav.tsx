@@ -2,7 +2,7 @@ import './FooterNav.css';
 import { Link } from 'react-router-dom';
 
 const FooterNav = () => (
-	<div className="flex flex-row justify-between items-center m-4 text-gray-50 dark:text-zinc-900 bg-blue-400 shadow-md pl-4 pr-4 pt-2 pb-2 rounded-xl">
+	<div className="flex flex-row justify-between items-center m-4 sticky bottom-4 text-gray-50 dark:text-zinc-900 bg-blue-400 shadow-md pl-4 pr-4 pt-2 pb-2 rounded-xl">
 		<Link to="/">
 			<button
 				type="button"

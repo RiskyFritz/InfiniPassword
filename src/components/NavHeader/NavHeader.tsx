@@ -9,7 +9,7 @@ const NavHeader = () => {
 	const { toggleDarkMode, isDarkMode } = useDarkMode();
 
 	return (
-		<div className="bg-gray-50 dark:bg-zinc-900 pb-4 shadow">
+		<div className="bg-gray-50 dark:bg-zinc-900 pb-4 shadow sticky top-0">
 			<div className="flex flex-row pt-4 pl-4 pr-4 justify-between items-center w-full">
 				<Link to="/">
 					<div className="flex flex-row text-2xl font-bold">

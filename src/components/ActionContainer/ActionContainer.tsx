@@ -12,12 +12,12 @@ const ActionContainer = () => {
 	const uploadFileBlob = [] as string[];
 	return (
 		<div>
-			<div className="action-filter-container">
+			<div className="flex flex-row justify-end m-4">
 				<div className="actions-container">
 					<a>
 						<button
 							type="button"
-							className="download-button"
+							className="mr-3"
 							onClick={() =>
 								downloadFile('http://localhost:3000/password')
 							}
@@ -51,7 +51,7 @@ const ActionContainer = () => {
 					<a>
 						<button
 							type="button"
-							className="upload-button"
+							className="mr-3"
 							onClick={() => setIsFileUpload(!isFileUpload)}
 						>
 							<svg
@@ -82,7 +82,7 @@ const ActionContainer = () => {
 						</button>
 					</a>
 					<Link to="/addPassword">
-						<button type="button" className="add-button">
+						<button type="button" className="mr-3">
 							<svg
 								aria-hidden="true"
 								focusable="false"
@@ -110,7 +110,7 @@ const ActionContainer = () => {
 						</button>
 					</Link>
 					<Link to="/insights">
-						<button type="button" className="insights-Button">
+						<button type="button" className="mr-3">
 							<svg
 								aria-hidden="true"
 								focusable="false"
@@ -146,16 +146,16 @@ const ActionContainer = () => {
 								}}
 							/>
 						</div>
-						<div className="file-action-sub">
+						<div className="flex flex-row items-center my-4">
 							<button
-								className="cancel-button"
+								className="outline-none px-3 py-2 bg-zinc-700 text-white hover:bg-zinc-900 mr-2 rounded-xl shadow dark:bg-gray-50 dark:hover:bg-gray-200 dark:text-black "
 								type="button"
 								onClick={() => setIsFileUpload(false)}
 							>
 								Cancel
 							</button>
 							<button
-								className="submit-button"
+								className="outline-none px-3 py-2 bg-blue-400 hover:bg-blue-500 rounded-xl shadow font-semibold"
 								type="submit"
 								// onclick run upload file with the file selected
 								onClick={() => {

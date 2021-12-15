@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom';
+import NavCard from '../components/NavCard/NavCard';
 import './index.css';
 
 const AddItem = () => (
 	// hello
 	<div>
-		<div className="nav-container">
-			<Link to="/addPassword">
-				<button type="button">Password</button>
+		<div className="flex flex-col m-4">
+			<NavCard to="/addPassword" name="Password">
 				<svg
 					aria-hidden="true"
 					focusable="false"
@@ -15,8 +14,7 @@ const AddItem = () => (
 					role="img"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 512 512"
-					style={{ width: '1rem' }}
-					className="svg-inline--fa fa-key fa-w-16 fa-5x"
+					className="w-5 mr-4 ml-2"
 				>
 					<path
 						fill="currentColor"
@@ -24,9 +22,8 @@ const AddItem = () => (
 						className=""
 					/>
 				</svg>
-			</Link>
-			<Link to="/addSecureNote">
-				<button type="button">Secure Note</button>
+			</NavCard>
+			<NavCard to="/addSecureNote" name="Secure Note">
 				<svg
 					aria-hidden="true"
 					focusable="false"
@@ -35,8 +32,7 @@ const AddItem = () => (
 					role="img"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 448 512"
-					style={{ width: '1rem' }}
-					className="svg-inline--fa fa-sticky-note fa-w-14 fa-5x"
+					className="w-5 mr-4 ml-2"
 				>
 					<g className="fa-group">
 						<path
@@ -51,9 +47,8 @@ const AddItem = () => (
 						/>
 					</g>
 				</svg>
-			</Link>
-			<Link to="/addAddress">
-				<button type="button">Address</button>
+			</NavCard>
+			<NavCard to="/addAddress" name="Address">
 				<svg
 					aria-hidden="true"
 					focusable="false"
@@ -62,8 +57,7 @@ const AddItem = () => (
 					role="img"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 448 512"
-					style={{ width: '1rem' }}
-					className="svg-inline--fa fa-address-book fa-w-14 fa-5x"
+					className="w-5 mr-4 ml-2"
 				>
 					<path
 						fill="currentColor"
@@ -71,9 +65,8 @@ const AddItem = () => (
 						className=""
 					/>
 				</svg>
-			</Link>
-			<Link to="/addPaymentMethod">
-				<button type="button">Payment Method</button>
+			</NavCard>
+			<NavCard to="/addPaymentMethod" name="Payment Method">
 				<svg
 					aria-hidden="true"
 					focusable="false"
@@ -82,8 +75,7 @@ const AddItem = () => (
 					role="img"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 576 512"
-					style={{ width: '1rem' }}
-					className="svg-inline--fa fa-credit-card fa-w-18 fa-5x"
+					className="w-5 mr-4 ml-2"
 				>
 					<path
 						fill="currentColor"
@@ -91,9 +83,8 @@ const AddItem = () => (
 						className=""
 					/>
 				</svg>
-			</Link>
-			<Link to="/addBank">
-				<button type="button">Bank</button>
+			</NavCard>
+			<NavCard to="/addBank" name="Bank">
 				<svg
 					aria-hidden="true"
 					focusable="false"
@@ -102,8 +93,7 @@ const AddItem = () => (
 					role="img"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 512 512"
-					style={{ width: '1rem' }}
-					className="svg-inline--fa fa-university fa-w-16 fa-5x"
+					className="w-5 mr-4 ml-2"
 				>
 					<path
 						fill="currentColor"
@@ -111,7 +101,7 @@ const AddItem = () => (
 						className=""
 					/>
 				</svg>
-			</Link>
+			</NavCard>
 		</div>
 	</div>
 );
