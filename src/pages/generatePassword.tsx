@@ -5,7 +5,7 @@ import RotateButton from '../components/RotateButton/RotateButton';
 import { generatePassword } from '../utils/generatePassword';
 import ScaleButton from '../components/ScaleButton/ScaleButton';
 import { strengthScore } from '../utils/passwordStrength';
-import DropdownButton from '../components/CollapseButton copy/DropdownButton';
+import DropdownButton from '../components/DropDownButton/DropdownButton';
 import PasswordHistoryContainer from '../components/PasswordHistoryContainer/PasswordHistoryContainer';
 import { meterColor } from '../utils/strengthColor';
 
@@ -46,7 +46,7 @@ const Generate = () => {
 	return (
 		<div>
 			<div>
-				<div className="text-xl font-bold mx-4 my-2">
+				<div className="text-xl font-semibold mx-4 my-2">
 					Generate Password
 				</div>
 				<div className="my-1 mx-4 h-0.5 opacity bg-black dark:bg-white " />
