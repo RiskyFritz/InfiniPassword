@@ -29,7 +29,7 @@ const Generate = () => {
 	const [strengthColor, setStrengthColor] = useState('#fff');
 
 	// ---- set collapsed options ----
-	const [isCollapsed, setIsCollapsed] = useState(false);
+	const [isCollapsed, setIsCollapsed] = useState(true);
 	const [showHistory, setShowHistory] = useState(false);
 	const [historyArray, setHistoryArray] = useState([
 		{
@@ -158,6 +158,7 @@ const Generate = () => {
 										max="99"
 										width="100%"
 										value={length}
+										className="accent-blue-400"
 										onChange={(e) => {
 											setLength(e.target.value);
 										}}
@@ -173,6 +174,7 @@ const Generate = () => {
 												id="check-letters"
 												name="check-letters"
 												value="letters"
+												className="accent-blue-400"
 												checked={options.letters}
 												onClick={() => {
 													const newOptions = {
@@ -193,6 +195,7 @@ const Generate = () => {
 												id="check-numbers"
 												name="checkNumbers"
 												value="Numbers"
+												className="accent-blue-400"
 												checked={options.numbers}
 												onClick={() => {
 													const newOptions = {
@@ -213,6 +216,7 @@ const Generate = () => {
 												id="check-symbols"
 												name="checkSymbols"
 												value="Symbols"
+												className="accent-blue-400"
 												checked={options.symbols}
 												onClick={() => {
 													const newOptions = {
@@ -236,7 +240,6 @@ const Generate = () => {
 				<DropdownButton
 					className="text-base font-semibold w-full"
 					name="Recently Generated"
-					rotation="180"
 					classNameSvg="w-3 flex justify-end"
 					onClick={() => {
 						setShowHistory(!showHistory);

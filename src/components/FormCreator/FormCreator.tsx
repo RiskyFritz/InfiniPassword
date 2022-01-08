@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { FieldValues, useForm } from 'react-hook-form';
-import { strengthScore } from '../../utils/passwordStrength';
 import FormFooter from '../FormFooter/FormFooter';
 
 import './FormCreator.css';
@@ -24,12 +24,6 @@ interface FormCreatorProps {
 	};
 }
 
-const getStrength = (password: string): number => {
-	let strength = 0;
-	strength = strengthScore(password);
-	return strength;
-};
-
 const FormCreator = ({ inputs, onSubmit, classNames }: FormCreatorProps) => {
 	// useState returns type
 	const { register, handleSubmit } = useForm();
@@ -37,7 +31,11 @@ const FormCreator = ({ inputs, onSubmit, classNames }: FormCreatorProps) => {
 	return (
 		<form
 			className={`form-gen-form ${classNames?.form ?? ''}`}
-			onSubmit={handleSubmit(onSubmit)}
+			onSubmit={() => {
+				handleSubmit(onSubmit);
+				// set all inputs to empty
+				
+			}}
 		>
 			{inputs.map((input) => (
 				<label
@@ -55,25 +53,10 @@ const FormCreator = ({ inputs, onSubmit, classNames }: FormCreatorProps) => {
 						onClick={input?.onClick}
 						onChange={input?.onChange}
 					/>
-					{/* {input.type === 'password' && (
-						<>
-							<div className="meter-container">
-								<div
-									className="meter"
-									style={{
-										width: `${strength}%`,
-										backgroundColor: `${strengthColor}`,
-										visibility: 'visible',
-									}}
-								/>
-							</div>
-						</>
-					)} */}
 				</label>
 			))}
 			<FormFooter
 				onClick={() => {
-					// console.log(data);
 					// // try posting to the database
 					// postCredentials(data);
 				}}

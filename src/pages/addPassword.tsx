@@ -1,44 +1,32 @@
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import './index.css';
-import { useForm } from 'react-hook-form';
 import FormCreator, {
 	InputOptions,
 } from '../components/FormCreator/FormCreator';
+import { postCredentials } from '../utils/postPassword';
+import { strengthScore } from '../utils/passwordStrength';
+import { url } from 'inspector';
+
+// interface PasswordFormInterface {
+// 	url: string;
+// 	name: string;
+// 	folder: string;
+// 	username: string;
+// 	password: string;
+// 	notes: string;
+// }
 
 const AddPassword = () => {
-	// ---- set strength meter ----
-	const [strengthColor, setStrengthColor] = useState('#fff');
-	const [strength, setStrength] = useState(0);
-	const [data, setData] = useState({
-		url: '',
-		name: '',
-		folder: '',
-		username: '',
-		password: '',
-		notes: '',
-		// strength: 0,
-		// date: new Date(),
-	});
-	const clearForm = () => {
-		setData({
-			url: '',
-			name: '',
-			folder: '',
-			username: '',
-			password: '',
-			notes: '',
-			// strength: 0,
-			// date: new Date(),
-		});
+	const onSubmit = (data: any) => {
+		const credentialToPost = {
+			...data,
+			strength: strengthScore(data.password),
+			user: 'zdennis27',
+		};
+		postCredentials(credentialToPost);
 	};
-
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
-	const onSubmit = (res: any) => console.log(res);
-	console.log(errors);
 
 	const input: InputOptions[] = [
 		{
@@ -51,13 +39,13 @@ const AddPassword = () => {
 			label: 'Name',
 			name: 'name',
 			type: 'text',
-			placeholder: 'My Website',
+			placeholder: 'Password Name',
 		},
 		{
 			label: 'Folder',
 			name: 'folder',
 			type: 'text',
-			placeholder: 'My Website',
+			placeholder: 'Folder Name',
 		},
 		{
 			label: 'Username',

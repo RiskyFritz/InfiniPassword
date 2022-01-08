@@ -1,16 +1,17 @@
 import axios from 'axios';
 
 export const postCredentials = (data: {
-	url: string;
-	name: string;
-	folder: string;
+	user: string;
 	username: string;
 	password: string;
-	notes: string;
-	// strength: number;
-	// date: Date;
+	name: string;
+	strength?: number;
+	folder?: string;
+	url?: string;
+	notes?: string;
+	sharedWith?: string;
 }) => {
-	const endpoint = 'http://localhost:3000/password';
+	const endpoint = 'http://localhost:3000/credentials';
 	console.log(data);
 
 	axios.post(endpoint, data).then((res) => {

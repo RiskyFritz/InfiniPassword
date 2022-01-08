@@ -9,6 +9,7 @@
 					"tailwind",
 					"apply",
 					"variants",
+					"layer",
 					"responsive",
 					"screen"
 				]
@@ -16,6 +17,5 @@
 		],
 		"order/order": ["custom-properties", "declarations"],
 		"order/properties-order": ["width", "height"]
-	},
-	"ignoreFiles": "commitlint.config.js"
+	}
 }
