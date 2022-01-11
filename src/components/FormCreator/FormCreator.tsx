@@ -34,7 +34,6 @@ const FormCreator = ({ inputs, onSubmit, classNames }: FormCreatorProps) => {
 			onSubmit={() => {
 				handleSubmit(onSubmit);
 				// set all inputs to empty
-				
 			}}
 		>
 			{inputs.map((input) => (

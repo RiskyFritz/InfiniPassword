@@ -5,7 +5,7 @@ import './index.css';
 import FormCreator, {
 	InputOptions,
 } from '../components/FormCreator/FormCreator';
-import { postCredentials } from '../utils/postPassword';
+import { postCredentials } from '../utils/postCredential';
 import { strengthScore } from '../utils/passwordStrength';
 import { url } from 'inspector';
 

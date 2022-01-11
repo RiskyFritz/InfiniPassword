@@ -17,6 +17,7 @@
 		"haptics",
 		"ionicons",
 		"precaching",
+		"signin",
 		"stylelint",
 		"wesbos"
 	],

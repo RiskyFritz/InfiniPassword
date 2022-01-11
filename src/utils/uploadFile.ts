@@ -1,6 +1,6 @@
-import { postCredentials } from './postPassword';
+import { postCredentials } from './postCredential';
 
-export const uploadFile = (file: Blob) => {
+export const uploadFile = (file: Blob, credentialItem: string[], type: string) => {
 	// parse input file into JSON
 	const reader = new FileReader();
 	reader.readAsText(file);
@@ -9,17 +9,12 @@ export const uploadFile = (file: Blob) => {
 		const lines = csv.split('\n');
 		lines.forEach((line) => {
 			const credential = line.split(',');
-			const [name, url, folder, username, password, notes] = credential;
+			const credentialItem = credential;
 			const newCredential = {
-				name,
-				url,
-				folder,
-				username,
-				password,
-				notes,
+				credentialItem
 			};
 			// add credential to database
-			postCredentials(newCredential);
+			postCredentials(newCredential, type);
 		});
 		reader.onerror = function () {
 			console.log(reader.error);

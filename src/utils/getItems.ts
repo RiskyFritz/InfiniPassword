@@ -1,18 +1,39 @@
 // create async function that returns an array of items
-export interface CredentialsItem {
-	id: string;
-	name: string;
-	folder: string;
-	url: string;
-	username: string;
-	password: string;
-	notes: string;
-}
 
-export const getItems = async (
+import { AddressItem, BankItem, PasswordItem, PaymentMethodItem, SecureNoteItem } from "./interfaces";
+import axios from "axios";
+
+export const getPasswords = async (
 	endpoint: string,
-): Promise<CredentialsItem[]> => {
-	const response = fetch(endpoint);
-	const data = (await response).json() as Promise<CredentialsItem[]>;
+): Promise<PasswordItem[]> => {
+	const { data } = await axios.get(endpoint);
+	return data;
+};
+
+export const getAddresses = async (
+	endpoint: string,
+): Promise<AddressItem[]> => {
+	const { data } = await axios.get(endpoint);
+	return data;
+};
+
+export const getBanks = async (
+	endpoint: string,
+): Promise<BankItem[]> => {
+	const { data } = await axios.get(endpoint);
+	return data;
+};
+
+export const getPaymentMethods = async (
+	endpoint: string,
+): Promise<PaymentMethodItem[]> => {
+	const { data } = await axios.get(endpoint);
+	return data;
+};
+
+export const getSecureNotes = async (
+	endpoint: string,
+): Promise<SecureNoteItem[]> => {
+	const { data } = await axios.get(endpoint);
 	return data;
 };
