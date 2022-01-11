@@ -1,112 +1,78 @@
-import { Link } from 'react-router-dom';
-import BackButton from '../components/BackButton/BackButton';
-import './index.css';
+import FormCreator, {
+	InputOptions,
+} from '../components/FormCreator/FormCreator';
+import { postCredentials } from '../utils/postCredential';
 
-const AddBank = () => (
-	<div>
-		<BackButton />
-		<div className="form-container">
-			<div className="settings-container">
-				<div className="form-group">
-					<label htmlFor="nameInput">Name</label>
-					<input
-						className="short-input"
-						id="nameInput"
-						type="text"
-						spellCheck="false"
-						autoComplete="nickname"
-					/>
-				</div>
-				<div className="form-group">
-					<label htmlFor="folderInput">Folder</label>
-					<input
-						className="short-input"
-						id="folderInput"
-						type="text"
-						spellCheck="false"
-					/>
-				</div>
-			</div>
+const AddBank = () => {
+	const onSubmit = (data: any) => {
+		const credentialToPost = {
+			...data,
+			user: 'zdennis27',
+		};
+		postCredentials(credentialToPost, 'bank');
+	};
 
-			<div className="form-group">
-				<label htmlFor="nameInput">Bank Name</label>
-				<input
-					className="long-input"
-					id="nameInput"
-					type="text"
-					spellCheck="false"
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="typeInput">Account Type</label>
-				<input
-					className="long-input"
-					id="typeInput"
-					type="text"
-					spellCheck="false"
-				/>
-			</div>
-			<div className="settings-container">
-				<div className="form-group">
-					<label htmlFor="routingInput">Routing Number</label>
-					<input
-						className="short-input"
-						id="routingInput"
-						type="text"
-						spellCheck="false"
-					/>
-				</div>
-				<div className="form-group">
-					<label htmlFor="numberInput">Account Number</label>
-					<input
-						className="short-input"
-						id="numberInput"
-						type="text"
-						spellCheck="false"
-						autoComplete="nickname"
-					/>
-				</div>
-			</div>
-			<div className="settings-container">
-				<div className="form-group">
-					<label htmlFor="addressInput">Bank Address</label>
-					<input
-						className="short-input"
-						id="addressInput"
-						type="text"
-						spellCheck="false"
-					/>
-				</div>
-				<div className="form-group">
-					<label htmlFor="phoneInput">Bank Phone</label>
-					<input
-						className="short-input"
-						id="phoneInput"
-						type="text"
-						spellCheck="false"
-						autoComplete="nickname"
-					/>
-				</div>
-			</div>
-			<div className="form-group">
-				<label htmlFor="notesInput">Notes</label>
-				<textarea
-					className="long-input"
-					id="notesInput"
-					spellCheck="true"
-				/>
-			</div>
-			<div className="action-container">
-				<Link className="cancel-anchor" to="/">
-					<button className="cancel-button" type="button">
-						Cancel
-					</button>
-				</Link>
-				<button className="submit-button" type="submit">
-					Submit
-				</button>
-			</div>
+	const input: InputOptions[] = [
+		{
+			label: 'Name',
+			name: 'name',
+			type: 'text',
+			placeholder: 'Fidelity',
+		},
+		{
+			label: 'Folder',
+			name: 'folder',
+			type: 'text',
+			placeholder: 'Investments',
+		},
+		{
+			label: 'Bank Name',
+			name: 'bankName',
+			type: 'text',
+			placeholder: 'Fidelity Bank',
+		},
+		{
+			label: 'Account Type',
+			name: 'accountType',
+			type: 'number',
+			placeholder: 'Savings',
+		},
+		{
+			label: 'Routing Number',
+			name: 'routingNumber',
+			type: 'number',
+			placeholder: 'Routing Number',
+		},
+		{
+			label: 'Account Number',
+			name: 'type',
+			type: 'text',
+			placeholder: 'Account Number',
+		},
+		{
+			label: 'Bank Phone',
+			name: 'bankPhone',
+			type: 'text',
+			placeholder: '123-456-7890',
+		},
+		{
+			label: 'Bank Website',
+			name: 'bankWebsite',
+			type: 'text',
+			placeholder: 'www.fidelity.com',
+		},
+		{
+			label: 'Notes',
+			name: 'notes',
+			type: 'textarea',
+			placeholder: 'Write notes here...',
+		},
+	];
+
+	return (
+		<div>
+			<FormCreator inputs={input} onSubmit={onSubmit} />
 		</div>
-	</div>
-);
+	);
+};
 export default AddBank;

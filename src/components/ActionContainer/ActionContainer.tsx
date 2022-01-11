@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { downloadFile } from '../../utils/downloadFile';
 import { uploadFile } from '../../utils/uploadFile';
 
-const ActionContainer = () => {
+interface ActionContainerProps {
+	onDownload: () => void;
+	onUpload: () => void;
+}
+
+const ActionContainer: React.FC<ActionContainerProps> = ({onDownload, onUpload}) => {
 	const [isFileUpload, setIsFileUpload] = useState(false);
 	// const [filename, setFilename] = useState('');
 	const [fileBlob, setFileBlob] = useState([] as string[]);
@@ -19,7 +23,7 @@ const ActionContainer = () => {
 							type="button"
 							className="mr-3"
 							onClick={() =>
-								downloadFile('http://localhost:3000/password')
+								onDownload
 							}
 						>
 							<svg
@@ -159,7 +163,7 @@ const ActionContainer = () => {
 								type="submit"
 								// onclick run upload file with the file selected
 								onClick={() => {
-									uploadFile(file);
+									onUpload
 									// set time out to set isFileUpload to false
 									setTimeout(() => {
 										setIsFileUpload(false);

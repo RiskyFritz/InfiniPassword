@@ -7,16 +7,6 @@ import FormCreator, {
 } from '../components/FormCreator/FormCreator';
 import { postCredentials } from '../utils/postCredential';
 import { strengthScore } from '../utils/passwordStrength';
-import { url } from 'inspector';
-
-// interface PasswordFormInterface {
-// 	url: string;
-// 	name: string;
-// 	folder: string;
-// 	username: string;
-// 	password: string;
-// 	notes: string;
-// }
 
 const AddPassword = () => {
 	const onSubmit = (data: any) => {
@@ -25,7 +15,7 @@ const AddPassword = () => {
 			strength: strengthScore(data.password),
 			user: 'zdennis27',
 		};
-		postCredentials(credentialToPost);
+		postCredentials(credentialToPost, 'password');
 	};
 
 	const input: InputOptions[] = [

@@ -1,41 +1,16 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import FormCreator, {
 	InputOptions,
 } from '../components/FormCreator/FormCreator';
+import { postCredentials } from '../utils/postCredential';
 
 const AddPaymentMethod = () => {
-	// ---- set strength meter ----
-	const [data, setData] = useState({
-		url: '',
-		name: '',
-		folder: '',
-		username: '',
-		password: '',
-		notes: '',
-		// strength: 0,
-		// date: new Date(),
-	});
-	const clearForm = () => {
-		setData({
-			url: '',
-			name: '',
-			folder: '',
-			username: '',
-			password: '',
-			notes: '',
-			// strength: 0,
-			// date: new Date(),
-		});
+	const onSubmit = (data: any) => {
+		const credentialToPost = {
+			...data,
+			user: 'zdennis27',
+		};
+		postCredentials(credentialToPost, 'paymentMethod');
 	};
-
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
-	const onSubmit = (res: any) => console.log(res);
-	console.log(errors);
 
 	const input: InputOptions[] = [
 		{
@@ -73,12 +48,6 @@ const AddPaymentMethod = () => {
 			name: 'type',
 			type: 'text',
 			placeholder: 'Credit Card',
-		},
-		{
-			label: 'Start Date',
-			name: 'startDate',
-			type: 'date',
-			placeholder: '01/01/2021',
 		},
 		{
 			label: 'Expiration Date',

@@ -1,138 +1,103 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import BackButton from '../components/BackButton/BackButton';
-import './index.css';
+import FormCreator, {
+	InputOptions,
+} from '../components/FormCreator/FormCreator';
+import { postCredentials } from '../utils/postCredential';
 
-const AddAddress = () => (
-	<div>
-		<BackButton />
-		<div className="form-container">
-			<div className="settings-container">
-				<div className="form-group">
-					<label htmlFor="nameInput">Name</label>
-					<input
-						className="short-input"
-						id="nameInput"
-						type="text"
-						spellCheck="false"
-						autoComplete="nickname"
-					/>
-				</div>
-				<div className="form-group">
-					<label htmlFor="folderInput">Folder</label>
-					<input
-						className="short-input"
-						id="folderInput"
-						type="text"
-						spellCheck="false"
-					/>
-				</div>
-			</div>
-			<div className="form-group">
-				<label htmlFor="titleInput">Title</label>
-				<select id="titleInput" className="long-input">
-					<option value=""> </option>
-					<option value="">Mr</option>
-					<option value="">Mrs</option>
-					<option value="">Ms</option>
-					<option value="">Dr</option>
-				</select>
-			</div>
-			<div className="settings-container">
-				<div className="form-group">
-					<label htmlFor="firstNameInput">First Name</label>
-					<input
-						className="short-input"
-						id="firstNameInput"
-						type="text"
-						spellCheck="false"
-					/>
-				</div>
-				<div className="form-group">
-					<label htmlFor="lastNameInput">Last Name</label>
-					<input
-						className="short-input"
-						id="lastNameInput"
-						type="text"
-						spellCheck="false"
-					/>
-				</div>
-			</div>
-			<div className="form-group">
-				<label htmlFor="companyInput">Company</label>
-				<input
-					className="long-input"
-					id="companyInput"
-					type="text"
-					spellCheck="false"
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="address1Input">Address 1</label>
-				<input
-					className="long-input"
-					id="address1Input"
-					type="text"
-					spellCheck="false"
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="address2Input">Address 2</label>
-				<input
-					className="long-input"
-					id="address2Input"
-					type="text"
-					spellCheck="false"
-				/>
-			</div>
-			<div className="settings-container">
-				<div className="form-group">
-					<label htmlFor="cityInput">City</label>
-					<input
-						className="short-input"
-						id="cityInput"
-						type="text"
-						spellCheck="false"
-					/>
-				</div>
-				<div className="form-group">
-					<label htmlFor="stateInput">State</label>
-					<input
-						className="short-input"
-						id="stateInput"
-						type="text"
-						spellCheck="false"
-					/>
-				</div>
-			</div>
-			<div className="form-group">
-				<label htmlFor="zipcodeInput">ZIP Code</label>
-				<input
-					className="short-input"
-					id="zipcodeInput"
-					type="text"
-					spellCheck="false"
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="notesInput">Notes</label>
-				<textarea
-					className="long-input"
-					id="notesInput"
-					spellCheck="true"
-				/>
-			</div>
-			<div className="action-container">
-				<Link className="cancel-anchor" to="/">
-					<button className="cancel-button" type="button">
-						Cancel
-					</button>
-				</Link>
-				<button className="submit-button" type="submit">
-					Submit
-				</button>
-			</div>
+const AddAddress = () => {
+	const onSubmit = (data: any) => {
+		const credentialToPost = {
+			...data,
+			user: 'zdennis27',
+		};
+		postCredentials(credentialToPost, 'address');
+	};
+
+	const input: InputOptions[] = [
+		{
+			label: 'Name',
+			name: 'name',
+			type: 'text',
+			placeholder: 'Home',
+		},
+		{
+			label: 'Folder',
+			name: 'folder',
+			type: 'text',
+			placeholder: 'Addresses',
+		},
+		{
+			label: 'Title',
+			name: 'title',
+			type: 'text',
+			placeholder: 'Mr.',
+		},
+		{
+			label: 'First Name',
+			name: 'firstName',
+			type: 'text',
+			placeholder: 'John',
+		},
+		{
+			label: 'Last Name',
+			name: 'lastName',
+			type: 'text',
+			placeholder: 'Smith',
+		},
+		{
+			label: 'Company',
+			name: 'company',
+			type: 'text',
+			placeholder: 'Passkey',
+		},
+		{
+			label: 'Address',
+			name: 'address',
+			type: 'text',
+			placeholder: '123 Main St',
+		},
+		{
+			label: 'Address 2',
+			name: 'address2',
+			type: 'text',
+			placeholder: 'Apt. 2',
+		},
+		{
+			label: 'City',
+			name: 'city',
+			type: 'text',
+			placeholder: 'Seattle',
+		},
+		{
+			label: 'State',
+			name: 'state',
+			type: 'text',
+			placeholder: 'WA',
+		},
+		{
+			label: 'Zip Code',
+			name: 'zip',
+			type: 'text',
+			placeholder: '98141',
+		},
+		{
+			label: 'Country',
+			name: 'country',
+			type: 'text',
+			placeholder: 'US',
+		},
+		{
+			label: 'Notes',
+			name: 'notes',
+			type: 'textarea',
+			placeholder: 'Write notes here...',
+		},
+	];
+
+	return (
+		<div>
+			<FormCreator inputs={input} onSubmit={onSubmit} />
 		</div>
-	</div>
-);
+	);
+};
 export default AddAddress;
+

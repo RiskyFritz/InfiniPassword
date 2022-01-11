@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
 import './index.css';
 import ActionContainer from '../components/ActionContainer/ActionContainer';
-import { renderItems } from '../utils/renderItems';
-import { CredentialsItem } from '../utils/getItems';
+import { renderPasswords } from '../utils/renderItems';
 import ItemCard from '../components/itemCard/ItemCard';
 import { deleteCredentials } from '../utils/deletePassword';
+import { PasswordItem } from '../utils/interfaces';
 
 const ManagePasswords = () => {
 	// ---- hooks ----
 	// > state
 
-	const [items, setItems] = useState<CredentialsItem[]>([]);
+	const [items, setItems] = useState<PasswordItem[]>([]);
 
 	// > lifecycle
 	useEffect(() => {
-		const fetchItems = async () => {
+		const fetchPasswords = async () => {
 			try {
-				const newItems = await renderItems(
+				const newItems = await renderPasswords(
 					'http://localhost:3000/password',
 				);
 				console.log(newItems);
@@ -25,12 +25,15 @@ const ManagePasswords = () => {
 				console.log(error);
 			}
 		};
-		fetchItems();
+		fetchPasswords();
 	}, []);
 
 	return (
 		<div>
-			<ActionContainer />
+			<ActionContainer 
+			onDownload={() => {}}
+			onUpload={() => {}}
+			/>
 			{
 				// loop through items and render them
 				items.map((item, index) => (
@@ -47,7 +50,7 @@ const ManagePasswords = () => {
 									(card) => card.id !== item.id,
 								);
 								setItems(newItems);
-								deleteCredentials(item.id);
+								deleteCredentials(item.id, 'password');
 							}}
 						/>
 					</div>
